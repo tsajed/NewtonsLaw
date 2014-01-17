@@ -1,0 +1,10 @@
+/Temp
+/obj
+/Library
+/library
+*.csproj
+*.unityprog
+*.sln
+.DS_Store
+*.pidb
+*.userprefs

@@ -5,7 +5,6 @@ public class Movement : MonoBehaviour {
 
 	public float moveForce = 365f;			// Amount of force added to move the player left and right.
 	public float maxSpeed = 5f;				// The fastest the player can travel in the x axis.
-
 	// Use this for initialization
 	void Start () {
 	
@@ -33,5 +32,27 @@ public class Movement : MonoBehaviour {
 
 		if(Mathf.Abs(rigidbody2D.velocity.y) > maxSpeed)
 			rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, Mathf.Sign(rigidbody2D.velocity.y) * maxSpeed);
+
+		//push/pull
+		if (Input.GetButton("Jump") || Input.GetButton("Fire1")) {
+			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); 
+			Vector2 origin = new Vector2(ray.origin.x,ray.origin.y); 
+			Vector2 myLoc = new Vector2(transform.position.x,transform.position.y);
+			if(Input.GetButton("Jump"))
+				Debug.DrawLine(origin,myLoc, Color.blue,1);
+			if(Input.GetButton ("Fire1"))
+				Debug.DrawLine(origin,myLoc, Color.green,1);
+			RaycastHit2D hit = Physics2D.Linecast(origin,myLoc);
+			print ("origin: " + origin);
+			print ("myLoc: " + myLoc);
+			if(hit.collider != null){
+				if (hit.collider.gameObject.name != "Prototypi" && hit.collider.rigidbody2D != null){
+					int dir = 1;
+					if (Input.GetButton("Fire1")) dir = -1;
+					hit.collider.rigidbody2D.AddForce( (myLoc - origin) * dir);
+				}
+			}
+		}
+
 	}
 }

@@ -34,11 +34,11 @@ public class Movement : MonoBehaviour {
 			rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, Mathf.Sign(rigidbody2D.velocity.y) * maxSpeed);
 
 		//push/pull
-		if (Input.GetButton("Jump") || Input.GetButton("Fire1")) {
+		if ((Input.GetButton("Jump") || Input.GetButton("Fire2")) || Input.GetButton("Fire1")) {
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); 
 			Vector2 origin = new Vector2(ray.origin.x,ray.origin.y); 
 			Vector2 myLoc = new Vector2(transform.position.x,transform.position.y);
-			if(Input.GetButton("Jump"))
+			if(Input.GetButton("Jump") || Input.GetButton("Fire2"))
 				Debug.DrawLine(origin,myLoc, Color.blue,1);
 			if(Input.GetButton ("Fire1"))
 				Debug.DrawLine(origin,myLoc, Color.green,1);

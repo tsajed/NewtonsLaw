@@ -1,4 +1,4 @@
-/Temp
+d/Temp
 /obj
 /Library
 /library
@@ -8,3 +8,5 @@
 .DS_Store
 *.pidb
 *.userprefs
+*.unityproj
+*.suo

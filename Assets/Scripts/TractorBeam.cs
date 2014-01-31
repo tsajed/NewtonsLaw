@@ -31,12 +31,15 @@ public class TractorBeam : MonoBehaviour
 						&& !hit.collider.gameObject.name.Contains("Projectile"))
 					{
 						float dir = 1 * 0.5f; // .5 because the grab seems to be op
-						if (Input.GetButton ("Fire1"))
-							dir = -1;
+
 						Debug.Log ("p : " + power);
 						if (stasisEffect)
 							hit.collider.rigidbody2D.velocity = Vector2.zero; //reset velocity for stasis effect
-						hit.collider.rigidbody2D.AddForce( (myLoc - target_direction) * dir * power);
+						Vector2 clickLoc2d = new Vector2(clickLoc.x,clickLoc.y);
+						if (Input.GetButton ("Fire2"))
+							hit.collider.rigidbody2D.AddForce( (myLoc - clickLoc2d).normalized * power);
+						else
+							hit.collider.rigidbody2D.AddForce( (clickLoc2d - myLoc).normalized * power);
 					}
 				}
 			}

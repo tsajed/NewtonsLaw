@@ -5,6 +5,9 @@ public class GenericEnemy
 {
 	public GameObject self;
 
+	public GameObject target;
+	public Health playerHealth;
+
 	public int health { get; set; }
 	public float movementSpeed { get; set; }
 	public float damage { get; set; }
@@ -16,6 +19,8 @@ public class GenericEnemy
 		this.health = health;
 		this.movementSpeed = speed;
 		this.damage = damage;
+		target = GameObject.FindWithTag("Player");
+		playerHealth = target.GetComponent<Health>();
 	}
 
 	// Flips the Sprite so it looks in the opposite direction
@@ -30,4 +35,6 @@ public class GenericEnemy
 	public void increaseHealth(int amount) { health += amount; }
 
 	public void decreaseHealth(int amount) { health -= amount; }
+
+	public void decreasePlayerHealth(int amount) { 	playerHealth.decreasePlayerHP(amount); }
 }

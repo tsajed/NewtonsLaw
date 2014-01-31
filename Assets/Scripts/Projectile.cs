@@ -34,6 +34,7 @@ public class Projectile : MonoBehaviour
 		if (coll.gameObject.tag == "Player")
 		{
 			// hurt player
+			self.decreasePlayerHealth(1);
 			Destroy (gameObject);
 		}
 		else if (coll.gameObject.tag == "Enemy" && coll.gameObject.name != "Enemy 1")

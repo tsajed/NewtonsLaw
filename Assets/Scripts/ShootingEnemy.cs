@@ -34,7 +34,7 @@ public class ShootingEnemy : MonoBehaviour
 		self = new GenericEnemy (this.gameObject, 100, 0.002f, 2.0f);
 		ren = transform.Find ("body").GetComponent<SpriteRenderer> ();
 
-		if (!target)
+		if (!target) 
 			target = GameObject.FindWithTag ("Player").transform;
 
 		shootCooldown = 0f;
@@ -108,6 +108,7 @@ public class ShootingEnemy : MonoBehaviour
 		else if (coll.gameObject.tag == "Player")
 		{
 			// hurt player
+			self.decreasePlayerHealth(1);
 		}
 		else if (coll.gameObject.tag == "Bullet" 
 			&& coll.gameObject.GetComponent<Projectile>().parent != this.gameObject)

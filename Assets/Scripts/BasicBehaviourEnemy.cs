@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BasicBehaviourEnemy : MonoBehaviour {
-
+public class BasicBehaviourEnemy : MonoBehaviour 
+{
 	public GenericEnemy self;
 	public Transform target;
 
@@ -10,50 +10,59 @@ public class BasicBehaviourEnemy : MonoBehaviour {
 	public float deathSpinMin = -100f;			// A value to give the minimum amount of Torque when dying
 	public float deathSpinMax = 100f;			// A value to give the maximum amount of Torque when dying
 
+	private bool dying;
+
 	// Use this for initialization
-	void Start () {
-		self = new GenericEnemy(this.gameObject, 100, 2.0f, 2.0f);
+	void Start () 
+	{
+		self = new GenericEnemy(this.gameObject, 100, 0.001f, 2.0f);
 		// Setting up the references.
 		ren = transform.Find("body").GetComponent<SpriteRenderer>();
 
 		if(!target)
 			target = GameObject.FindWithTag("Player").transform;
+
+		dying = false;
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	void FixedUpdate () 
+	{
+		if (self.health <= 0)
+			Death ();
 
-		// Set the enemy's velocity to moveSpeed in the x direction.
-		if(target.position.x < transform.position.x - 1.2)
-			rigidbody2D.velocity = new Vector2(-transform.localScale.x * self.getSpeed(), rigidbody2D.velocity.y);	
-		else if(target.position.x > transform.position.x + 1.2)
-			rigidbody2D.velocity = new Vector2(transform.localScale.x * self.getSpeed(), rigidbody2D.velocity.y);
-		else if(target.position.x == transform.position.x)
-			rigidbody2D.velocity = new Vector2(0, rigidbody2D.velocity.y);
+		if (dying)
+			return;
 
-		// Set the enemy's velocity to moveSpeed in the y direction.
-		if(target.position.y < transform.position.y - 1.2)
-			rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, -transform.localScale.y * self.getSpeed());
-		else if(target.position.y > transform.position.y + 1.2)
-			rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, transform.localScale.y * self.getSpeed());
-		else if(target.position.y == transform.position.y)
-			rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, 0);
+		var dir = target.transform.position - this.transform.position;
+		dir = dir.normalized;
+		var force = dir * self.movementSpeed;
+		rigidbody2D.AddForce (force);
+	}
 
-		if(self.getHealth() <= 0) {
-			Destroy(this.gameObject);
+	void OnCollisionEnter2D(Collision2D coll)
+	{
+		if (coll.gameObject.tag == "Enemy")
+		{
+			if (coll.gameObject.name == "Enemy 2")
+				Death ();
+		}
+		else if (coll.gameObject.tag == "Player")
+		{
+			// hurt self instead of player
+			Death ();
+		}
+		else if (coll.gameObject.tag == "Bullet"
+			&& coll.gameObject.GetComponent<Projectile> ().parent != this.gameObject)
+		{
+			Death ();
 		}
 	}
 
-	void OnCollisionEnter2D(Collision2D coll) {
-	    if (coll.gameObject.tag == "Enemy")
-	    	Death();
-	    if(coll.gameObject.tag == "Player") {
-	   		Death();
-	   	}
-	}
-
-	void Death()
+	public void Death()
 	{
+		dying = true;
+
 		// Find all of the sprite renderers on this object and it's children.
 		SpriteRenderer[] otherRenderers = GetComponentsInChildren<SpriteRenderer>();
 
@@ -84,7 +93,5 @@ public class BasicBehaviourEnemy : MonoBehaviour {
 		Invoke("Remove", 2.0f);
 	}
 
-	private void Remove() {
-		Destroy(gameObject);
-	}
+	private void Remove() {	Destroy(gameObject); }
 }

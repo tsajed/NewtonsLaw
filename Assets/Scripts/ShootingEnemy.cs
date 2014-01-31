@@ -7,9 +7,9 @@ public class ShootingEnemy : MonoBehaviour
 
 	private SpriteRenderer ren;
 	// A value to give the minimum amount of Torque when dying
-	public float deathSpinMin = 100f;
+	public float deathSpinMin;
 	// A value to give the maximum amount of Torque when dying
-	public float deathSpinMax = 100f; 
+	public float deathSpinMax;
 
 	/// <summary>
 	/// Projectile prefab for shooting

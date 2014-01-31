@@ -4,6 +4,7 @@
 [Tt]emp/
 [Ll]ibrary/
 [Bb]uilds/
+[Tt]est_Data/
 
 #root
 *.tmproj
@@ -14,3 +15,4 @@
 *.user
 *.pidb
 *.userprefs
+*.exe

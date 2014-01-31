@@ -5,6 +5,8 @@ public class TractorBeam : MonoBehaviour
 {
 	public float power;
 	public bool stasisEffect;
+	public AudioClip pull;
+	public AudioClip push;
 
 	void FixedUpdate () 
 	{
@@ -24,6 +26,7 @@ public class TractorBeam : MonoBehaviour
 			RaycastHit2D[] all_hit = Physics2D.RaycastAll(myLoc,target_direction,target_direction.magnitude);
 			foreach(RaycastHit2D hit in all_hit)
 			{
+
 				if(hit.collider != null)
 				{
 					//print (hit.collider.gameObject.name);
@@ -31,6 +34,7 @@ public class TractorBeam : MonoBehaviour
 						&& !hit.collider.gameObject.name.Contains("Projectile"))
 					{
 						float dir = 1 * 0.5f; // .5 because the grab seems to be op
+						
 
 						Debug.Log ("p : " + power);
 						if (stasisEffect)
@@ -39,10 +43,33 @@ public class TractorBeam : MonoBehaviour
 						if (Input.GetButton ("Fire2"))
 							hit.collider.rigidbody2D.AddForce( (myLoc - clickLoc2d).normalized * power);
 						else
+						{
+							// Play push sound when found a hit when pushing
+							if(Input.GetButton("Fire1")) {
+								AudioSource.PlayClipAtPoint(push, hit.collider.transform.position);
+							}
 							hit.collider.rigidbody2D.AddForce( (clickLoc2d - myLoc).normalized * power);
+
+						}
 					}
 				}
 			}
 		}
+
+		// Play the push sound when pushing
+	/*	if(Input.GetButton("Fire1")) {
+			//audio.clip = push;
+			if(!audio.isPlaying)
+				audio.Play();
+		} */
+		// Play the pull sound when pulling
+		if(Input.GetButton("Fire2"))
+		{
+			audio.clip = pull;
+			if(!audio.isPlaying)
+				audio.Play();
+		}
+		else
+			audio.Stop();
 	}
 }

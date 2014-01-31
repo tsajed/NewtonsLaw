@@ -4,6 +4,7 @@ public class ShootingEnemy : MonoBehaviour
 {
 	public GenericEnemy self;
 	public Transform target;
+	public AudioClip laser;
 
 	private SpriteRenderer ren;
 	// A value to give the minimum amount of Torque when dying
@@ -91,6 +92,8 @@ public class ShootingEnemy : MonoBehaviour
 			projectile.oldTarget = new Vector3 (target.position.x, target.position.y);
 			projectile.parent = this.gameObject;
 		}
+
+		audio.PlayOneShot(laser);
 	}
 
 	public bool CanAttack { get { return shootCooldown <= 0f; } }

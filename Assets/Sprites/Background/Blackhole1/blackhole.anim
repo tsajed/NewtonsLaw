@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!74 &7400000
+AnimationClip:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: blackhole
+  serializedVersion: 4
+  m_AnimationType: 2
+  m_Compressed: 0
+  m_UseHighQualityCurve: 1
+  m_RotationCurves: []
+  m_CompressedRotationCurves: []
+  m_PositionCurves: []
+  m_ScaleCurves: []
+  m_FloatCurves: []
+  m_PPtrCurves:
+  - curve:
+    - time: 0
+      value: {fileID: 21300000, guid: 0c31f12a8ed43bf448c2983d8420244b, type: 3}
+    - time: .200000003
+      value: {fileID: 21300000, guid: 7a4f54391c0c8f245b73eb45f36c7ee3, type: 3}
+    - time: .400000006
+      value: {fileID: 21300000, guid: ed12b557de35773428dd2a681f7aaacd, type: 3}
+    - time: .600000024
+      value: {fileID: 21300000, guid: b29027d7143e67247a8a666adc0e09ef, type: 3}
+    - time: .800000012
+      value: {fileID: 21300000, guid: 80d207b9330b851499383c7e827bb8f8, type: 3}
+    - time: 1
+      value: {fileID: 21300000, guid: 941e6191f7f42204ea51744bd1b1273e, type: 3}
+    - time: 1.20000005
+      value: {fileID: 21300000, guid: edc3ade6a377bed40bf78dd9a54f6255, type: 3}
+    - time: 1.39999998
+      value: {fileID: 21300000, guid: 941e6191f7f42204ea51744bd1b1273e, type: 3}
+    - time: 1.60000002
+      value: {fileID: 21300000, guid: 80d207b9330b851499383c7e827bb8f8, type: 3}
+    - time: 1.79999995
+      value: {fileID: 21300000, guid: b29027d7143e67247a8a666adc0e09ef, type: 3}
+    - time: 2
+      value: {fileID: 21300000, guid: ed12b557de35773428dd2a681f7aaacd, type: 3}
+    - time: 2.20000005
+      value: {fileID: 21300000, guid: 7a4f54391c0c8f245b73eb45f36c7ee3, type: 3}
+    attribute: m_Sprite
+    path: 
+    classID: 212
+    script: {fileID: 0}
+  m_SampleRate: 5
+  m_WrapMode: 0
+  m_Bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  m_AnimationClipSettings:
+    serializedVersion: 2
+    m_StartTime: 0
+    m_StopTime: 2.4000001
+    m_OrientationOffsetY: 0
+    m_Level: 0
+    m_CycleOffset: 0
+    m_LoopTime: 1
+    m_LoopBlend: 0
+    m_LoopBlendOrientation: 0
+    m_LoopBlendPositionY: 0
+    m_LoopBlendPositionXZ: 0
+    m_KeepOriginalOrientation: 0
+    m_KeepOriginalPositionY: 1
+    m_KeepOriginalPositionXZ: 0
+    m_HeightFromFeet: 0
+    m_Mirror: 0
+  m_EditorCurves: []
+  m_EulerEditorCurves: []
+  m_Events: []

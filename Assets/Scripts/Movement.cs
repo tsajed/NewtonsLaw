@@ -16,7 +16,7 @@ public class Movement : MonoBehaviour
 		float h = Input.GetAxis("Horizontal");
 		float v = Input.GetAxis("Vertical");
 		
-		// If the player is changing direction (h has a different sign to velocity.x) or hasn't reached maxSpeed yet...
+		/*// If the player is changing direction (h has a different sign to velocity.x) or hasn't reached maxSpeed yet...
 		if(h * rigidbody2D.velocity.x < maxSpeed)
 			// ... add a force to the player.
 			rigidbody2D.AddForce(Vector2.right * h * moveForce);
@@ -32,5 +32,22 @@ public class Movement : MonoBehaviour
 
 		if(Mathf.Abs(rigidbody2D.velocity.y) > maxSpeed)
 			rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, Mathf.Sign(rigidbody2D.velocity.y) * maxSpeed);
+	
+		*/
+
+		
+		// Set a maximum velocity, don't stop add force when you're over the max velocity!
+		rigidbody2D.AddForce(new Vector2(h * moveForce, v * moveForce));
+		if (rigidbody2D.velocity.x > maxSpeed) {
+			rigidbody2D.velocity = new Vector2(maxSpeed, rigidbody2D.velocity.y);
+		} else if (rigidbody2D.velocity.x < -maxSpeed) {
+			rigidbody2D.velocity = new Vector2(-maxSpeed, rigidbody2D.velocity.y);
+		}
+		if (rigidbody2D.velocity.y > maxSpeed) {
+			rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, maxSpeed);
+		} else if (rigidbody2D.velocity.y < -maxSpeed) {
+			rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, -maxSpeed);
+		}
+
 	}
 }

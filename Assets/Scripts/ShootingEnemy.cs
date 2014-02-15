@@ -1,7 +1,9 @@
-﻿﻿using UnityEngine;
+﻿using UnityEngine;
 
 public class ShootingEnemy : MonoBehaviour
 {
+	public float speed;
+
 	public GenericEnemy self;
 	public Transform target;
 	public AudioClip laser;
@@ -31,7 +33,7 @@ public class ShootingEnemy : MonoBehaviour
 
 	void Start () // initialization
 	{
-		self = new GenericEnemy (this.gameObject, 100, 0.002f, 2.0f);
+		self = new GenericEnemy (this.gameObject, 100, speed, 2.0f);
 		ren = transform.Find ("body").GetComponent<SpriteRenderer> ();
 
 		if (!target) 

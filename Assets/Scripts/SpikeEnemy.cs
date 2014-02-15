@@ -14,10 +14,11 @@ public class SpikeEnemy : MonoBehaviour
 
 	private bool dying;
 
+	public float speed;
 	// Use this for initialization
 	void Start () 
 	{
-		self = new GenericEnemy (this.gameObject, 100, 0.004f, 2.0f);
+		self = new GenericEnemy (this.gameObject, 100, speed, 2.0f);
 		ren = transform.Find ("body").GetComponent<SpriteRenderer> ();
 
 		if (!target)

@@ -3,6 +3,7 @@ using System.Collections;
 
 public class BasicBehaviourEnemy : MonoBehaviour 
 {
+	public float speed;
 	public GenericEnemy self;
 	public Transform target;
 
@@ -15,7 +16,7 @@ public class BasicBehaviourEnemy : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-		self = new GenericEnemy(this.gameObject, 100, 0.001f, 2.0f);
+		self = new GenericEnemy(this.gameObject, 100, speed, 2.0f);
 		// Setting up the references.
 		ren = transform.Find("body").GetComponent<SpriteRenderer>();
 

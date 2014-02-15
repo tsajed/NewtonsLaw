@@ -1,0 +1,37 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class PenguinSounds : MonoBehaviour {
+
+        @script RequireComponent(AudioSource)
+	public var penguin:AudioClip;
+	public var explosion:AudioClip;
+	public var fire:AudioClip;
+
+	function Start()
+	{
+		//Wait for the animation to progress
+		yield WaitForSeconds(3);
+		//Assign audio clip
+		audio.clip = penguin;
+		//Play audio clip
+		audio.Play();
+
+		// Wait for the audio to have finished
+		yield WaitForSeconds (2);
+
+		// Assign the other clip and play it
+		audio.clip = explosion;
+		audio.Play();
+		yield WaitForSeconds (1);
+		
+		audio.clip = fire;
+		audio.Play();
+	}
+	
+	// Update is called once per frame
+	void Update () {
+	
+	}
+
+}

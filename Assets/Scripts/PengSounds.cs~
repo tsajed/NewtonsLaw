@@ -1,0 +1,16 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class PengSounds : MonoBehaviour {
+
+        public AudioClip penguin;
+	// Use this for initialization
+	void Start () {
+	     AudioSource.PlayClipAtPoint(penguin, GameObject.Find("Main Camera").transform.position);	    
+	}
+	
+	// Update is called once per frame
+	void Update () {
+	
+	}
+}

@@ -46,5 +46,8 @@ public class Health : MonoBehaviour {
 		print("u ded");
 		Time.timeScale = 0;
 		//Destroy (this.gameObject); //note that this causes errors currently as other scripts still try to reference the object.
+		int loaded = Application.loadedLevel;
+		//restart level when player dies.
+		//Application.LoadLevel(loaded);
 	}
 }

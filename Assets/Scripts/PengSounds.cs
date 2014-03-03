@@ -16,7 +16,7 @@ public class PengSounds : MonoBehaviour {
 	     	   yield return new WaitForSeconds (0.5f);
 	 	   AudioSource.PlayClipAtPoint(fire, GameObject.Find("Main Camera").transform.position);
 		   yield return new WaitForSeconds (2);
-		   Application.LoadLevel ("Scene 1");
+		   Application.LoadLevel ("SceneBasic");
 
 	}
 

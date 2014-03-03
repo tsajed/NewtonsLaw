@@ -4910,7 +4910,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400004, guid: 6b9e045bf49684906aa95f1cb42dff45, type: 2}
       propertyPath: canDie
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11400004, guid: 6b9e045bf49684906aa95f1cb42dff45, type: 2}
       propertyPath: maxHealth
@@ -7283,7 +7283,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ee191a5ae7c202e499dd9ca950747818, type: 3}
   - {fileID: 21300000, guid: 1c618a36942a4dc4e8c1aedccc9c21d4, type: 3}
   hurt: {fileID: 8300000, guid: 9f90caa15e95a40dd96647189a8e9d4a, type: 3}
-  canDie: 0
+  canDie: 1
 --- !u!82 &1783346467
 AudioSource:
   m_ObjectHideFlags: 0

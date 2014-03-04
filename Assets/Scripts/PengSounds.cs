@@ -8,17 +8,16 @@ public class PengSounds : MonoBehaviour {
 	public AudioClip fire;
 	
 	// Use this for initialization
-	void Start () {
-	     	   StartCoroutine(wait());
+	IEnumerator Start () {
+	     	   yield return new WaitForSeconds (0.4f);
 		   AudioSource.PlayClipAtPoint(penguin, GameObject.Find("Main Camera").transform.position);
+	     	   yield return new WaitForSeconds (2.5f);
 	     	   AudioSource.PlayClipAtPoint(explosion, GameObject.Find("Main Camera").transform.position);
+	     	   yield return new WaitForSeconds (0.5f);
 	 	   AudioSource.PlayClipAtPoint(fire, GameObject.Find("Main Camera").transform.position);
+		   yield return new WaitForSeconds (2);
+		   Application.LoadLevel ("SceneBasic");
 
-	}
-
-	public IEnumerator wait()
-	{
-		   yield return new WaitForSeconds (10);
 	}
 
 }

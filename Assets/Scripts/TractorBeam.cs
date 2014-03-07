@@ -49,7 +49,7 @@ public class TractorBeam : MonoBehaviour
 								AudioSource.PlayClipAtPoint(push, hit.collider.transform.position);
 							}
 							hit.collider.rigidbody2D.AddForce( (clickLoc2d - myLoc).normalized * power);
-
+							break; // Only affect the first object hit.
 						}
 					}
 				}

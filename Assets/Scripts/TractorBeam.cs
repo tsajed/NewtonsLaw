@@ -16,8 +16,7 @@ public class TractorBeam : MonoBehaviour
 			Vector2 myLoc = new Vector2(transform.position.x,transform.position.y);
 			//raycast needs a vector for the direction from the player.
 			Vector2 target_direction = new Vector2(clickLoc.x - myLoc.x,clickLoc.y - myLoc.y); 
-			//print ("target_direction " + target_direction);
-			//print ("myLoc " + myLoc);
+			target_direction.Scale (new Vector2(1000,1000));
 			if( Input.GetButton("Fire2"))
 				Debug.DrawRay(myLoc,target_direction, Color.blue,1);
 			if(Input.GetButton ("Fire1"))

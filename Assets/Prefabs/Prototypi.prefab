@@ -286,7 +286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3288cda03e84a64ebb4f3a4603c3b52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  power: .100000001
+  power: 1024
   stasisEffect: 1
   pull: {fileID: 8300000, guid: b057f77c8893d486b88e37af7b4e9c9a, type: 3}
   push: {fileID: 8300000, guid: bcafb1acbb0b4430498a23e638330d6c, type: 3}
@@ -301,14 +301,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06e7fae18a7d8447ab2937a459641cb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: 2
-  maxHealth: 2
+  playerHealth: 9
+  maxHealth: 9
   renderer: {fileID: 0}
   sprites:
-  - {fileID: 21300000, guid: 4281e797a7c946e4fb128dafa948f04d, type: 3}
-  - {fileID: 21300000, guid: ee191a5ae7c202e499dd9ca950747818, type: 3}
-  - {fileID: 21300000, guid: 1c618a36942a4dc4e8c1aedccc9c21d4, type: 3}
+  - {fileID: 21300000, guid: ee22ff41d1dc88a4994ca639d2de9e94, type: 3}
+  - {fileID: 21300000, guid: 59c525c9c5a5c514b97a1b2549661c23, type: 3}
+  - {fileID: 21300000, guid: fab8d181cf414124f890a195e3755bd2, type: 3}
+  - {fileID: 21300000, guid: a3edb84958ebd6047b70f8f63e46292b, type: 3}
+  - {fileID: 21300000, guid: bdcf16671e7fdfb44b2d8a8c22cc36d0, type: 3}
+  - {fileID: 21300000, guid: f9ba4fdeab571d541aa63370ede8c0b8, type: 3}
+  - {fileID: 21300000, guid: ac6d5f09ef7c28f42b153b12795ba598, type: 3}
+  - {fileID: 21300000, guid: 4683383475a784148831286c5c74f2f9, type: 3}
+  - {fileID: 21300000, guid: c2e88927d18b28744b16b66314c69e92, type: 3}
+  - {fileID: 21300000, guid: f9e7d8d0d2848734dada2ba0a3c092a8, type: 3}
   hurt: {fileID: 8300000, guid: 9f90caa15e95a40dd96647189a8e9d4a, type: 3}
+  canDie: 1
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

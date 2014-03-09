@@ -139,6 +139,7 @@ MonoBehaviour:
   target: {fileID: 0}
   deathSpinMin: -100
   deathSpinMax: 100
+  scorePointsUI: {fileID: 100000, guid: 2fc60e8c1970746ffa4a93c447a3ae5f, type: 2}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

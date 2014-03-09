@@ -6,18 +6,14 @@ public class Health : MonoBehaviour {
 
 	public int playerHealth;
 	public int maxHealth;
-	public SpriteRenderer spriteRenderer;
+	public SpriteRenderer renderer;
 	public Sprite[] sprites;
 	public AudioClip hurt;
 	public bool canDie;
 
 	void Start () 
 	{
-		spriteRenderer = gameObject.GetComponentInChildren<SpriteRenderer>();
-		sprites = Resources.LoadAll<Sprite> ("NL-player");
-		hurt = Resources.Load<AudioClip> ("g450_hurt");
-		playerHealth = 2;
-		maxHealth = 2;
+		renderer = gameObject.GetComponentInChildren<SpriteRenderer>();
 	}
 	
 	void Update () {
@@ -27,7 +23,7 @@ public class Health : MonoBehaviour {
 			playerHealth = maxHealth;
 
 		// Set the player's sprite dependent on health
-		spriteRenderer.sprite = sprites[playerHealth];
+		renderer.sprite = sprites[playerHealth];
 	}
 
 	public void increasePlayerHP(int amount) { playerHealth += amount; }

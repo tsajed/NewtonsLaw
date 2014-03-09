@@ -47,6 +47,7 @@ public class BasicBehaviourEnemy : MonoBehaviour
 		{
 			if (coll.gameObject.name == "Enemy 2")
 				death.Death (this, ren, deathSpinMin, deathSpinMax);
+				createScore();
 		}
 		else if (coll.gameObject.tag == "Player")
 		{
@@ -57,9 +58,12 @@ public class BasicBehaviourEnemy : MonoBehaviour
 			&& coll.gameObject.GetComponent<EnemyProjectile> ().parent != this.gameObject)
 		{
 			death.Death (this, ren, deathSpinMin, deathSpinMax);
+			createScore();
 		}
 	}
 
+	void createScore() 
+	{
 		// Increase the score by so and so points
 		scoreBoard.score += self.score;
 
@@ -67,5 +71,6 @@ public class BasicBehaviourEnemy : MonoBehaviour
 		GameObject scorePoints = (GameObject) Instantiate(scorePointsUI, Vector3.zero, Quaternion.identity);
 		scorePoints.transform.parent = gameObject.transform;
 		scorePoints.transform.localPosition = new Vector3(0, 1.5f, 0);
+	}
 
 }

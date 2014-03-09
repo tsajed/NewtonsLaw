@@ -2741,6 +2741,7 @@ GameObject:
   - 114: {fileID: 407812140}
   - 58: {fileID: 407812144}
   - 114: {fileID: 407812143}
+  - 114: {fileID: 407812145}
   m_Layer: 0
   m_Name: Enemy 3
   m_TagString: Enemy
@@ -2770,10 +2771,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 407812138}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ea80d6764d464319ac96a54e3fddc28, type: 3}
+  m_Script: {fileID: 11500000, guid: 38bd62d7fc361497287c4309e89bbc2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  speed: 0
   target: {fileID: 0}
   deathSpinMin: -100
   deathSpinMax: 100
@@ -2831,6 +2832,18 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_Radius: 1.5
   m_Center: {x: 0, y: 0}
+--- !u!114 &407812145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400004, guid: d2082a82b3108402796533fcbffd318b,
+    type: 2}
+  m_PrefabInternal: {fileID: 977047120}
+  m_GameObject: {fileID: 407812138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e93b8fa3d4586ad449534d48f68eb25a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &423295918
 Prefab:
   m_ObjectHideFlags: 0
@@ -4127,7 +4140,8 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 21200002, guid: 6b9e045bf49684906aa95f1cb42dff45, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6b9e045bf49684906aa95f1cb42dff45, type: 2}
   m_RootGameObject: {fileID: 1783346458}
   m_IsPrefabParent: 0
@@ -5034,6 +5048,7 @@ GameObject:
   - 114: {fileID: 1024072085}
   - 58: {fileID: 1024072089}
   - 114: {fileID: 1024072088}
+  - 114: {fileID: 1024072090}
   m_Layer: 0
   m_Name: Enemy 3
   m_TagString: Enemy
@@ -5063,10 +5078,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1024072083}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ea80d6764d464319ac96a54e3fddc28, type: 3}
+  m_Script: {fileID: 11500000, guid: 38bd62d7fc361497287c4309e89bbc2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  speed: 0
   target: {fileID: 0}
   deathSpinMin: -100
   deathSpinMax: 100
@@ -5124,6 +5139,18 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_Radius: 1.5
   m_Center: {x: 0, y: 0}
+--- !u!114 &1024072090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400004, guid: d2082a82b3108402796533fcbffd318b,
+    type: 2}
+  m_PrefabInternal: {fileID: 363928695}
+  m_GameObject: {fileID: 1024072083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e93b8fa3d4586ad449534d48f68eb25a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1069780334
 GameObject:
   m_ObjectHideFlags: 0
@@ -6425,6 +6452,7 @@ GameObject:
   - 114: {fileID: 1180627136}
   - 58: {fileID: 1180627141}
   - 114: {fileID: 1180627140}
+  - 114: {fileID: 1180627142}
   m_Layer: 0
   m_Name: Enemy 3
   m_TagString: Enemy
@@ -6441,10 +6469,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1180627135}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ea80d6764d464319ac96a54e3fddc28, type: 3}
+  m_Script: {fileID: 11500000, guid: 38bd62d7fc361497287c4309e89bbc2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  speed: 0
   target: {fileID: 0}
   deathSpinMin: -100
   deathSpinMax: 100
@@ -6515,6 +6543,18 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_Radius: 1.5
   m_Center: {x: 0, y: 0}
+--- !u!114 &1180627142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400004, guid: d2082a82b3108402796533fcbffd318b,
+    type: 2}
+  m_PrefabInternal: {fileID: 966595631}
+  m_GameObject: {fileID: 1180627135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e93b8fa3d4586ad449534d48f68eb25a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1189948936
 GameObject:
   m_ObjectHideFlags: 0
@@ -8961,6 +9001,7 @@ GameObject:
   - 114: {fileID: 2125695797}
   - 58: {fileID: 2125695802}
   - 114: {fileID: 2125695801}
+  - 114: {fileID: 2125695803}
   m_Layer: 0
   m_Name: Enemy 3
   m_TagString: Enemy
@@ -8977,10 +9018,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2125695796}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ea80d6764d464319ac96a54e3fddc28, type: 3}
+  m_Script: {fileID: 11500000, guid: 38bd62d7fc361497287c4309e89bbc2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  speed: 0
   target: {fileID: 0}
   deathSpinMin: -100
   deathSpinMax: 100
@@ -9051,3 +9092,15 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_Radius: 1.5
   m_Center: {x: 0, y: 0}
+--- !u!114 &2125695803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400004, guid: d2082a82b3108402796533fcbffd318b,
+    type: 2}
+  m_PrefabInternal: {fileID: 2018824082}
+  m_GameObject: {fileID: 2125695796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e93b8fa3d4586ad449534d48f68eb25a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

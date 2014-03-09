@@ -9,16 +9,18 @@ public class GenericEnemy
 	public Health playerHealth;
 
 	public int health { get; set; }
+	public int score { get; set; }
 	public float movementSpeed { get; set; }
 	public float damage { get; set; }
 	public float maxSpeed = 5f;				// The fastest the player can travel in the x axis.
 
-	public GenericEnemy(GameObject self, int health, float speed, float damage) 
+	public GenericEnemy(GameObject self, int health, float speed, float damage, int score=100) 
 	{
 		this.self = self;
 		this.health = health;
 		this.movementSpeed = speed;
 		this.damage = damage;
+		this.score = score;
 		target = GameObject.FindWithTag("Player");
 		playerHealth = target.GetComponent<Health>();
 	}

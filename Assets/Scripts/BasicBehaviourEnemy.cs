@@ -10,8 +10,10 @@ public class BasicBehaviourEnemy : MonoBehaviour
 	private SpriteRenderer ren;			// Reference to the sprite renderer.
 	public float deathSpinMin = -100f;			// A value to give the minimum amount of Torque when dying
 	public float deathSpinMax = 100f;			// A value to give the maximum amount of Torque when dying
+	public GameObject scorePointsUI;	// A prefab of 100 that appears when the enemy dies.
 
 	private bool dying;
+	private PlayerScore scoreBoard;	// Reference to the Score Script
 
 	// Use this for initialization
 	void Start () 
@@ -24,6 +26,8 @@ public class BasicBehaviourEnemy : MonoBehaviour
 			target = GameObject.FindWithTag("Player").transform;
 
 		dying = false;
+		scoreBoard = GameObject.Find("Score").GetComponent<PlayerScore>();
+
 	}
 	
 	// Update is called once per frame
@@ -79,6 +83,15 @@ public class BasicBehaviourEnemy : MonoBehaviour
 
 		// Set dead to true.
 		//dead = true;
+
+		// Increase the score by so and so points
+		scoreBoard.score += self.score;
+
+		// Instantiate the score points prefab at this point.
+		GameObject scorePoints = (GameObject) Instantiate(scorePointsUI, Vector3.zero, Quaternion.identity);
+		scorePoints.transform.parent = gameObject.transform;
+		scorePoints.transform.localPosition = new Vector3(0, 1.5f, 0);
+
 
 		// Allow the enemy to rotate and spin it by adding a torque.
 		rigidbody2D.fixedAngle = false;

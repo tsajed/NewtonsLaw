@@ -88,7 +88,7 @@ public class ShootingEnemy : MonoBehaviour
 		// Assign position
 		shotTransform.position = transform.position;
 
-		Projectile projectile = shotTransform.gameObject.GetComponent<Projectile> ();
+		EnemyProjectile projectile = shotTransform.gameObject.GetComponent<EnemyProjectile> ();
 		if (projectile != null)
 		{
 			projectile.oldTarget = new Vector3 (target.position.x, target.position.y);
@@ -113,7 +113,7 @@ public class ShootingEnemy : MonoBehaviour
 			self.decreasePlayerHealth(1);
 		}
 		else if (coll.gameObject.tag == "Bullet" 
-			&& coll.gameObject.GetComponent<Projectile>().parent != this.gameObject)
+			&& coll.gameObject.GetComponent<EnemyProjectile>().parent != this.gameObject)
 		{
 			Death ();
 		}

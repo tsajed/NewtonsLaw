@@ -4,19 +4,18 @@ using System.Collections;
 
 public class Health : MonoBehaviour {
 
-	public int playerHealth = 2;
-	public int maxHealth = 2;
+	public int playerHealth;
+	public int maxHealth;
 	public SpriteRenderer renderer;
 	public Sprite[] sprites;
 	public AudioClip hurt;
 	public bool canDie;
 
-	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 		renderer = gameObject.GetComponentInChildren<SpriteRenderer>();
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		if(playerHealth < 0)
 			playerHealth = 0;
@@ -28,6 +27,7 @@ public class Health : MonoBehaviour {
 	}
 
 	public void increasePlayerHP(int amount) { playerHealth += amount; }
+
 	public void decreasePlayerHP(int amount) 
 	{ 
 		playerHealth -= amount; 
@@ -40,6 +40,7 @@ public class Health : MonoBehaviour {
 			}
 		}
 	}
+
 	private void die()
 	{
 		//TODO menus/GUI etc.

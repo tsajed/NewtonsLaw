@@ -10,9 +10,10 @@ public class BasicBehaviourEnemy : MonoBehaviour
 	private SpriteRenderer ren;			// Reference to the sprite renderer.
 	public float deathSpinMin = -100f;			// A value to give the minimum amount of Torque when dying
 	public float deathSpinMax = 100f;			// A value to give the maximum amount of Torque when dying
+	public GameObject scorePointsUI;	// A prefab of 100 that appears when the enemy dies.
+	private EnemyDeath death;	
 
-	private bool dying;
-
+	private PlayerScore scoreBoard;	// Reference to the Score Script
 	// Use this for initialization
 	void Start () 
 	{
@@ -23,17 +24,16 @@ public class BasicBehaviourEnemy : MonoBehaviour
 		if(!target)
 			target = GameObject.FindWithTag("Player").transform;
 
-		dying = false;
+		death = this.GetComponent<EnemyDeath> ();
+		scoreBoard = GameObject.Find("Score").GetComponent<PlayerScore>();
+
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () 
 	{
 		if (self.health <= 0)
-			Death ();
-
-		if (dying)
-			return;
+			death.Death (this, ren, deathSpinMin, deathSpinMax);
 
 		var dir = target.transform.position - this.transform.position;
 		dir = dir.normalized;
@@ -46,53 +46,31 @@ public class BasicBehaviourEnemy : MonoBehaviour
 		if (coll.gameObject.tag == "Enemy")
 		{
 			if (coll.gameObject.name == "Enemy 2")
-				Death ();
+				death.Death (this, ren, deathSpinMin, deathSpinMax);
+				createScore();
 		}
 		else if (coll.gameObject.tag == "Player")
 		{
 			// hurt self instead of player
-			Death ();
+			//Death ();
 		}
 		else if (coll.gameObject.tag == "Bullet"
-			&& coll.gameObject.GetComponent<Projectile> ().parent != this.gameObject)
+			&& coll.gameObject.GetComponent<EnemyProjectile> ().parent != this.gameObject)
 		{
-			Death ();
+			death.Death (this, ren, deathSpinMin, deathSpinMax);
+			createScore();
 		}
 	}
 
-	public void Death()
+	void createScore() 
 	{
-		dying = true;
+		// Increase the score by so and so points
+		scoreBoard.score += self.score;
 
-		// Find all of the sprite renderers on this object and it's children.
-		SpriteRenderer[] otherRenderers = GetComponentsInChildren<SpriteRenderer>();
-
-		// Disable all of them sprite renderers.
-		foreach(SpriteRenderer s in otherRenderers)
-		{
-			s.enabled = false;
-		}
-
-		// Re-enable the main sprite renderer and set it's sprite to the deadEnemy sprite.
-		ren.enabled = true;
-		//ren.sprite = deadEnemy;
-
-		// Set dead to true.
-		//dead = true;
-
-		// Allow the enemy to rotate and spin it by adding a torque.
-		rigidbody2D.fixedAngle = false;
-		rigidbody2D.AddTorque(Random.Range(deathSpinMin,deathSpinMax));
-
-		// Find all of the colliders on the gameobject and set them all to be triggers.
-		Collider2D[] cols = GetComponents<Collider2D>();
-		foreach(Collider2D c in cols)
-		{
-			c.isTrigger = true;
-		}
-
-		Invoke("Remove", 2.0f);
+		// Instantiate the score points prefab at this point.
+		GameObject scorePoints = (GameObject) Instantiate(scorePointsUI, Vector3.zero, Quaternion.identity);
+		scorePoints.transform.parent = gameObject.transform;
+		scorePoints.transform.localPosition = new Vector3(0, 1.5f, 0);
 	}
 
-	private void Remove() {	Destroy(gameObject); }
 }

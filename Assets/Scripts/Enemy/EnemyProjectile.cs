@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Projectile : MonoBehaviour 
+public class EnemyProjectile : MonoBehaviour 
 {
 	public GenericEnemy self;
 	public Vector3 oldTarget { private get;  set; }

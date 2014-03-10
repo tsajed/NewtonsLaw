@@ -12,9 +12,14 @@ public class EnemyProjectile : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		self = new GenericEnemy (this.gameObject, 100, 0.01f, 2.0f);
+		self = new GenericEnemy (this.gameObject, 100, 100f, 2.0f);
 		// 2 - Limited time to live to avoid any leak
-		Destroy (gameObject, 4); // seconds
+		Destroy (gameObject, 12); // seconds
+
+		//Apply all force in beginning
+		var dir = oldTarget - this.transform.position;
+		var force = dir * self.movementSpeed;
+		rigidbody2D.AddForce (force);
 	}
 
 	// Update is called once per frame
@@ -23,10 +28,7 @@ public class EnemyProjectile : MonoBehaviour
 		if (stop)
 			return;
 
-		var dir = oldTarget - this.transform.position;
-		dir = dir.normalized;
-		var force = dir * self.movementSpeed;
-		rigidbody2D.AddForce (force);
+
 	}
 
 	void OnCollisionEnter2D (Collision2D coll)

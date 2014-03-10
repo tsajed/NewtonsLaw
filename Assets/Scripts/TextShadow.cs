@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ScoreShadow : MonoBehaviour
+public class TextShadow : MonoBehaviour
 {
 	public GameObject guiCopy;		// A copy of the score.
 

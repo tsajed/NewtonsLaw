@@ -181,41 +181,41 @@ MonoBehaviour:
   - 
   - 
   - 
-  - I Wanna Be The Guy
-  - That website
-  - That girl
-  - That guy
   - 
+  - That website
+  - 
+  - That guy
+  - '-'
   - Special Thanks
   - 
   - 
   - Mike Cedro
-  - 
+  - '-'
   - Audio Art Lead
   - 
   - 
-  - Jarrod L'Hirondelle
-  - 
+  - Jarrod L'hirondelle
+  - '-'
   - Visual Art Lead
   - 
   - 
   - Eric Lam
-  - 
+  - '-'
   - Programmer Lead
   - 
   - 
   - Tanvir Sajed
-  - 
+  - '-'
   - Design Lead
   - 
   - 
   - Zach Lubinski
-  - 
+  - '-'
   - Story Lead
   - 
   - 
   - Andrew Charles
-  - 
+  - '-'
   - Team Lead
   - 
   - 
@@ -269,9 +269,9 @@ MonoBehaviour:
       m_Right: 0
       m_Top: 0
       m_Bottom: 0
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
-    m_FontStyle: 1
+    m_Font: {fileID: 12800000, guid: adcb70bd59871074c883131d71750613, type: 3}
+    m_FontSize: 30
+    m_FontStyle: 0
     m_Alignment: 4
     m_WordWrap: 0
     m_RichText: 1

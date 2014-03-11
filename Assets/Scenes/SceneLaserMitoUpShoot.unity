@@ -90,8 +90,9 @@ GameObject:
   - 114: {fileID: 69659001}
   - 114: {fileID: 69659007}
   - 114: {fileID: 69659008}
+  - 114: {fileID: 69659009}
   m_Layer: 0
-  m_Name: UpgradedShootingEnemy
+  m_Name: Enemy Upgraded Shooting
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -255,6 +256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 603d7f9d5f2d04347b925c51ef0ab7bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transform: {fileID: 0}
 --- !u!114 &69659008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,6 +269,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e93b8fa3d4586ad449534d48f68eb25a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &69659009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400008, guid: 115d7c0b8d0b8b04d9ec3760c834eb90,
+    type: 2}
+  m_PrefabInternal: {fileID: 503963438}
+  m_GameObject: {fileID: 69658999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 071781f0bf15e5d45aed48e7cd1869c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shotPrefab: {fileID: 0}
+  shootingRate: 1
+  laser: {fileID: 0}
 --- !u!1001 &81139610
 Prefab:
   m_ObjectHideFlags: 0
@@ -5395,7 +5412,7 @@ GameObject:
   - 114: {fileID: 826940222}
   - 114: {fileID: 826940221}
   m_Layer: 0
-  m_Name: MitoEnemy
+  m_Name: Enemy Mito
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5413,6 +5430,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 603d7f9d5f2d04347b925c51ef0ab7bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transform: {fileID: 0}
 --- !u!114 &826940222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5810,8 +5828,9 @@ GameObject:
   - 114: {fileID: 1291394354}
   - 114: {fileID: 1291394353}
   - 114: {fileID: 1291394359}
+  - 114: {fileID: 1291394360}
   m_Layer: 0
-  m_Name: LaserEnemy
+  m_Name: Enemy Laser
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5928,6 +5947,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 603d7f9d5f2d04347b925c51ef0ab7bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transform: {fileID: 0}
+--- !u!114 &1291394360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400008, guid: c25629a0f3f6b434eb240d11667c4d21,
+    type: 2}
+  m_PrefabInternal: {fileID: 81139610}
+  m_GameObject: {fileID: 1291394351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 071781f0bf15e5d45aed48e7cd1869c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shotPrefab: {fileID: 0}
+  shootingRate: 1
+  laser: {fileID: 0}
 --- !u!1 &1292557682
 GameObject:
   m_ObjectHideFlags: 0

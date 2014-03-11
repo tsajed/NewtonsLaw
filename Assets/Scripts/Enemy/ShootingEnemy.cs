@@ -32,6 +32,7 @@ public class ShootingEnemy : MonoBehaviour
 	private SpriteRenderer ren;
 	private EnemyDeath death;
 	private EnemyMovement move;
+	private EnemyShoot shoot;
 	private bool dying = false;
 
 	void Start () // initialization
@@ -44,6 +45,12 @@ public class ShootingEnemy : MonoBehaviour
 
 		death = this.GetComponent<EnemyDeath> ();
 		move = this.GetComponent<EnemyMovement> ();
+		move.transform = this.transform;
+		move.self = this.self;
+		shoot = this.GetComponent<EnemyShoot> ();
+		shoot.laser = this.laser;
+		shoot.shotPrefab = this.shotPrefab;
+		shoot.shootingRate = this.shootingRate;
 	}
 
 	void Update ()
@@ -51,14 +58,7 @@ public class ShootingEnemy : MonoBehaviour
 		if (dying)
 			return;
 
-		if (shootCooldown > 0)
-		{
-			shootCooldown -= Time.deltaTime;
-		}
-		else
-		{
-			Shoot (false);
-		}
+		shoot.TryShoot (target);
 	}
 
 	void FixedUpdate ()
@@ -72,33 +72,8 @@ public class ShootingEnemy : MonoBehaviour
 		if (Vector2.Distance (target.transform.position, this.transform.position) < 15)
 			return;
 
-		move.Move (this, target, self);
+		move.Move (target);
 	}
-
-	private void Shoot (bool isEnemy)
-	{
-		if (!CanAttack)
-			return;
-
-		shootCooldown = shootingRate;
-
-		// Create a new shot
-		var shotTransform = Instantiate (shotPrefab) as Transform;
-
-		// Assign position
-		shotTransform.position = transform.position;
-
-		EnemyProjectile projectile = shotTransform.gameObject.GetComponent<EnemyProjectile> ();
-		if (projectile != null)
-		{
-			projectile.oldTarget = new Vector3 (target.position.x, target.position.y);
-			projectile.parent = this.gameObject;
-		}
-
-		audio.PlayOneShot(laser);
-	}
-
-	public bool CanAttack { get { return shootCooldown <= 0f; } }
 
 	private void OnCollisionEnter2D (Collision2D coll)
 	{

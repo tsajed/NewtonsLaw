@@ -5273,6 +5273,8 @@ GameObject:
   - 114: {fileID: 1355976188}
   - 58: {fileID: 1355976187}
   - 114: {fileID: 1355976186}
+  - 114: {fileID: 1355976192}
+  - 114: {fileID: 1355976191}
   m_Layer: 0
   m_Name: Enemy 2
   m_TagString: Enemy
@@ -5330,10 +5332,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 016e0f358f69045499e2cf6904d2045d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 25
+  health: 100
+  damage: 2
   target: {fileID: 0}
   deathSpinMin: -100
   deathSpinMax: 100
-  speed: 25
 --- !u!58 &1355976189
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -5362,6 +5366,30 @@ Rigidbody2D:
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
+--- !u!114 &1355976191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: ff5a55bdc9b464748b7d8f7fb3437ec6,
+    type: 2}
+  m_PrefabInternal: {fileID: 867505603}
+  m_GameObject: {fileID: 1355976184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 603d7f9d5f2d04347b925c51ef0ab7bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1355976192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400004, guid: ff5a55bdc9b464748b7d8f7fb3437ec6,
+    type: 2}
+  m_PrefabInternal: {fileID: 867505603}
+  m_GameObject: {fileID: 1355976184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e93b8fa3d4586ad449534d48f68eb25a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1358622488
 GameObject:
   m_ObjectHideFlags: 0
@@ -6720,6 +6748,8 @@ GameObject:
   - 82: {fileID: 1526537830}
   - 58: {fileID: 1526537829}
   - 114: {fileID: 1526537828}
+  - 114: {fileID: 1526537836}
+  - 114: {fileID: 1526537835}
   m_Layer: 0
   m_Name: Enemy 1
   m_TagString: Enemy
@@ -6824,6 +6854,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
+  health: 100
+  damage: 2
   target: {fileID: 0}
   laser: {fileID: 8300000, guid: fb2295e97ed44417eb23897a64de48dd, type: 3}
   deathSpinMin: -100
@@ -6871,6 +6903,30 @@ Transform:
   - {fileID: 1823731880}
   - {fileID: 1164249027}
   m_Father: {fileID: 0}
+--- !u!114 &1526537835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: bf996bee1943548c181118a7539c974d,
+    type: 2}
+  m_PrefabInternal: {fileID: 17025291}
+  m_GameObject: {fileID: 1526537827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e93b8fa3d4586ad449534d48f68eb25a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1526537836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400004, guid: bf996bee1943548c181118a7539c974d,
+    type: 2}
+  m_PrefabInternal: {fileID: 17025291}
+  m_GameObject: {fileID: 1526537827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 603d7f9d5f2d04347b925c51ef0ab7bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1623795441
 GameObject:
   m_ObjectHideFlags: 0

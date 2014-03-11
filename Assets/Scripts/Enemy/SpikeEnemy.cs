@@ -30,6 +30,8 @@ public class SpikeEnemy : MonoBehaviour
 
 		death = this.GetComponent<EnemyDeath> ();
 		move = this.GetComponent<EnemyMovement> ();
+		move.transform = this.transform;
+		move.self = this.self;
 	}
 
 	void FixedUpdate ()
@@ -40,7 +42,7 @@ public class SpikeEnemy : MonoBehaviour
 		if (self.health <= 0)
 			death.Death (this, ren, deathSpinMin, deathSpinMax);
 
-		move.Move (this, target, self);
+		move.Move (target);
 	}
 
 	void OnCollisionEnter2D (Collision2D coll)

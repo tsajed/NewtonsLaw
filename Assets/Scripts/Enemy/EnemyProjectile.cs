@@ -16,8 +16,8 @@ public class EnemyProjectile : MonoBehaviour
 		Destroy (gameObject, 12); // seconds
 
 		//Apply all force in beginning
-		var dir = oldTarget - this.transform.position;
-		var force = dir * (self.movementSpeed + p_velocity);
+		Vector3 dir = oldTarget - this.transform.position;
+		Vector2 force = dir * (self.movementSpeed + p_velocity);
 		rigidbody2D.AddForce (force);
 	}
 

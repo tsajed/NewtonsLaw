@@ -30,6 +30,8 @@ public class BasicBehaviourEnemy : MonoBehaviour
 
 		death = this.GetComponent<EnemyDeath> ();
 		move = this.GetComponent<EnemyMovement> ();
+		move.transform = this.transform;
+		move.self = this.self;
 		scoreBoard = GameObject.Find("Score").GetComponent<PlayerScore>();
 	}
 	
@@ -39,7 +41,7 @@ public class BasicBehaviourEnemy : MonoBehaviour
 		if (self.health <= 0)
 			death.Death (this, ren, deathSpinMin, deathSpinMax);
 
-		move.Move (this, target, self);
+		move.Move (target);
 	}
 
 	void OnCollisionEnter2D(Collision2D coll)

@@ -3,9 +3,12 @@ using System.Collections;
 
 public class EnemyMovement : MonoBehaviour 
 {
-	public void Move (MonoBehaviour move, Transform target, GenericEnemy self)
+	public Transform transform;
+	public GenericEnemy self;
+
+	public void Move (Transform target)
 	{
-		Vector3 dir = target.transform.position - move.transform.position;
+		Vector3 dir = target.transform.position - transform.position;
 		dir = dir.normalized;
 		Vector2 force = dir * self.movementSpeed;
 		rigidbody2D.AddForce (force);

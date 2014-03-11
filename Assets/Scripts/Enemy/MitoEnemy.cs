@@ -48,6 +48,8 @@ public class MitoEnemy : MonoBehaviour
 
 		death = this.GetComponent<EnemyDeath> ();
 		move = this.GetComponent<EnemyMovement> ();
+		move.transform = this.transform;
+		move.self = this.self;
 	}
 
 	void Update ()
@@ -69,7 +71,7 @@ public class MitoEnemy : MonoBehaviour
 		if (self.health <= 0)
 			Death ();
 
-		move.Move (this, target, self);
+		move.Move (target);
 	}
 
 	void OnCollisionEnter2D (Collision2D coll)

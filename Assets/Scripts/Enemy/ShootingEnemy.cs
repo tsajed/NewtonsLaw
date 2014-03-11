@@ -2,17 +2,18 @@
 
 public class ShootingEnemy : MonoBehaviour
 {
-	public float speed;
+	public float speed = 15;
+	public int health = 100;
+	public float damage = 2.0f;
 
 	public GenericEnemy self;
 	public Transform target;
 	public AudioClip laser;
 
-	private SpriteRenderer ren;
 	// A value to give the minimum amount of Torque when dying
-	public float deathSpinMin;
+	public float deathSpinMin = -100;
 	// A value to give the maximum amount of Torque when dying
-	public float deathSpinMax;
+	public float deathSpinMax = 100;
 
 	/// <summary>
 	/// Projectile prefab for shooting
@@ -22,25 +23,27 @@ public class ShootingEnemy : MonoBehaviour
 	/// <summary>
 	/// Cooldown in seconds between two shots
 	/// </summary>
-	public float shootingRate;
+	public float shootingRate = 1;
 
 	//
 	// 2  Cooldown
 	//
-	private float shootCooldown;
-
-	private bool dying;
+	private float shootCooldown = 0f;
+	private SpriteRenderer ren;
+	private EnemyDeath death;
+	private EnemyMovement move;
+	private bool dying = false;
 
 	void Start () // initialization
 	{
-		self = new GenericEnemy (this.gameObject, 100, speed, 2.0f);
+		self = new GenericEnemy (this.gameObject, health, speed, damage);
 		ren = transform.Find ("body").GetComponent<SpriteRenderer> ();
 
 		if (!target) 
 			target = GameObject.FindWithTag ("Player").transform;
 
-		shootCooldown = 0f;
-		dying = false;
+		death = this.GetComponent<EnemyDeath> ();
+		move = this.GetComponent<EnemyMovement> ();
 	}
 
 	void Update ()
@@ -60,19 +63,16 @@ public class ShootingEnemy : MonoBehaviour
 
 	void FixedUpdate ()
 	{
-		if (self.health <= 0)
-			Death ();
-
 		if (dying)
 			return;
+
+		if (self.health <= 0)
+			death.Death (this, ren, deathSpinMin, deathSpinMax);
 
 		if (Vector2.Distance (target.transform.position, this.transform.position) < 15)
 			return;
 
-		var dir = target.transform.position - this.transform.position;
-		dir = dir.normalized;
-		var force = dir * self.movementSpeed;
-		rigidbody2D.AddForce (force);
+		move.Move (this, target, self);
 	}
 
 	private void Shoot (bool isEnemy)
@@ -105,7 +105,7 @@ public class ShootingEnemy : MonoBehaviour
 		if (coll.gameObject.tag == "Enemy")
 		{
 			if (coll.gameObject.name == "Enemy 2")
-				Death ();
+				death.Death (this, ren, deathSpinMin, deathSpinMax);
 		}
 		else if (coll.gameObject.tag == "Player")
 		{
@@ -115,35 +115,7 @@ public class ShootingEnemy : MonoBehaviour
 		else if (coll.gameObject.tag == "Bullet" 
 			&& coll.gameObject.GetComponent<EnemyProjectile>().parent != this.gameObject)
 		{
-			Death ();
+			death.Death (this, ren, deathSpinMin, deathSpinMax);
 		}
 	}
-
-	public void Death ()
-	{
-		dying = true;
-
-		// Find all of the sprite renderers on this object and it's children.
-		SpriteRenderer[] otherRenderers = GetComponentsInChildren<SpriteRenderer> ();
-
-		// Disable all of them sprite renderers.
-		foreach (SpriteRenderer s in otherRenderers)
-			s.enabled = false;
-
-		// Reenable the main sprite renderer and set it's sprite to the deadEnemy sprite.
-		ren.enabled = true;
-
-		// Allow the enemy to rotate and spin it by adding a torque.
-		rigidbody2D.fixedAngle = false;
-		rigidbody2D.AddTorque (Random.Range (deathSpinMin, deathSpinMax));
-
-		// Find all of the colliders on the gameobject and set them all to be triggers.
-		Collider2D[] cols = GetComponents<Collider2D> ();
-		foreach (Collider2D c in cols)
-			c.isTrigger = true;
-
-		Invoke ("Remove", 2.0f);
-	}
-
-	private void Remove () { Destroy (gameObject); }
 }

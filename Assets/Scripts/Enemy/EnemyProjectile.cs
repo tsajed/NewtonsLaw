@@ -23,9 +23,9 @@ public class EnemyProjectile : MonoBehaviour
 		if (stop)
 			return;
 
-		var dir = oldTarget - this.transform.position;
+		Vector3 dir = oldTarget - this.transform.position;
 		dir = dir.normalized;
-		var force = dir * self.movementSpeed;
+		Vector2 force = dir * self.movementSpeed;
 		rigidbody2D.AddForce (force);
 	}
 
@@ -37,7 +37,7 @@ public class EnemyProjectile : MonoBehaviour
 			self.decreasePlayerHealth(1);
 			Destroy (gameObject);
 		}
-		else if (coll.gameObject.tag == "Enemy" && coll.gameObject.name != "Enemy 1")
+		else if (coll.gameObject.tag == "Enemy" && coll.gameObject != parent)
 		{
 			Destroy (gameObject);
 		}

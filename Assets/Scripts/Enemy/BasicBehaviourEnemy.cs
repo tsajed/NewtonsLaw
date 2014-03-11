@@ -3,21 +3,25 @@ using System.Collections;
 
 public class BasicBehaviourEnemy : MonoBehaviour 
 {
-	public float speed;
+	public float speed = 5;
+	public int health = 100;
+	public float damage = 2.0f;
 	public GenericEnemy self;
 	public Transform target;
 
-	private SpriteRenderer ren;			// Reference to the sprite renderer.
-	public float deathSpinMin = -100f;			// A value to give the minimum amount of Torque when dying
-	public float deathSpinMax = 100f;			// A value to give the maximum amount of Torque when dying
-	public GameObject scorePointsUI;	// A prefab of 100 that appears when the enemy dies.
-	private EnemyDeath death;	
+	public float deathSpinMin = -100f; // A value to give the minimum amount of Torque when dying
+	public float deathSpinMax = 100f;	// A value to give the maximum amount of Torque when dying
+	public GameObject scorePointsUI; // A prefab of 100 that appears when the enemy dies.
 
+	private EnemyDeath death;
+	private EnemyMovement move;
+	private SpriteRenderer ren;	// Reference to the sprite renderer.
 	private PlayerScore scoreBoard;	// Reference to the Score Script
+
 	// Use this for initialization
 	void Start () 
 	{
-		self = new GenericEnemy(this.gameObject, 100, speed, 2.0f);
+		self = new GenericEnemy(this.gameObject, health, speed, damage);
 		// Setting up the references.
 		ren = transform.Find("body").GetComponent<SpriteRenderer>();
 
@@ -25,8 +29,8 @@ public class BasicBehaviourEnemy : MonoBehaviour
 			target = GameObject.FindWithTag("Player").transform;
 
 		death = this.GetComponent<EnemyDeath> ();
+		move = this.GetComponent<EnemyMovement> ();
 		scoreBoard = GameObject.Find("Score").GetComponent<PlayerScore>();
-
 	}
 	
 	// Update is called once per frame
@@ -35,10 +39,7 @@ public class BasicBehaviourEnemy : MonoBehaviour
 		if (self.health <= 0)
 			death.Death (this, ren, deathSpinMin, deathSpinMax);
 
-		var dir = target.transform.position - this.transform.position;
-		dir = dir.normalized;
-		var force = dir * self.movementSpeed;
-		rigidbody2D.AddForce (force);
+		move.Move (this, target, self);
 	}
 
 	void OnCollisionEnter2D(Collision2D coll)

@@ -7,8 +7,6 @@ public class EnemyProjectile : MonoBehaviour
 	public Vector3 oldTarget { private get;  set; }
 	public GameObject parent;
 
-	private bool stop = false;
-
 	// Use this for initialization
 	void Start ()
 	{
@@ -23,18 +21,9 @@ public class EnemyProjectile : MonoBehaviour
 		rigidbody2D.AddForce (force);
 	}
 
-	// Update is called once per frame
-	void FixedUpdate ()
-	{
-		if (stop)
-			return;
-
-
-	}
-
 	void OnTriggerEnter2D (Collider2D coll)
 	{
-		print ("beep");
+		//print ("beep");
 		if (coll.gameObject.tag == "Player")
 		{
 			// hurt player

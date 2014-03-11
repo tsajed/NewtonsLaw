@@ -85,9 +85,6 @@ public class ShootingEnemy : MonoBehaviour
 		// Create a new shot
 		var shotTransform = Instantiate (shotPrefab) as Transform;
 
-		//Ignore collision.
-		//Physics2D.ignoreCollision(shotTransform.collider2D,collider2D);
-
 		// Assign position
 		shotTransform.position = transform.position;
 

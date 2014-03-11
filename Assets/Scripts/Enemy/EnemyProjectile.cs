@@ -12,9 +12,15 @@ public class EnemyProjectile : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		self = new GenericEnemy (this.gameObject, 100, 0.01f, 2.0f);
+		float p_velocity = parent.rigidbody2D.velocity.magnitude;
+		self = new GenericEnemy (this.gameObject, 100, 50f, 2.0f);
 		// 2 - Limited time to live to avoid any leak
-		Destroy (gameObject, 4); // seconds
+		Destroy (gameObject, 12); // seconds
+
+		//Apply all force in beginning
+		var dir = oldTarget - this.transform.position;
+		var force = dir * (self.movementSpeed + p_velocity);
+		rigidbody2D.AddForce (force);
 	}
 
 	// Update is called once per frame
@@ -23,14 +29,12 @@ public class EnemyProjectile : MonoBehaviour
 		if (stop)
 			return;
 
-		Vector3 dir = oldTarget - this.transform.position;
-		dir = dir.normalized;
-		Vector2 force = dir * self.movementSpeed;
-		rigidbody2D.AddForce (force);
+
 	}
 
-	void OnCollisionEnter2D (Collision2D coll)
+	void OnTriggerEnter2D (Collider2D coll)
 	{
+		print ("beep");
 		if (coll.gameObject.tag == "Player")
 		{
 			// hurt player

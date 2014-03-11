@@ -213,7 +213,7 @@ MonoBehaviour:
   laser: {fileID: 8300000, guid: fb2295e97ed44417eb23897a64de48dd, type: 3}
   deathSpinMin: -100
   deathSpinMax: 100
-  shotPrefab: {fileID: 400000, guid: fda5d43e4c00bf74fb441bfd3926bcf1, type: 2}
+  shotPrefab: {fileID: 400000, guid: 5ae7e5b0daeaddf4695735c30921d535, type: 2}
   shootingRate: 1.25
 --- !u!58 &69659005
 CircleCollider2D:

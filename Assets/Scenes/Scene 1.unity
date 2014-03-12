@@ -109,6 +109,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5800002, guid: bf996bee1943548c181118a7539c974d, type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf996bee1943548c181118a7539c974d, type: 2}
   m_RootGameObject: {fileID: 1526537827}
@@ -5378,6 +5382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 603d7f9d5f2d04347b925c51ef0ab7bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transform: {fileID: 0}
 --- !u!114 &1355976192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6750,6 +6755,7 @@ GameObject:
   - 114: {fileID: 1526537828}
   - 114: {fileID: 1526537836}
   - 114: {fileID: 1526537835}
+  - 114: {fileID: 1526537837}
   m_Layer: 0
   m_Name: Enemy 1
   m_TagString: Enemy
@@ -6779,7 +6785,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 1526537827}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Radius: 1.5
   m_Center: {x: 0, y: 0}
 --- !u!82 &1526537830
@@ -6927,6 +6933,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 603d7f9d5f2d04347b925c51ef0ab7bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transform: {fileID: 0}
+--- !u!114 &1526537837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400008, guid: bf996bee1943548c181118a7539c974d,
+    type: 2}
+  m_PrefabInternal: {fileID: 17025291}
+  m_GameObject: {fileID: 1526537827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 071781f0bf15e5d45aed48e7cd1869c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shotPrefab: {fileID: 0}
+  shootingRate: 1
+  laser: {fileID: 0}
 --- !u!1 &1623795441
 GameObject:
   m_ObjectHideFlags: 0

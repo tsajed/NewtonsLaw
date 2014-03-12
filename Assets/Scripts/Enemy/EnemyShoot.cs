@@ -27,12 +27,15 @@ public class EnemyShoot : MonoBehaviour
 		// Create a new shot
 		var shotTransform = Instantiate (shotPrefab) as Transform;
 
+		Vector3 diff = target.position - transform.position;
 		// Assign position
-		shotTransform.position = transform.position;
+		shotTransform.position = transform.position + (diff.normalized * 2);
 
 		EnemyProjectile projectile = shotTransform.gameObject.GetComponent<EnemyProjectile> ();
 		if (projectile != null)
 		{
+
+
 			projectile.oldTarget = new Vector3 (target.position.x, target.position.y);
 			projectile.parent = this.gameObject;
 		}

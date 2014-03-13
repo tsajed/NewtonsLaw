@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
 public class EnemyProjectile : MonoBehaviour 
 {
 	public GenericEnemy self;
-	public Vector3 oldTarget { private get;  set; }
+	public Vector3 oldTarget { private get; set; }
 	public GameObject parent;
 
-	// Use this for initialization
 	void Start ()
 	{
 		float p_velocity = parent.rigidbody2D.velocity.magnitude;
@@ -23,7 +23,6 @@ public class EnemyProjectile : MonoBehaviour
 
 	void OnTriggerEnter2D (Collider2D coll)
 	{
-		//print ("beep");
 		if (coll.gameObject.tag == "Player")
 		{
 			// hurt player

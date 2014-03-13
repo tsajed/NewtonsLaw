@@ -5378,6 +5378,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 603d7f9d5f2d04347b925c51ef0ab7bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  location: {fileID: 0}
+  stunCooldown: 0
 --- !u!114 &1355976192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5390,6 +5392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e93b8fa3d4586ad449534d48f68eb25a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  die: {fileID: 0}
 --- !u!1 &1358622488
 GameObject:
   m_ObjectHideFlags: 0
@@ -6750,6 +6753,7 @@ GameObject:
   - 114: {fileID: 1526537828}
   - 114: {fileID: 1526537836}
   - 114: {fileID: 1526537835}
+  - 114: {fileID: 1526537837}
   m_Layer: 0
   m_Name: Enemy 1
   m_TagString: Enemy
@@ -6915,6 +6919,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e93b8fa3d4586ad449534d48f68eb25a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  die: {fileID: 0}
 --- !u!114 &1526537836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6927,6 +6932,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 603d7f9d5f2d04347b925c51ef0ab7bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  location: {fileID: 0}
+  stunCooldown: 0
+--- !u!114 &1526537837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400008, guid: bf996bee1943548c181118a7539c974d,
+    type: 2}
+  m_PrefabInternal: {fileID: 17025291}
+  m_GameObject: {fileID: 1526537827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 071781f0bf15e5d45aed48e7cd1869c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shotPrefab: {fileID: 0}
+  shootingRate: 1
+  sound: {fileID: 0}
+  child: {fileID: 0}
 --- !u!1 &1623795441
 GameObject:
   m_ObjectHideFlags: 0
@@ -7148,13 +7171,13 @@ GameObject:
   m_Component:
   - 4: {fileID: 1783346459}
   - 50: {fileID: 1783346461}
-  - 61: {fileID: 1783346462}
   - 114: {fileID: 1783346463}
   - 114: {fileID: 1783346460}
   - 82: {fileID: 1783346464}
   - 82: {fileID: 1783346465}
   - 114: {fileID: 1783346466}
   - 82: {fileID: 1783346467}
+  - 58: {fileID: 1783346462}
   m_Layer: 0
   m_Name: Prototypi
   m_TagString: Player
@@ -7206,18 +7229,18 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
---- !u!61 &1783346462
-BoxCollider2D:
+--- !u!58 &1783346462
+CircleCollider2D:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6100000, guid: 6b9e045bf49684906aa95f1cb42dff45,
+  m_PrefabParentObject: {fileID: 5800000, guid: 6b9e045bf49684906aa95f1cb42dff45,
     type: 2}
   m_PrefabInternal: {fileID: 1397953962}
   m_GameObject: {fileID: 1783346458}
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: 3.79999995, y: 3.5999999}
-  m_Center: {x: 0, y: 0}
+  m_Radius: 1.75
+  m_Center: {x: -.0700000003, y: 0}
 --- !u!114 &1783346463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7232,6 +7255,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveForce: 365
   maxSpeed: 5
+  stunCooldown: 0
 --- !u!82 &1783346464
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7362,22 +7386,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06e7fae18a7d8447ab2937a459641cb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: 9
-  maxHealth: 9
+  playerHealth: 3
+  maxHealth: 3
   renderer: {fileID: 0}
   sprites:
   - {fileID: 21300000, guid: ee22ff41d1dc88a4994ca639d2de9e94, type: 3}
-  - {fileID: 21300000, guid: 59c525c9c5a5c514b97a1b2549661c23, type: 3}
-  - {fileID: 21300000, guid: fab8d181cf414124f890a195e3755bd2, type: 3}
-  - {fileID: 21300000, guid: a3edb84958ebd6047b70f8f63e46292b, type: 3}
-  - {fileID: 21300000, guid: bdcf16671e7fdfb44b2d8a8c22cc36d0, type: 3}
-  - {fileID: 21300000, guid: f9ba4fdeab571d541aa63370ede8c0b8, type: 3}
-  - {fileID: 21300000, guid: ac6d5f09ef7c28f42b153b12795ba598, type: 3}
-  - {fileID: 21300000, guid: 4683383475a784148831286c5c74f2f9, type: 3}
-  - {fileID: 21300000, guid: c2e88927d18b28744b16b66314c69e92, type: 3}
-  - {fileID: 21300000, guid: f9e7d8d0d2848734dada2ba0a3c092a8, type: 3}
+  - {fileID: 21300000, guid: 4281e797a7c946e4fb128dafa948f04d, type: 3}
+  - {fileID: 21300000, guid: ee191a5ae7c202e499dd9ca950747818, type: 3}
+  - {fileID: 21300000, guid: 1c618a36942a4dc4e8c1aedccc9c21d4, type: 3}
   hurt: {fileID: 8300000, guid: 9f90caa15e95a40dd96647189a8e9d4a, type: 3}
-  canDie: 1
+  canDie: 0
 --- !u!82 &1783346467
 AudioSource:
   m_ObjectHideFlags: 0

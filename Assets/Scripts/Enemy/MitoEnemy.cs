@@ -3,7 +3,7 @@ using System.Collections;
 
 public class MitoEnemy : MonoBehaviour 
 {
-	public float speed = 15;
+	public float speed = 10;
 	public int health = 100;
 	public float damage = 2.0f;
 
@@ -48,7 +48,7 @@ public class MitoEnemy : MonoBehaviour
 
 		death = this.GetComponent<EnemyDeath> ();
 		move = this.GetComponent<EnemyMovement> ();
-		move.transform = this.transform;
+		move.location = this.transform;
 		move.self = this.self;
 	}
 
@@ -71,7 +71,7 @@ public class MitoEnemy : MonoBehaviour
 		if (self.health <= 0)
 			Death ();
 
-		move.Move (target);
+		move.TryMove (target);
 	}
 
 	void OnCollisionEnter2D (Collision2D coll)
@@ -138,7 +138,7 @@ public class MitoEnemy : MonoBehaviour
 	{
 		if (this.parent)
 			this.parent.spawns--;
-		death.Death (this, ren, deathSpinMin, deathSpinMax);
+		death.Death (ren, deathSpinMin, deathSpinMax);
 	}
 
 	public bool CanDivide 

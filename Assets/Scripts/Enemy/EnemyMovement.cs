@@ -3,12 +3,22 @@ using System.Collections;
 
 public class EnemyMovement : MonoBehaviour 
 {
-	public Transform transform;
+	public Transform location;
 	public GenericEnemy self;
 
-	public void Move (Transform target)
+	public float stunCooldown = 0f;
+
+	public void TryMove (Transform target)
 	{
-		Vector3 dir = target.transform.position - transform.position;
+		if (stunCooldown > 0)
+			stunCooldown -= Time.deltaTime;
+		else
+			Move (target);
+	}
+
+	private void Move (Transform target)
+	{
+		Vector3 dir = target.transform.position - location.position;
 		dir = dir.normalized;
 		Vector2 force = dir * self.movementSpeed;
 		rigidbody2D.AddForce (force);

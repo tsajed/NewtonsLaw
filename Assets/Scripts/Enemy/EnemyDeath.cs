@@ -3,15 +3,11 @@ using System.Collections;
 
 public class EnemyDeath : MonoBehaviour 
 {
-	private bool dying;
+	public MonoBehaviour die;
 
-	// Use this for initialization
-	void Start () 
-	{
-		dying = false;
-	}
+	private bool dying = false;
 
-	public void Death (MonoBehaviour die, SpriteRenderer ren, float deathSpinMin, float deathSpinMax)
+	public void Death (SpriteRenderer ren, float deathSpinMin, float deathSpinMax)
 	{
 		if (dying)
 			return;
@@ -19,7 +15,7 @@ public class EnemyDeath : MonoBehaviour
 		dying = true;
 
 		// Find all of the sprite renderers on this object and it's children.
-		SpriteRenderer[] otherRenderers = GetComponentsInChildren<SpriteRenderer> ();
+		SpriteRenderer[] otherRenderers = die.GetComponentsInChildren<SpriteRenderer> ();
 
 		// Disable all of them sprite renderers.
 		foreach (SpriteRenderer s in otherRenderers)
@@ -33,16 +29,16 @@ public class EnemyDeath : MonoBehaviour
 		//dead = true;
 
 		// Allow the enemy to rotate and spin it by adding a torque.
-		rigidbody2D.fixedAngle = false;
-		rigidbody2D.AddTorque (Random.Range (deathSpinMin, deathSpinMax));
+		die.rigidbody2D.fixedAngle = false;
+		die.rigidbody2D.AddTorque (Random.Range (deathSpinMin, deathSpinMax));
 
 		// Find all of the colliders on the gameobject and set them all to be triggers.
-		Collider2D[] cols = GetComponents<Collider2D> ();
+		Collider2D[] cols = die.GetComponents<Collider2D> ();
 		foreach (Collider2D c in cols)
 			c.isTrigger = true;
 
 		Invoke ("Remove", 2.0f);
 	}
 
-	private void Remove () { Destroy (gameObject); }
+	private void Remove () { Destroy (die.gameObject); }
 }

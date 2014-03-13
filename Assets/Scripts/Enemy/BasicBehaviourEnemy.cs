@@ -29,8 +29,9 @@ public class BasicBehaviourEnemy : MonoBehaviour
 			target = GameObject.FindWithTag("Player").transform;
 
 		death = this.GetComponent<EnemyDeath> ();
+		death.die = this;
 		move = this.GetComponent<EnemyMovement> ();
-		move.transform = this.transform;
+		move.location = this.transform;
 		move.self = this.self;
 		scoreBoard = GameObject.Find("Score").GetComponent<PlayerScore>();
 	}
@@ -39,30 +40,36 @@ public class BasicBehaviourEnemy : MonoBehaviour
 	void FixedUpdate () 
 	{
 		if (self.health <= 0)
-			death.Death (this, ren, deathSpinMin, deathSpinMax);
+			death.Death (ren, deathSpinMin, deathSpinMax);
 
-		move.Move (target);
+
+		// random target
+		//var i = Random.insideUnitCircle;
+		move.TryMove (target); 
 	}
 
 	void OnCollisionEnter2D(Collision2D coll)
 	{
 		if (coll.gameObject.tag == "Enemy")
 		{
-			if (coll.gameObject.name == "Enemy 2")
-				death.Death (this, ren, deathSpinMin, deathSpinMax);
-				createScore();
+			if (coll.gameObject.name.Contains("Enemy 2") || coll.gameObject.name.Contains("Enemy Mito"))
+			{
+				Death ();
+				createScore ();
+			}
 		}
 		else if (coll.gameObject.tag == "Player")
 		{
 			// hurt self instead of player
 			//Death ();
 		}
-		else if (coll.gameObject.tag == "Bullet"
-			&& coll.gameObject.GetComponent<EnemyProjectile> ().parent != this.gameObject)
+		else if (coll.gameObject.tag == "Bullet")
 		{
-			death.Death (this, ren, deathSpinMin, deathSpinMax);
+			//Debug.Log ("Hi");
+			Death ();
 			createScore();
 		}
+		//Debug.Log ("basic" + coll.gameObject.name);
 	}
 
 	void createScore() 
@@ -76,4 +83,8 @@ public class BasicBehaviourEnemy : MonoBehaviour
 		scorePoints.transform.localPosition = new Vector3(0, 1.5f, 0);
 	}
 
+	private void Death ()
+	{
+		death.Death (ren, deathSpinMin, deathSpinMax);
+	}
 }

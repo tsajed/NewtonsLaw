@@ -25,10 +25,6 @@ public class ShootingEnemy : MonoBehaviour
 	/// </summary>
 	public float shootingRate = 1;
 
-	//
-	// 2  Cooldown
-	//
-	private float shootCooldown = 0f;
 	private SpriteRenderer ren;
 	private EnemyDeath death;
 	private EnemyMovement move;
@@ -44,11 +40,12 @@ public class ShootingEnemy : MonoBehaviour
 			target = GameObject.FindWithTag ("Player").transform;
 
 		death = this.GetComponent<EnemyDeath> ();
+		death.die = this;
 		move = this.GetComponent<EnemyMovement> ();
-		move.transform = this.transform;
+		move.location = this.transform;
 		move.self = this.self;
 		shoot = this.GetComponent<EnemyShoot> ();
-		shoot.laser = this.laser;
+		shoot.sound = this.laser;
 		shoot.shotPrefab = this.shotPrefab;
 		shoot.shootingRate = this.shootingRate;
 	}
@@ -67,12 +64,12 @@ public class ShootingEnemy : MonoBehaviour
 			return;
 
 		if (self.health <= 0)
-			death.Death (this, ren, deathSpinMin, deathSpinMax);
+			Death ();
 
 		if (Vector2.Distance (target.transform.position, this.transform.position) < 15)
 			return;
 
-		move.Move (target);
+		move.TryMove (target);
 	}
 
 	private void OnCollisionEnter2D (Collision2D coll)
@@ -80,7 +77,7 @@ public class ShootingEnemy : MonoBehaviour
 		if (coll.gameObject.tag == "Enemy")
 		{
 			if (coll.gameObject.name == "Enemy 2")
-				death.Death (this, ren, deathSpinMin, deathSpinMax);
+				Death ();
 		}
 		else if (coll.gameObject.tag == "Player")
 		{
@@ -90,7 +87,12 @@ public class ShootingEnemy : MonoBehaviour
 		else if (coll.gameObject.tag == "Bullet" 
 			&& coll.gameObject.GetComponent<EnemyProjectile>().parent != this.gameObject)
 		{
-			death.Death (this, ren, deathSpinMin, deathSpinMax);
+			Death();
 		}
+	}
+
+	private void Death ()
+	{
+		death.Death (ren, deathSpinMin, deathSpinMax);
 	}
 }

@@ -30,7 +30,7 @@ public class SpikeEnemy : MonoBehaviour
 
 		death = this.GetComponent<EnemyDeath> ();
 		move = this.GetComponent<EnemyMovement> ();
-		move.transform = this.transform;
+		move.location = this.transform;
 		move.self = this.self;
 	}
 
@@ -40,9 +40,9 @@ public class SpikeEnemy : MonoBehaviour
 			return;
 
 		if (self.health <= 0)
-			death.Death (this, ren, deathSpinMin, deathSpinMax);
+			Death ();
 
-		move.Move (target);
+		move.TryMove (target);
 	}
 
 	void OnCollisionEnter2D (Collision2D coll)
@@ -59,7 +59,12 @@ public class SpikeEnemy : MonoBehaviour
 		else if (coll.gameObject.tag == "Bullet"
 			&& coll.gameObject.GetComponent<EnemyProjectile> ().parent != this.gameObject)
 		{
-			death.Death (this, ren, deathSpinMin, deathSpinMax);
+			Death ();
 		}
+	}
+
+	private void Death ()
+	{
+		death.Death (ren, deathSpinMin, deathSpinMax);
 	}
 }

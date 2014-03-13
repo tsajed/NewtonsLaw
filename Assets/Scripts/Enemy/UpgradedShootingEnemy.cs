@@ -41,10 +41,10 @@ public class UpgradedShootingEnemy : MonoBehaviour
 
 		death = this.GetComponent<EnemyDeath> ();
 		move = this.GetComponent<EnemyMovement> ();
-		move.transform = this.transform;
+		move.location = this.transform;
 		move.self = this.self;
 		shoot = this.GetComponent<EnemyShoot> ();
-		shoot.laser = this.laser;
+		shoot.sound = this.laser;
 		shoot.shotPrefab = this.shotPrefab;
 		shoot.shootingRate = this.shootingRate;
 	}
@@ -63,20 +63,20 @@ public class UpgradedShootingEnemy : MonoBehaviour
 			return;
 
 		if (self.health <= 0)
-			death.Death (this, ren, deathSpinMin, deathSpinMax);
+			Death ();
 
 		if (Vector2.Distance (target.transform.position, this.transform.position) < 15)
 			return;
 
-		move.Move (target);
+		move.TryMove (target);
 	}
 
 	private void OnCollisionEnter2D (Collision2D coll)
 	{
 		if (coll.gameObject.tag == "Enemy")
 		{
-			if (coll.gameObject.name == "Enemy 2")
-				death.Death (this, ren, deathSpinMin, deathSpinMax);
+			if (coll.gameObject.name.Contains("Enemy 2"))
+				Death ();
 		}
 		else if (coll.gameObject.tag == "Player")
 		{
@@ -86,7 +86,12 @@ public class UpgradedShootingEnemy : MonoBehaviour
 		else if (coll.gameObject.tag == "Bullet" 
 			&& coll.gameObject.GetComponent<EnemyProjectile>().parent != this.gameObject)
 		{
-			death.Death (this, ren, deathSpinMin, deathSpinMax);
+			Death ();
 		}
+	}
+
+	private void Death ()
+	{
+		death.Death (ren, deathSpinMin, deathSpinMax);
 	}
 }

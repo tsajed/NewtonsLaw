@@ -24,12 +24,8 @@ public class LaserEnemy : MonoBehaviour
 	/// <summary>
 	/// Cooldown in seconds between two shots
 	/// </summary>
-	public float shootingRate = 1;
+	public float shootingRate = 3;
 
-	//
-	// 2  Cooldown
-	//
-	private float shootCooldown = 0f;
 	private SpriteRenderer ren;
 	private EnemyDeath death;
 	private EnemyMovement move;
@@ -46,11 +42,12 @@ public class LaserEnemy : MonoBehaviour
 			target = GameObject.FindWithTag ("Player").transform;
 
 		death = this.GetComponent<EnemyDeath> ();
+		death.die = this;
 		move = this.GetComponent<EnemyMovement> ();
-		move.transform = this.transform;
+		move.location = this.transform;
 		move.self = this.self;
 		shoot = this.GetComponent<EnemyShoot> ();
-		shoot.laser = this.laser;
+		shoot.sound = this.laser;
 		shoot.shotPrefab = this.shotPrefab;
 		shoot.shootingRate = this.shootingRate;
 	}
@@ -60,7 +57,8 @@ public class LaserEnemy : MonoBehaviour
 		if (dying)
 			return;
 
-		shoot.TryShoot (target);
+		if (!shoot.child)
+			shoot.TryShoot (target);
 	}
 
 	void FixedUpdate ()
@@ -69,27 +67,35 @@ public class LaserEnemy : MonoBehaviour
 			return;
 
 		if (self.health <= 0)
-			death.Death (this, ren, deathSpinMin, deathSpinMax);
+			Death ();
 
-		move.Move (target);
+		move.TryMove (target);
 	}
 
 	void OnCollisionEnter2D (Collision2D coll)
 	{
 		if (coll.gameObject.tag == "Enemy")
 		{
-			if (coll.gameObject.name == "Enemy 2")
-				death.Death (this, ren, deathSpinMin, deathSpinMax);
+			if (coll.gameObject.name.Contains("Enemy 2"))
+				Death ();
 		}
 		else if (coll.gameObject.tag == "Player")
 		{
 			// hurt player
 			self.decreasePlayerHealth(1);
 		}
-		else if (coll.gameObject.tag == "Bullet"
-			&& coll.gameObject.GetComponent<EnemyProjectile> ().parent != this.gameObject)
+		else if (coll.gameObject.tag == "Bullet")
 		{
-			death.Death (this, ren, deathSpinMin, deathSpinMax);
+			Death ();
 		}
+		else if (coll.gameObject.tag == "Wall")
+		{
+
+		}
+	}
+
+	private void Death ()
+	{
+		death.Death (ren, deathSpinMin, deathSpinMax);
 	}
 }

@@ -13,7 +13,7 @@ public class EnemyProjectile : MonoBehaviour
 		float p_velocity = parent.rigidbody2D.velocity.magnitude;
 		self = new GenericEnemy (this.gameObject, 100, 50f, 2.0f);
 		// 2 - Limited time to live to avoid any leak
-		Destroy (gameObject, 12); // seconds
+		Destroy (gameObject, 12); // seconds 
 
 		//Apply all force in beginning
 		Vector3 dir = oldTarget - this.transform.position;
@@ -21,7 +21,7 @@ public class EnemyProjectile : MonoBehaviour
 		rigidbody2D.AddForce (force);
 	}
 
-	void OnTriggerEnter2D (Collider2D coll)
+	void OnCollisionEnter2D (Collision2D coll)
 	{
 		if (coll.gameObject.tag == "Player")
 		{

@@ -109,6 +109,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5800002, guid: bf996bee1943548c181118a7539c974d, type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf996bee1943548c181118a7539c974d, type: 2}
   m_RootGameObject: {fileID: 1526537827}
@@ -6783,7 +6787,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 1526537827}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Radius: 1.5
   m_Center: {x: 0, y: 0}
 --- !u!82 &1526537830

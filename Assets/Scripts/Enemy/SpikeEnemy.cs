@@ -29,6 +29,7 @@ public class SpikeEnemy : MonoBehaviour
 			target = GameObject.FindWithTag ("Player").transform;
 
 		death = this.GetComponent<EnemyDeath> ();
+		death.die = this;
 		move = this.GetComponent<EnemyMovement> ();
 		move.location = this.transform;
 		move.self = this.self;

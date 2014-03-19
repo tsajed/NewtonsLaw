@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PengSounds : MonoBehaviour {
+public class Penguin : MonoBehaviour {
 
         public AudioClip penguin;
 	public AudioClip explosion;
@@ -21,7 +21,6 @@ public class PengSounds : MonoBehaviour {
 
 	}
     void OnMouseDown() {
-    	Debug.Log("CREDITS");
    	Application.LoadLevel ("StartScreen");
     }
 }

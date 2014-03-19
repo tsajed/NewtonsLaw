@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class StartCredits : MonoBehaviour {
+public class StartStartScreen : MonoBehaviour {
+
 	public Sprite hoverSprite;
 	
 	private SpriteRenderer renderer;
@@ -22,7 +23,7 @@ public class StartCredits : MonoBehaviour {
     }
 
     void OnMouseDown() {
-    	Debug.Log("CREDITS");
-   	Application.LoadLevel ("Credits");
+   	Application.LoadLevel ("StartScreen");
     }
+
 }

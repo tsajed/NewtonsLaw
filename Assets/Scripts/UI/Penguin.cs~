@@ -20,5 +20,7 @@ public class PengSounds : MonoBehaviour {
 		   Application.LoadLevel ("StartScreen");
 
 	}
-
+    void OnMouseDown() {
+   	Application.LoadLevel ("StartScreen");
+    }
 }

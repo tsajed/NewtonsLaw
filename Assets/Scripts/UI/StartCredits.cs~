@@ -23,6 +23,5 @@ public class StartCredits : MonoBehaviour {
 
     void OnMouseDown() {
     	Debug.Log("CREDITS");
-   	Application.LoadLevel ("Credits");
     }
 }

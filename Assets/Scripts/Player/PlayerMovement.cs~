@@ -48,21 +48,22 @@ public class PlayerMovement : MonoBehaviour
 		{
 			rigidbody2D.velocity = new Vector2 (rigidbody2D.velocity.x, -maxSpeed);
 		}
-		//if (rigidbody2D.transform.position.x < -55)
-		//{
-		//	rigidbody2D.transform.Translate(100,0,0);
-		//}
-		//if (rigidbody2D.transform.position.x > 55)
-		//{
-		//	rigidbody2D.transform.Translate(-100,0,0);
-		//}
-		//if (rigidbody2D.transform.position.y < -55)
-		//{
-		//	rigidbody2D.transform.Translate(0,100,0);
-		//}
-		//if (rigidbody2D.transform.position.y > 55)
-		//{
-		//	rigidbody2D.transform.Translate(0,-100,0);
-		//}
+		/**if (rigidbody2D.transform.position.x < -55)
+		{
+			rigidbody2D.transform.Translate(100,0,0);
+		}
+		else if (rigidbody2D.transform.position.x > 55)
+		{
+			rigidbody2D.transform.Translate(-100,0,0);
+		}
+		if (rigidbody2D.transform.position.y < -55)
+		{
+			rigidbody2D.transform.Translate(0,100,0);
+		}
+		else if (rigidbody2D.transform.position.y > 55)
+		{
+			rigidbody2D.transform.Translate(0,-100,0);
+		}
+		*/
 	}
 }

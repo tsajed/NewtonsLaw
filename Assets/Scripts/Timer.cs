@@ -12,6 +12,6 @@ public class Timer : MonoBehaviour {
 	  int seconds = (int) timer % 60; // calculate the seconds
 	  int minutes = (int) timer / 60; // calculate the minutes
 	  
-	  guiText.text = "Timer: " + string.Format("{0:00}:{1:00}", minutes, seconds);
+	  guiText.text = "Time: " + string.Format("{0:00}:{1:00}", minutes, seconds);
 	}
 }

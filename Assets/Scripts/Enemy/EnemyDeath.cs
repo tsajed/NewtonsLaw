@@ -21,17 +21,16 @@ public class EnemyDeath : MonoBehaviour
 		foreach (SpriteRenderer s in otherRenderers)
 			s.enabled = false;
 
-		// Re-enable the main sprite renderer and set it's sprite to the deadEnemy sprite.
+		// Re-enable the main sprite renderer and turn it's sprite red.
 		ren.enabled = true;
-		//ren.sprite = deadEnemy;
+		ren.color = Color.red;
 
-		// Set dead to true.
-		//dead = true;
 
 		// Allow the enemy to rotate and spin it by adding a torque.
 		die.rigidbody2D.fixedAngle = false;
 		die.rigidbody2D.AddTorque (Random.Range (deathSpinMin, deathSpinMax));
 
+		
 		// Find all of the colliders on the gameobject and set them all to be triggers.
 		Collider2D[] cols = die.GetComponents<Collider2D> ();
 		foreach (Collider2D c in cols)

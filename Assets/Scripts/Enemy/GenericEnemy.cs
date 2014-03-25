@@ -26,13 +26,13 @@ public class GenericEnemy
 	}
 
 	// Flips the Sprite so it looks in the opposite direction
-	public void Flip()
-	{
-		// Multiply the x component of localScale by -1.
-		Vector3 enemyScale = self.transform.localScale;
-		enemyScale.x *= -1;
-		self.transform.localScale = enemyScale;
-	}
+	//public void Flip()
+	//{
+	//	// Multiply the x component of localScale by -1.
+	//	Vector3 enemyScale = self.transform.localScale;
+	//	enemyScale.x *= -1;
+	//	self.transform.localScale = enemyScale;
+	//}
 
 	public void increaseHealth(int amount) { health += amount; }
 

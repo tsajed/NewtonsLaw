@@ -57,8 +57,7 @@ public class SpikeEnemy : MonoBehaviour
 			// hurt player
 			self.decreasePlayerHealth(1);
 		}
-		else if (coll.gameObject.tag == "Bullet"
-			&& coll.gameObject.GetComponent<EnemyProjectile> ().parent != this.gameObject)
+		else if (coll.gameObject.tag == "Bullet")
 		{
 			Death ();
 		}

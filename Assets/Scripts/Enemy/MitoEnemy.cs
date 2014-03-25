@@ -47,6 +47,7 @@ public class MitoEnemy : MonoBehaviour
 			target = GameObject.FindWithTag ("Player").transform;
 
 		death = this.GetComponent<EnemyDeath> ();
+		death.die = this;
 		move = this.GetComponent<EnemyMovement> ();
 		move.location = this.transform;
 		move.self = this.self;
@@ -85,8 +86,7 @@ public class MitoEnemy : MonoBehaviour
 			// hurt player
 			self.decreasePlayerHealth(1);
 		}
-		else if (coll.gameObject.tag == "Bullet"
-			&& coll.gameObject.GetComponent<EnemyProjectile> ().parent != this.gameObject)
+		else if (coll.gameObject.tag == "Bullet")
 		{
 			Death ();
 		}

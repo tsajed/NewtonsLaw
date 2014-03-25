@@ -76,7 +76,8 @@ public class ShootingEnemy : MonoBehaviour
 	{
 		if (coll.gameObject.tag == "Enemy")
 		{
-			if (coll.gameObject.name == "Enemy 2")
+			if (coll.gameObject.name == "Enemy 2" ||
+				coll.gameObject.name.Contains ("Enemy Mito"))
 				Death ();
 		}
 		else if (coll.gameObject.tag == "Player")

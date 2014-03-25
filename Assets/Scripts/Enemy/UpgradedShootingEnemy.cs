@@ -40,6 +40,7 @@ public class UpgradedShootingEnemy : MonoBehaviour
 			target = GameObject.FindWithTag ("Player").transform;
 
 		death = this.GetComponent<EnemyDeath> ();
+		death.die = this;
 		move = this.GetComponent<EnemyMovement> ();
 		move.location = this.transform;
 		move.self = this.self;
@@ -75,7 +76,8 @@ public class UpgradedShootingEnemy : MonoBehaviour
 	{
 		if (coll.gameObject.tag == "Enemy")
 		{
-			if (coll.gameObject.name.Contains("Enemy 2"))
+			if (coll.gameObject.name.Contains ("Enemy 2") ||
+				coll.gameObject.name.Contains ("Enemy Mito"))
 				Death ();
 		}
 		else if (coll.gameObject.tag == "Player")

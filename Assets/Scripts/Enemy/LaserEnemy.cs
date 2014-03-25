@@ -76,7 +76,8 @@ public class LaserEnemy : MonoBehaviour
 	{
 		if (coll.gameObject.tag == "Enemy")
 		{
-			if (coll.gameObject.name.Contains("Enemy 2"))
+			if (coll.gameObject.name.Contains ("Enemy 2") ||
+				coll.gameObject.name.Contains ("Enemy Mito"))
 				Death ();
 		}
 		else if (coll.gameObject.tag == "Player")
@@ -87,10 +88,6 @@ public class LaserEnemy : MonoBehaviour
 		else if (coll.gameObject.tag == "Bullet")
 		{
 			Death ();
-		}
-		else if (coll.gameObject.tag == "Wall")
-		{
-
 		}
 	}
 

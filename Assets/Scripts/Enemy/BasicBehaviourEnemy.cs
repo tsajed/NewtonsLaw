@@ -25,8 +25,10 @@ public class BasicBehaviourEnemy : MonoBehaviour
 		// Setting up the references.
 		ren = transform.Find("body").GetComponent<SpriteRenderer>();
 
-		if(!target)
-			target = GameObject.FindWithTag("Player").transform;
+		var throwaway = new GameObject();
+		throwaway.transform.position = transform.position;
+		if (!target)
+			target = throwaway.transform;
 
 		death = this.GetComponent<EnemyDeath> ();
 		death.die = this;
@@ -37,14 +39,13 @@ public class BasicBehaviourEnemy : MonoBehaviour
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () 
+	void FixedUpdate ()
 	{
 		if (self.health <= 0)
-			death.Death (ren, deathSpinMin, deathSpinMax);
+			Death ();
 
+		RandomTarget ();
 
-		// random target
-		//var i = Random.insideUnitCircle;
 		move.TryMove (target); 
 	}
 
@@ -52,7 +53,8 @@ public class BasicBehaviourEnemy : MonoBehaviour
 	{
 		if (coll.gameObject.tag == "Enemy")
 		{
-			if (coll.gameObject.name.Contains("Enemy 2") || coll.gameObject.name.Contains("Enemy Mito"))
+			if (coll.gameObject.name.Contains("Enemy 2") || 
+				coll.gameObject.name.Contains("Enemy Mito"))
 			{
 				Death ();
 				createScore ();
@@ -65,14 +67,23 @@ public class BasicBehaviourEnemy : MonoBehaviour
 		}
 		else if (coll.gameObject.tag == "Bullet")
 		{
-			//Debug.Log ("Hi");
 			Death ();
 			createScore();
 		}
-		//Debug.Log ("basic" + coll.gameObject.name);
 	}
 
-	void createScore() 
+	private void RandomTarget ()
+	{
+		if (Vector2.Distance (target.transform.position, this.transform.position) < 5)
+		{
+			// random target
+			Vector2 i = Random.insideUnitCircle * 25;
+			target.position = new Vector3 (i.x + this.transform.position.x,
+				i.y + this.transform.position.y);
+		}
+	}
+
+	private void createScore()
 	{
 		// Increase the score by so and so points
 		scoreBoard.score += self.score;

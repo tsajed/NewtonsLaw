@@ -57,12 +57,12 @@ public class Health : MonoBehaviour {
 	void OnGUI() {
 
 		if(onDeath) {
-			if (GUI.Button(new Rect(Screen.width/2, Screen.height/2 , 150, 50), "Restart Level")) {
+			if (GUI.Button(new Rect(Screen.width/2 - 75, Screen.height/2 - 25, 150, 50), "Restart Level")) {
 				Debug.Log("Clicked the button with text");
 				Time.timeScale = 1;
 				Application.LoadLevel(Application.loadedLevel);
 			}
-			if (GUI.Button(new Rect(Screen.width/2, Screen.height/2 + 70, 150, 50), "Go To Next Level")) {
+			if (GUI.Button(new Rect(Screen.width/2 - 75, Screen.height/2 + 45, 150, 50), "Go To Next Level")) {
 				Debug.Log("Clicked the button with text");
 				Time.timeScale = 1;
 				Application.LoadLevel(Application.loadedLevel + 1);

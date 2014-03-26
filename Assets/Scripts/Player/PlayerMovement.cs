@@ -48,28 +48,28 @@ public class PlayerMovement : MonoBehaviour
 		{
 			rigidbody2D.velocity = new Vector2 (rigidbody2D.velocity.x, -maxSpeed);
 		}
-		if (rigidbody2D.transform.position.x < -51)
+		if (rigidbody2D.transform.position.x < -76)
 		{
 			Vector3 tr = rigidbody2D.transform.position;
-			tr.x += 100;
+			tr.x += 150;
 			rigidbody2D.transform.position = tr;
 		}
-		else if (rigidbody2D.transform.position.x > 51)
+		else if (rigidbody2D.transform.position.x > 76)
 		{
 			Vector3 tr = rigidbody2D.transform.position;
-			tr.x -= 100;
+			tr.x -= 150;
 			rigidbody2D.transform.position = tr;
 		}
-		if (rigidbody2D.transform.position.y < -51)
+		if (rigidbody2D.transform.position.y < -76)
 		{
 			Vector3 tr = rigidbody2D.transform.position;
-			tr.y += 100;
+			tr.y += 150;
 			rigidbody2D.transform.position = tr;
 		}
-		else if (rigidbody2D.transform.position.y > 51)
+		else if (rigidbody2D.transform.position.y > 76)
 		{
 			Vector3 tr = rigidbody2D.transform.position;
-			tr.y -= 100;
+			tr.y -= 150;
 			rigidbody2D.transform.position = tr;
 		}
 	}

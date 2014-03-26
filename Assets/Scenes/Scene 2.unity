@@ -5022,8 +5022,8 @@ MonoBehaviour:
   yMargin: 2
   xSmooth: 2
   ySmooth: 2
-  maxXAndY: {x: 100, y: 50}
-  minXAndY: {x: -100, y: -50}
+  maxXAndY: {x: 10, y: 50}
+  minXAndY: {x: -10, y: -50}
 --- !u!81 &964725781
 AudioListener:
   m_ObjectHideFlags: 0
@@ -9036,6 +9036,14 @@ Prefab:
     - target: {fileID: 400012, guid: 6a978952d1cbf0649bda08cf9967861b, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400010, guid: 6a978952d1cbf0649bda08cf9967861b, type: 2}
+      propertyPath: maxXAndY.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400010, guid: 6a978952d1cbf0649bda08cf9967861b, type: 2}
+      propertyPath: minXAndY.x
+      value: -10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a978952d1cbf0649bda08cf9967861b, type: 2}

@@ -165,6 +165,14 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: c1b09b1ca8ba05d4682ccf6db6b1102d, type: 2}
+    - target: {fileID: 11400010, guid: 6a978952d1cbf0649bda08cf9967861b, type: 2}
+      propertyPath: maxXAndY.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400010, guid: 6a978952d1cbf0649bda08cf9967861b, type: 2}
+      propertyPath: minXAndY.x
+      value: -10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a978952d1cbf0649bda08cf9967861b, type: 2}
   m_RootGameObject: {fileID: 1897948433}
@@ -8817,8 +8825,8 @@ MonoBehaviour:
   yMargin: 2
   xSmooth: 2
   ySmooth: 2
-  maxXAndY: {x: 100, y: 50}
-  minXAndY: {x: -100, y: -50}
+  maxXAndY: {x: 10, y: 50}
+  minXAndY: {x: -10, y: -50}
 --- !u!82 &1897948440
 AudioSource:
   m_ObjectHideFlags: 0

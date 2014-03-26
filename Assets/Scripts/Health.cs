@@ -10,7 +10,7 @@ public class Health : MonoBehaviour {
 	public Sprite[] sprites;
 	public AudioClip hurt;
 	public bool canDie;
-
+	private bool onDeath = false;
 	void Start () 
 	{
 		renderer = gameObject.GetComponentInChildren<SpriteRenderer>();
@@ -50,5 +50,24 @@ public class Health : MonoBehaviour {
 		int loaded = Application.loadedLevel;
 		//restart level when player dies.
 		//Application.LoadLevel(loaded);
+		Time.timeScale = 0;
+		onDeath = true;
+	}
+
+	void OnGUI() {
+
+		if(onDeath) {
+			if (GUI.Button(new Rect(Screen.width/2 - 75, Screen.height/2 - 25, 150, 50), "Restart Level")) {
+				Debug.Log("Clicked the button with text");
+				Time.timeScale = 1;
+				Application.LoadLevel(Application.loadedLevel);
+			}
+			if (GUI.Button(new Rect(Screen.width/2 - 75, Screen.height/2 + 45, 150, 50), "Go To Next Level")) {
+				Debug.Log("Clicked the button with text");
+				Time.timeScale = 1;
+				Application.LoadLevel(Application.loadedLevel + 1);
+			}
+		}
+
 	}
 }

@@ -1801,7 +1801,7 @@ Transform:
   m_GameObject: {fileID: 509550362}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.23214722, y: .421266556, z: 0}
-  m_LocalScale: {x: 14, y: 14, z: 1}
+  m_LocalScale: {x: 24, y: 24, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!1001 &645698549
@@ -3341,7 +3341,7 @@ Transform:
   m_GameObject: {fileID: 1196111362}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.72870636, y: .189800262, z: 0}
-  m_LocalScale: {x: 6.56812429, y: 6.56812382, z: 1}
+  m_LocalScale: {x: 12, y: 12, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!1 &1235479392
@@ -3503,8 +3503,8 @@ MonoBehaviour:
   yMargin: 2
   xSmooth: 2
   ySmooth: 2
-  maxXAndY: {x: 100, y: 50}
-  minXAndY: {x: -100, y: -50}
+  maxXAndY: {x: 10, y: 50}
+  minXAndY: {x: -10, y: -50}
 --- !u!81 &1268649232
 AudioListener:
   m_ObjectHideFlags: 0
@@ -3942,7 +3942,7 @@ Transform:
   m_GameObject: {fileID: 1374981294}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.1408062, y: -1.4549675, z: 0}
-  m_LocalScale: {x: 6.96526146, y: 6.96526861, z: 1}
+  m_LocalScale: {x: 12, y: 12, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!1 &1404253767
@@ -6830,6 +6830,26 @@ Prefab:
     - target: {fileID: 400012, guid: 6a978952d1cbf0649bda08cf9967861b, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400010, guid: 6a978952d1cbf0649bda08cf9967861b, type: 2}
+      propertyPath: xMargin
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400010, guid: 6a978952d1cbf0649bda08cf9967861b, type: 2}
+      propertyPath: maxXAndY.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400010, guid: 6a978952d1cbf0649bda08cf9967861b, type: 2}
+      propertyPath: minXAndY.x
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400010, guid: 6a978952d1cbf0649bda08cf9967861b, type: 2}
+      propertyPath: maxXAndY.y
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400010, guid: 6a978952d1cbf0649bda08cf9967861b, type: 2}
+      propertyPath: minXAndY.y
+      value: -50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a978952d1cbf0649bda08cf9967861b, type: 2}

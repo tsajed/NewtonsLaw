@@ -23,5 +23,6 @@ public class Start : MonoBehaviour {
 
     void OnMouseDown() {
     	Debug.Log("START");
+		Application.LoadLevel(Application.loadedLevel + 1);
     }
 }

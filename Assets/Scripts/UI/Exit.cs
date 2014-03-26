@@ -23,5 +23,6 @@ public class Exit : MonoBehaviour {
 
     void OnMouseDown() {
     	Debug.Log("EXIT");
+		Application.Quit();
     }
 }

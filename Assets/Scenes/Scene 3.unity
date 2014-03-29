@@ -1822,7 +1822,6 @@ MonoBehaviour:
   - {fileID: 1196111364}
   - {fileID: 734490639}
   - {fileID: 927870512}
-  - {fileID: 0}
   parallaxScale: 0
   parallaxReductionFactor: 0
   smoothing: 0

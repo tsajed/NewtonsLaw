@@ -13,10 +13,22 @@ public class ExplodingEnemy : MonoBehaviour
 	public float deathSpinMax = 100f;	// A value to give the maximum amount of Torque when dying
 	public GameObject scorePointsUI; // A prefab of 100 that appears when the enemy dies.
 
+	/// <summary>
+	/// Projectile prefab for shooting
+	/// </summary>
+	public Transform[] shotPrefab;
+
+	/// <summary>
+	/// Cooldown in seconds between two shots
+	/// </summary>
+	public float shootingRate = 3;
+
 	private EnemyDeath death;
 	private EnemyMovement move;
+	private EnemyShoot shoot;
 	private SpriteRenderer ren;	// Reference to the sprite renderer.
 	private PlayerScore scoreBoard;	// Reference to the Score Script
+	private bool dying = false;
 
 	// Use this for initialization
 	void Start () 
@@ -35,12 +47,17 @@ public class ExplodingEnemy : MonoBehaviour
 		move = this.GetComponent<EnemyMovement> ();
 		move.location = this.transform;
 		move.self = this.self;
+		shoot = this.GetComponent<EnemyShoot> ();
+		//shoot.sound = this.laser;
+		shoot.shotPrefab = this.shotPrefab;
+		shoot.shootingRate = this.shootingRate;
 		scoreBoard = GameObject.Find("Score").GetComponent<PlayerScore>();
 	}
-	
-	// Update is called once per frame
-	void FixedUpdate ()
+
+	void FixedUpdate () // Update is called once per frame
 	{
+		if (dying) { return; }
+
 		if (self.health <= 0)
 			Death ();
 
@@ -51,19 +68,18 @@ public class ExplodingEnemy : MonoBehaviour
 
 	void OnCollisionEnter2D(Collision2D coll)
 	{
+		if (dying) { return; }
+
 		if (coll.gameObject.tag == "Enemy")
 		{
-			if (coll.gameObject.name.Contains("Enemy 2") ||
-				coll.gameObject.name.Contains("Enemy Mito"))
-			{
-				Death (); // explode
-				createScore ();
-			}
+			Death (); // explode
+			createScore ();
 		}
 		else if (coll.gameObject.tag == "Player")
 		{
 			// hurt self instead of player
-			//Death (); // explode
+			Death (); // explode
+			createScore ();
 		}
 		else if (coll.gameObject.tag == "Bullet")
 		{
@@ -96,6 +112,9 @@ public class ExplodingEnemy : MonoBehaviour
 
 	private void Death ()
 	{
+		if (!shoot.child) // explode
+			shoot.TryShoot (target);
+		dying = true;
 		death.Death (ren, deathSpinMin, deathSpinMax);
 	}
 }

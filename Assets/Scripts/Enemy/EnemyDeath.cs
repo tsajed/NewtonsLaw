@@ -9,8 +9,7 @@ public class EnemyDeath : MonoBehaviour
 
 	public void Death (SpriteRenderer ren, float deathSpinMin, float deathSpinMax)
 	{
-		if (dying)
-			return;
+		if (dying) { return; }
 
 		dying = true;
 
@@ -18,8 +17,7 @@ public class EnemyDeath : MonoBehaviour
 		SpriteRenderer[] otherRenderers = die.GetComponentsInChildren<SpriteRenderer> ();
 
 		// Disable all of them sprite renderers.
-		foreach (SpriteRenderer s in otherRenderers)
-			s.enabled = false;
+		foreach (SpriteRenderer s in otherRenderers) { s.enabled = false; }
 
 		// Re-enable the main sprite renderer and turn it's sprite red.
 		ren.enabled = true;
@@ -33,8 +31,7 @@ public class EnemyDeath : MonoBehaviour
 		
 		// Find all of the colliders on the gameobject and set them all to be triggers.
 		Collider2D[] cols = die.GetComponents<Collider2D> ();
-		foreach (Collider2D c in cols)
-			c.isTrigger = true;
+		foreach (Collider2D c in cols) { c.isTrigger = true; }
 
 		Invoke ("Remove", 2.0f);
 	}

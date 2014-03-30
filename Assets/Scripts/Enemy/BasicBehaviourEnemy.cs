@@ -17,6 +17,7 @@ public class BasicBehaviourEnemy : MonoBehaviour
 	private EnemyMovement move;
 	private SpriteRenderer ren;	// Reference to the sprite renderer.
 	private PlayerScore scoreBoard;	// Reference to the Score Script
+	private bool dying = false;
 
 	// Use this for initialization
 	void Start () 
@@ -37,10 +38,11 @@ public class BasicBehaviourEnemy : MonoBehaviour
 		move.self = this.self;
 		scoreBoard = GameObject.Find("Score").GetComponent<PlayerScore>();
 	}
-	
-	// Update is called once per frame
-	void FixedUpdate ()
+
+	void FixedUpdate () // Update is called once per frame
 	{
+		if (dying) { return; }
+
 		if (self.health <= 0)
 			Death ();
 
@@ -51,6 +53,8 @@ public class BasicBehaviourEnemy : MonoBehaviour
 
 	void OnCollisionEnter2D(Collision2D coll)
 	{
+		if (dying) { return; }
+
 		if (coll.gameObject.tag == "Enemy")
 		{
 			if (coll.gameObject.name.Contains("Enemy 2") || 
@@ -96,6 +100,7 @@ public class BasicBehaviourEnemy : MonoBehaviour
 
 	private void Death ()
 	{
+		dying = true;
 		death.Death (ren, deathSpinMin, deathSpinMax);
 	}
 }

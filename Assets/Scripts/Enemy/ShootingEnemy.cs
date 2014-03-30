@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+
 public class ShootingEnemy : MonoBehaviour
 {
 	public float speed = 15;
@@ -18,7 +19,7 @@ public class ShootingEnemy : MonoBehaviour
 	/// <summary>
 	/// Projectile prefab for shooting
 	/// </summary>
-	public Transform shotPrefab;
+	public Transform[] shotPrefab;
 
 	/// <summary>
 	/// Cooldown in seconds between two shots
@@ -52,16 +53,14 @@ public class ShootingEnemy : MonoBehaviour
 
 	void Update ()
 	{
-		if (dying)
-			return;
+		if (dying) { return; }
 
 		shoot.TryShoot (target);
 	}
 
 	void FixedUpdate ()
 	{
-		if (dying)
-			return;
+		if (dying) { return; }
 
 		if (self.health <= 0)
 			Death ();
@@ -74,6 +73,8 @@ public class ShootingEnemy : MonoBehaviour
 
 	private void OnCollisionEnter2D (Collision2D coll)
 	{
+		if (dying) { return; }
+
 		if (coll.gameObject.tag == "Enemy")
 		{
 			if (coll.gameObject.name == "Enemy 2" ||
@@ -85,15 +86,18 @@ public class ShootingEnemy : MonoBehaviour
 			// hurt player
 			self.decreasePlayerHealth(1);
 		}
-		else if (coll.gameObject.tag == "Bullet" 
-			&& coll.gameObject.GetComponent<EnemyProjectile>().parent != this.gameObject)
+		else if (coll.gameObject.tag == "Bullet")
 		{
-			Death();
+			var projectile = coll.gameObject.GetComponent<EnemyProjectile> ();
+			if (projectile == null
+				|| (projectile != null && projectile.parent != this.gameObject))
+				Death ();
 		}
 	}
 
 	private void Death ()
 	{
+		dying = true;
 		death.Death (ren, deathSpinMin, deathSpinMax);
 	}
 }

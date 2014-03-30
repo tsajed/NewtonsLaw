@@ -114,7 +114,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Radius: .5
+  m_Radius: 1.10000002
   m_Center: {x: 0, y: 0}
 --- !u!58 &5800002
 CircleCollider2D:
@@ -125,7 +125,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Radius: 1.5
+  m_Radius: 2.0999999
   m_Center: {x: 0, y: 0}
 --- !u!82 &8200000
 AudioSource:
@@ -203,7 +203,8 @@ MonoBehaviour:
   laser: {fileID: 8300000, guid: fb2295e97ed44417eb23897a64de48dd, type: 3}
   deathSpinMin: -100
   deathSpinMax: 100
-  shotPrefab: {fileID: 400000, guid: 5ae7e5b0daeaddf4695735c30921d535, type: 2}
+  shotPrefab:
+  - {fileID: 400000, guid: 5ae7e5b0daeaddf4695735c30921d535, type: 2}
   shootingRate: 1.25
 --- !u!114 &11400002
 MonoBehaviour:
@@ -228,7 +229,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 603d7f9d5f2d04347b925c51ef0ab7bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transform: {fileID: 0}
+  location: {fileID: 0}
+  stunCooldown: 0
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -240,6 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e93b8fa3d4586ad449534d48f68eb25a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  die: {fileID: 0}
 --- !u!114 &11400008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -251,9 +254,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 071781f0bf15e5d45aed48e7cd1869c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotPrefab: {fileID: 0}
+  shotPrefab: []
   shootingRate: 1
-  laser: {fileID: 0}
+  sound: {fileID: 0}
+  child: {fileID: 0}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

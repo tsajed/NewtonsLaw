@@ -37,8 +37,7 @@ public class SpikeEnemy : MonoBehaviour
 
 	void FixedUpdate ()
 	{
-		if (dying)
-			return;
+		if (dying) { return; }
 
 		if (self.health <= 0)
 			Death ();
@@ -48,6 +47,8 @@ public class SpikeEnemy : MonoBehaviour
 
 	void OnCollisionEnter2D (Collision2D coll)
 	{
+		if (dying) { return; }
+
 		if (coll.gameObject.tag == "Enemy")
 		{
 			// do nothing
@@ -65,6 +66,7 @@ public class SpikeEnemy : MonoBehaviour
 
 	private void Death ()
 	{
+		dying = true;
 		death.Death (ren, deathSpinMin, deathSpinMax);
 	}
 }

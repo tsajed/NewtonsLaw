@@ -4,7 +4,7 @@ using System.Collections;
 
 public class EnemyShoot : MonoBehaviour 
 {
-	public Transform shotPrefab;
+	public Transform[] shotPrefab;
 	public float shootingRate = 1.0f;
 	public AudioClip sound;
 	public Transform child;
@@ -27,27 +27,35 @@ public class EnemyShoot : MonoBehaviour
 	private void Shoot (Transform target)
 	{
 		// Create a new shot
-		var shotTransform = Instantiate (shotPrefab) as Transform;
+		var shotTransform = Instantiate (shotPrefab[0]) as Transform;
 		child = shotTransform;
 
 		Vector3 diff = target.position - transform.position;
 		// Assign position
 		shotTransform.position = transform.position + (diff.normalized * 2);
 
-		EnemyProjectile projectile = shotTransform.gameObject.GetComponent<EnemyProjectile> ();
+		SetComponentParameters (shotTransform, target);
+
+		audio.PlayOneShot (sound);
+	}
+
+	private void SetComponentParameters(Transform shotTransform, Transform target)
+	{
+		var projectile = shotTransform.gameObject.GetComponent<EnemyProjectile> ();
 		if (projectile != null)
 		{
-
-
 			projectile.oldTarget = new Vector3 (target.position.x, target.position.y);
 			projectile.parent = this.gameObject;
 		}
-		EnemyLaser laser = shotTransform.gameObject.GetComponent<EnemyLaser> ();
+		var laser = shotTransform.gameObject.GetComponent<EnemyLaser> ();
 		if (laser != null)
 		{
 			laser.parent = this.gameObject;
 		}
-
-		audio.PlayOneShot (sound);
+		var explosion = shotTransform.gameObject.GetComponent<EnemyExplosion> ();
+		if (explosion != null)
+		{
+			explosion.parent = this.gameObject;
+		}
 	}
 }

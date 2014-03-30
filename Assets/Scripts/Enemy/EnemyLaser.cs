@@ -7,7 +7,7 @@ public class EnemyLaser : MonoBehaviour
 	public GenericEnemy self;
 	public GameObject parent;
 
-	public float impact = 1000;
+	public float impact = 750;
 
 	// Use this for initialization
 	void Start ()
@@ -19,7 +19,8 @@ public class EnemyLaser : MonoBehaviour
 
 	void Update ()
 	{
-		this.transform.position = this.parent.transform.position;
+		if (this.parent) { this.transform.position = this.parent.transform.position; }
+		else { Destroy (gameObject); }
 	}
 
 	void OnTriggerEnter2D (Collider2D coll)

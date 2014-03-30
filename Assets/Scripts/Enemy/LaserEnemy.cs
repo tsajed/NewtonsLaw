@@ -19,7 +19,7 @@ public class LaserEnemy : MonoBehaviour
 	/// <summary>
 	/// Projectile prefab for shooting
 	/// </summary>
-	public Transform shotPrefab;
+	public Transform[] shotPrefab;
 
 	/// <summary>
 	/// Cooldown in seconds between two shots
@@ -32,8 +32,7 @@ public class LaserEnemy : MonoBehaviour
 	private EnemyShoot shoot;
 	private bool dying = false;
 
-	// Use this for initialization
-	void Start () 
+	void Start () // Use this for initialization
 	{
 		self = new GenericEnemy (this.gameObject, health, speed, damage);
 		ren = transform.Find ("body").GetComponent<SpriteRenderer> ();
@@ -54,8 +53,7 @@ public class LaserEnemy : MonoBehaviour
 
 	void Update ()
 	{
-		if (dying)
-			return;
+		if (dying) { return; }
 
 		if (!shoot.child)
 			shoot.TryShoot (target);
@@ -63,8 +61,7 @@ public class LaserEnemy : MonoBehaviour
 
 	void FixedUpdate ()
 	{
-		if (dying)
-			return;
+		if (dying) { return; }
 
 		if (self.health <= 0)
 			Death ();
@@ -74,6 +71,8 @@ public class LaserEnemy : MonoBehaviour
 
 	void OnCollisionEnter2D (Collision2D coll)
 	{
+		if (dying) { return; }
+
 		if (coll.gameObject.tag == "Enemy")
 		{
 			if (coll.gameObject.name.Contains ("Enemy 2") ||
@@ -93,6 +92,7 @@ public class LaserEnemy : MonoBehaviour
 
 	private void Death ()
 	{
+		dying = true;
 		death.Death (ren, deathSpinMin, deathSpinMax);
 	}
 }

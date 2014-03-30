@@ -11,7 +11,7 @@ public class BlackHole : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Vector2 center = renderer.bounds.center;
+		//Vector2 center = renderer.bounds.center;
 		Collider2D[] colliders = Physics2D.OverlapCircleAll(renderer.bounds.center, renderer.bounds.extents.x);
 		foreach(Collider2D hit in colliders) {
 			Rigidbody2D body = hit.rigidbody2D;

@@ -16,12 +16,16 @@ public class TractorBeam : MonoBehaviour
 			var myLoc = new Vector2 (transform.position.x, transform.position.y);
 			//raycast needs a vector for the direction from the player.
 			var target_direction = new Vector2 (clickLoc.x - myLoc.x, clickLoc.y - myLoc.y);
-			target_direction.Scale (new Vector2 (1000, 1000));
+			target_direction.Normalize();
+			target_direction.Scale (new Vector2 (50, 50));
 
-			if (Input.GetButton ("Fire2"))
-				Debug.DrawRay (myLoc, target_direction, Color.blue, 1);
-			if (Input.GetButton ("Fire1"))
-				Debug.DrawRay (myLoc, target_direction, Color.green, 1);
+			//if (Input.GetButton ("Fire2"))
+			//	Debug.DrawRay (myLoc, target_direction, Color.blue, 1);
+			//if (Input.GetButton ("Fire1"))
+			//	Debug.DrawRay (myLoc, target_direction, Color.green, 1);
+
+			//Set the line renderer.
+			renderLine(myLoc, target_direction);
 
 			//send a raycast and return all intersections. magn. gives distance to cast e.g. distance clicked from player
 			RaycastHit2D[] all_hit = Physics2D.RaycastAll (myLoc, target_direction, target_direction.magnitude);
@@ -33,11 +37,14 @@ public class TractorBeam : MonoBehaviour
 				if (hit.collider.gameObject.name != "Prototypi" && hit.collider.rigidbody2D != null
 					&& !hit.collider.gameObject.name.Contains ("Projectile"))
 				{
-					//float dir = 1 * 0.5f; // .5 because the grab seems to be op
+
 
 					if (stasisEffect)
 						hit.collider.rigidbody2D.velocity = Vector2.zero; //reset velocity for stasis effect
 					Vector2 clickLoc2d = new Vector2 (clickLoc.x, clickLoc.y);
+
+
+
 					if (Input.GetButton ("Fire2"))
 					{
 						hit.collider.rigidbody2D.AddForce ((myLoc - clickLoc2d).normalized * power);
@@ -72,4 +79,13 @@ public class TractorBeam : MonoBehaviour
 			audio.Stop ();
 		}
 	}
+	void renderLine(Vector2 start, Vector2 end)
+	{
+		LineRenderer line = GetComponentInChildren<LineRenderer> ();
+		line.SetPosition (0, start);
+		line.SetPosition (1, start + end);
+
+	}
+
 }
+

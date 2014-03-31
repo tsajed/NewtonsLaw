@@ -4,14 +4,14 @@ using System.Collections;
 
 public class EnemyShoot : MonoBehaviour 
 {
-	public Transform[] shotPrefab;
+	public GameObject[] shotPrefab;
 	public float shootingRate = 1.0f;
 	public AudioClip sound;
 	public Transform child;
 
 	private float shootCooldown = 0f;
 
-	public void TryShoot (Transform target)
+	public void TryShoot (Transform target, int index)
 	{
 		if (shootCooldown > 0)
 		{
@@ -20,42 +20,47 @@ public class EnemyShoot : MonoBehaviour
 		else
 		{
 			shootCooldown = shootingRate;
-			Shoot (target);
+			Shoot (target, index);
 		}
 	}
 
-	private void Shoot (Transform target)
+	private void Shoot (Transform target, int index)
 	{
 		// Create a new shot
-		var shotTransform = Instantiate (shotPrefab[0]) as Transform;
-		child = shotTransform;
+		var shotPrefabInst = Instantiate (shotPrefab[index]) as GameObject;
+		child = shotPrefabInst.transform;
 
 		Vector3 diff = target.position - transform.position;
 		// Assign position
-		shotTransform.position = transform.position + (diff.normalized * 2);
+		shotPrefabInst.transform.position = transform.position + (diff.normalized * 2);
 
-		SetComponentParameters (shotTransform, target);
+		SetComponentParameters (shotPrefabInst, target);
 
 		audio.PlayOneShot (sound);
 	}
 
-	private void SetComponentParameters(Transform shotTransform, Transform target)
+	private void SetComponentParameters(GameObject shotPrefabInst, Transform target)
 	{
-		var projectile = shotTransform.gameObject.GetComponent<EnemyProjectile> ();
+		var projectile = shotPrefabInst.GetComponent<EnemyProjectile> ();
 		if (projectile != null)
 		{
 			projectile.oldTarget = new Vector3 (target.position.x, target.position.y);
 			projectile.parent = this.gameObject;
 		}
-		var laser = shotTransform.gameObject.GetComponent<EnemyLaser> ();
+
+		var heatSeekingProjectile = shotPrefabInst.GetComponent<EnemyHeatSeekingProjectile> ();
+		if (heatSeekingProjectile != null)
+		{
+			heatSeekingProjectile.target = target;
+			heatSeekingProjectile.parent = this.gameObject;
+		}
+
+		var laser = shotPrefabInst.GetComponent<EnemyLaser> ();
 		if (laser != null)
-		{
-			laser.parent = this.gameObject;
-		}
-		var explosion = shotTransform.gameObject.GetComponent<EnemyExplosion> ();
+		{ laser.parent = this.gameObject; }
+
+		var explosion = shotPrefabInst.GetComponent<EnemyExplosion> ();
 		if (explosion != null)
-		{
-			explosion.parent = this.gameObject;
-		}
+		{ explosion.parent = this.gameObject; }
 	}
 }

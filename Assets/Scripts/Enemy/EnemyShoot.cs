@@ -59,6 +59,10 @@ public class EnemyShoot : MonoBehaviour
 		if (laser != null)
 		{ laser.parent = this.gameObject; }
 
+		var puller = shotPrefabInst.GetComponent<EnemyPuller> ();
+		if (puller != null)
+		{ puller.parent = this.gameObject; }
+
 		var explosion = shotPrefabInst.GetComponent<EnemyExplosion> ();
 		if (explosion != null)
 		{ explosion.parent = this.gameObject; }

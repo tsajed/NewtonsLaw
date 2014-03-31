@@ -18,7 +18,7 @@ public class UpgradedShootingEnemy : MonoBehaviour
 	/// <summary>
 	/// Projectile prefab for shooting
 	/// </summary>
-	public Transform[] shotPrefab;
+	public GameObject[] shotPrefab;
 
 	/// <summary>
 	/// Cooldown in seconds between two shots
@@ -54,7 +54,7 @@ public class UpgradedShootingEnemy : MonoBehaviour
 	{
 		if (dying) { return; }
 
-		shoot.TryShoot (target);
+		shoot.TryShoot (target, 0);
 	}
 
 	void FixedUpdate ()

@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: cb536549b2231f44592bb3c16a2e95a7
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - target: {instanceID: 0}
+  - laser: {instanceID: 0}
+  - shotPrefab: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 

@@ -11,12 +11,11 @@ public class BasicBehaviourEnemy : MonoBehaviour
 
 	public float deathSpinMin = -100f; // A value to give the minimum amount of Torque when dying
 	public float deathSpinMax = 100f;	// A value to give the maximum amount of Torque when dying
-	public GameObject scorePointsUI; // A prefab of 100 that appears when the enemy dies.
 
 	private EnemyDeath death;
 	private EnemyMovement move;
+	private EnemyScore score;
 	private SpriteRenderer ren;	// Reference to the sprite renderer.
-	private PlayerScore scoreBoard;	// Reference to the Score Script
 	private bool dying = false;
 
 	// Use this for initialization
@@ -35,7 +34,8 @@ public class BasicBehaviourEnemy : MonoBehaviour
 		move = this.GetComponent<EnemyMovement> ();
 		move.location = this.transform;
 		move.self = this.self;
-		scoreBoard = GameObject.Find("Score").GetComponent<PlayerScore>();
+		score = this.GetComponent<EnemyScore> ();
+		score.self = this.self;
 	}
 
 	void FixedUpdate () // Update is called once per frame
@@ -59,7 +59,7 @@ public class BasicBehaviourEnemy : MonoBehaviour
 				|| coll.gameObject.name.Contains("Enemy Mito"))
 			{
 				Death ();
-				createScore ();
+				score.createScore ();
 			}
 		}
 		else if (coll.gameObject.tag == "Player")
@@ -70,7 +70,7 @@ public class BasicBehaviourEnemy : MonoBehaviour
 		else if (coll.gameObject.tag == "Bullet")
 		{
 			Death ();
-			createScore();
+			score.createScore ();
 		}
 	}
 
@@ -83,17 +83,6 @@ public class BasicBehaviourEnemy : MonoBehaviour
 			target.position = new Vector3 (i.x + this.transform.position.x,
 				i.y + this.transform.position.y);
 		}
-	}
-
-	private void createScore()
-	{
-		// Increase the score by so and so points
-		scoreBoard.score += self.score;
-
-		// Instantiate the score points prefab at this point.
-		GameObject scorePoints = (GameObject) Instantiate(scorePointsUI, Vector3.zero, Quaternion.identity);
-		scorePoints.transform.parent = gameObject.transform;
-		scorePoints.transform.localPosition = new Vector3(0, 1.5f, 0);
 	}
 
 	private void Death ()

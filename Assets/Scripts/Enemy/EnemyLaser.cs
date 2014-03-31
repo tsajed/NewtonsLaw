@@ -39,7 +39,7 @@ public class EnemyLaser : MonoBehaviour
 
 			PushAway (coll);
 		}
-		else if (coll.gameObject.tag == "Enemy" && coll.gameObject != parent)
+		else if (coll.gameObject.tag == "Enemy" && coll.gameObject != this.parent)
 		{
 			// stun
 			coll.gameObject.GetComponent<EnemyMovement> ().stunCooldown = 0.5f;

@@ -132,8 +132,7 @@ public class ExplodingEnemy : MonoBehaviour
 
 	private void Death ()
 	{
-		if (!shoot.child) // explode
-			shoot.TryShoot (target, 0);
+		if (!shoot.child) { shoot.TryShoot (target, 0); } // explode
 		dying = true;
 		death.Death (ren, deathSpinMin, deathSpinMax);
 	}

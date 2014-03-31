@@ -55,8 +55,8 @@ public class BasicBehaviourEnemy : MonoBehaviour
 
 		if (coll.gameObject.tag == "Enemy")
 		{
-			if (coll.gameObject.name.Contains("Enemy 2") || 
-				coll.gameObject.name.Contains("Enemy Mito"))
+			if (coll.gameObject.name.Contains("Enemy 2") 
+				|| coll.gameObject.name.Contains("Enemy Mito"))
 			{
 				Death ();
 				createScore ();

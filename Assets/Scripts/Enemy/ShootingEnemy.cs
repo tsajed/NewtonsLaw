@@ -19,7 +19,7 @@ public class ShootingEnemy : MonoBehaviour
 	/// <summary>
 	/// Projectile prefab for shooting
 	/// </summary>
-	public Transform[] shotPrefab;
+	public GameObject[] shotPrefab;
 
 	/// <summary>
 	/// Cooldown in seconds between two shots
@@ -31,14 +31,14 @@ public class ShootingEnemy : MonoBehaviour
 	private EnemyMovement move;
 	private EnemyShoot shoot;
 	private bool dying = false;
+	private int projectileIndex;
 
 	void Start () // initialization
 	{
 		self = new GenericEnemy (this.gameObject, health, speed, damage);
 		ren = transform.Find ("body").GetComponent<SpriteRenderer> ();
 
-		if (!target) 
-			target = GameObject.FindWithTag ("Player").transform;
+		if (!target) { target = GameObject.FindWithTag ("Player").transform; }
 
 		death = this.GetComponent<EnemyDeath> ();
 		death.die = this;
@@ -55,18 +55,17 @@ public class ShootingEnemy : MonoBehaviour
 	{
 		if (dying) { return; }
 
-		shoot.TryShoot (target);
+		shoot.TryShoot (target, projectileIndex++ % 3); // shoot a different color each time
 	}
 
 	void FixedUpdate ()
 	{
 		if (dying) { return; }
 
-		if (self.health <= 0)
-			Death ();
+		if (self.health <= 0) { Death (); }
 
 		if (Vector2.Distance (target.transform.position, this.transform.position) < 15)
-			return;
+		{ return; }
 
 		move.TryMove (target);
 	}
@@ -79,7 +78,7 @@ public class ShootingEnemy : MonoBehaviour
 		{
 			if (coll.gameObject.name == "Enemy 2" ||
 				coll.gameObject.name.Contains ("Enemy Mito"))
-				Death ();
+			{ Death (); }
 		}
 		else if (coll.gameObject.tag == "Player")
 		{
@@ -91,7 +90,7 @@ public class ShootingEnemy : MonoBehaviour
 			var projectile = coll.gameObject.GetComponent<EnemyProjectile> ();
 			if (projectile == null
 				|| (projectile != null && projectile.parent != this.gameObject))
-				Death ();
+			{ Death (); }
 		}
 	}
 

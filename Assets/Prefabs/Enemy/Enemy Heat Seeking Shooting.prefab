@@ -73,8 +73,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.5491753, y: 9.55418682, z: -1}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalPosition: {x: -11.9581814, y: -9.48583126, z: -1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2}
   m_Children:
   - {fileID: 400004}
   - {fileID: 400000}
@@ -114,8 +114,8 @@ CircleCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Radius: 1.10000002
-  m_Center: {x: 0, y: 0}
+  m_Radius: .899999976
+  m_Center: {x: -.0500000007, y: 0}
 --- !u!58 &5800002
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -126,7 +126,7 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Radius: 2.0999999
-  m_Center: {x: 0, y: 0}
+  m_Center: {x: -.0500000007, y: 0}
 --- !u!82 &8200000
 AudioSource:
   m_ObjectHideFlags: 1
@@ -193,7 +193,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb08ef522cace024e8775f28b52a61e3, type: 3}
+  m_Script: {fileID: 11500000, guid: cb536549b2231f44592bb3c16a2e95a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
@@ -204,8 +204,8 @@ MonoBehaviour:
   deathSpinMin: -100
   deathSpinMax: 100
   shotPrefab:
-  - {fileID: 400000, guid: 28655a2f7847eaf419663ebb4a213a6d, type: 2}
-  shootingRate: 1.25
+  - {fileID: 100000, guid: 28655a2f7847eaf419663ebb4a213a6d, type: 2}
+  shootingRate: 2.25
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

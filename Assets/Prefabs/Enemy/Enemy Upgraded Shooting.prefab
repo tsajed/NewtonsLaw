@@ -204,7 +204,7 @@ MonoBehaviour:
   deathSpinMin: -100
   deathSpinMax: 100
   shotPrefab:
-  - {fileID: 400000, guid: 5ae7e5b0daeaddf4695735c30921d535, type: 2}
+  - {fileID: 100000, guid: 5ae7e5b0daeaddf4695735c30921d535, type: 2}
   shootingRate: 1.25
 --- !u!114 &11400002
 MonoBehaviour:

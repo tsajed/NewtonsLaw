@@ -28,8 +28,7 @@ public class BasicBehaviourEnemy : MonoBehaviour
 
 		var throwaway = new GameObject();
 		throwaway.transform.position = transform.position;
-		if (!target)
-			target = throwaway.transform;
+		if (!target) { target = throwaway.transform; }
 
 		death = this.GetComponent<EnemyDeath> ();
 		death.die = this;
@@ -43,8 +42,7 @@ public class BasicBehaviourEnemy : MonoBehaviour
 	{
 		if (dying) { return; }
 
-		if (self.health <= 0)
-			Death ();
+		if (self.health <= 0) { Death (); }
 
 		RandomTarget ();
 

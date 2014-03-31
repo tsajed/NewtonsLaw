@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
 public class ExplodingEnemy : MonoBehaviour 
 {
 	public float speed = 5;
@@ -16,12 +17,19 @@ public class ExplodingEnemy : MonoBehaviour
 	/// <summary>
 	/// Projectile prefab for shooting
 	/// </summary>
-	public Transform[] shotPrefab;
+	public GameObject[] shotPrefab;
 
 	/// <summary>
 	/// Cooldown in seconds between two shots
 	/// </summary>
 	public float shootingRate = 3;
+
+	//
+	// 2  Cooldown
+	//
+	private float shootCooldown = 0f;
+
+	public Sprite flash;
 
 	private EnemyDeath death;
 	private EnemyMovement move;
@@ -30,8 +38,7 @@ public class ExplodingEnemy : MonoBehaviour
 	private PlayerScore scoreBoard;	// Reference to the Score Script
 	private bool dying = false;
 
-	// Use this for initialization
-	void Start () 
+	void Start () // Use this for initialization
 	{
 		self = new GenericEnemy(this.gameObject, health, speed, damage);
 		// Setting up the references.
@@ -39,8 +46,7 @@ public class ExplodingEnemy : MonoBehaviour
 
 		var throwaway = new GameObject();
 		throwaway.transform.position = transform.position;
-		if (!target)
-			target = throwaway.transform;
+		if (!target) { target = throwaway.transform; }
 
 		death = this.GetComponent<EnemyDeath> ();
 		death.die = this;
@@ -54,12 +60,26 @@ public class ExplodingEnemy : MonoBehaviour
 		scoreBoard = GameObject.Find("Score").GetComponent<PlayerScore>();
 	}
 
+	void Update ()
+	{
+		if (shootCooldown > 0) 
+		{ 
+			shootCooldown -= Time.deltaTime; 
+		}
+		else 
+		{ 
+			shootCooldown = shootingRate;
+			Sprite temp = ren.sprite;
+			ren.sprite = flash;
+			flash = temp;
+		}
+	}
+
 	void FixedUpdate () // Update is called once per frame
 	{
 		if (dying) { return; }
 
-		if (self.health <= 0)
-			Death ();
+		if (self.health <= 0) { Death (); }
 
 		RandomTarget ();
 
@@ -113,7 +133,7 @@ public class ExplodingEnemy : MonoBehaviour
 	private void Death ()
 	{
 		if (!shoot.child) // explode
-			shoot.TryShoot (target);
+			shoot.TryShoot (target, 0);
 		dying = true;
 		death.Death (ren, deathSpinMin, deathSpinMax);
 	}

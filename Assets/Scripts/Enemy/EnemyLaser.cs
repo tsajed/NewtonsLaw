@@ -2,7 +2,7 @@
 using System.Collections;
 
 
-public class EnemyLaser : MonoBehaviour 
+public class EnemyLaser : MonoBehaviour
 {
 	public GenericEnemy self;
 	public GameObject parent;

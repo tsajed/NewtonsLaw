@@ -5,23 +5,23 @@ public class HighScores : MonoBehaviour {
 	public Sprite hoverSprite;
 	public GameObject leaderBoard;	// Made this public cause Find cannot find inactive objects
 
-	private SpriteRenderer renderer;
+	private SpriteRenderer ren;
 	private Sprite normalSprite;
 	private GameObject startMenu;
 
 	void Awake() {
-		renderer = gameObject.GetComponent<SpriteRenderer>();
-		normalSprite = renderer.sprite;
+		ren = gameObject.GetComponent<SpriteRenderer>();
+		normalSprite = ren.sprite;
 
 		startMenu = GameObject.Find("UI");
 	}
 
     void OnMouseEnter() {
-    	renderer.sprite = hoverSprite;
+    	ren.sprite = hoverSprite;
     }
 
     void OnMouseExit() {
-    	renderer.sprite = normalSprite;
+    	ren.sprite = normalSprite;
     }
 
     void OnMouseDown() {

@@ -18,7 +18,7 @@ public class UpgradedShootingEnemy : MonoBehaviour
 	/// <summary>
 	/// Projectile prefab for shooting
 	/// </summary>
-	public Transform shotPrefab;
+	public GameObject[] shotPrefab;
 
 	/// <summary>
 	/// Cooldown in seconds between two shots
@@ -52,16 +52,14 @@ public class UpgradedShootingEnemy : MonoBehaviour
 
 	void Update ()
 	{
-		if (dying)
-			return;
+		if (dying) { return; }
 
-		shoot.TryShoot (target);
+		shoot.TryShoot (target, 0);
 	}
 
 	void FixedUpdate ()
 	{
-		if (dying)
-			return;
+		if (dying) { return; }
 
 		if (self.health <= 0)
 			Death ();
@@ -74,6 +72,8 @@ public class UpgradedShootingEnemy : MonoBehaviour
 
 	private void OnCollisionEnter2D (Collision2D coll)
 	{
+		if (dying) { return; }
+
 		if (coll.gameObject.tag == "Enemy")
 		{
 			if (coll.gameObject.name.Contains ("Enemy 2") ||
@@ -85,15 +85,18 @@ public class UpgradedShootingEnemy : MonoBehaviour
 			// hurt player
 			self.decreasePlayerHealth(1);
 		}
-		else if (coll.gameObject.tag == "Bullet" 
-			&& coll.gameObject.GetComponent<EnemyProjectile>().parent != this.gameObject)
+		else if (coll.gameObject.tag == "Bullet")
 		{
-			Death ();
+			var projectile = coll.gameObject.GetComponent<EnemyProjectile> ();
+			if (projectile == null 
+				|| (projectile != null && projectile.parent != this.gameObject))
+				Death ();
 		}
 	}
 
 	private void Death ()
 	{
+		dying = true;
 		death.Death (ren, deathSpinMin, deathSpinMax);
 	}
 }

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
 public class MitoEnemy : MonoBehaviour 
 {
 	public float speed = 10;
@@ -18,7 +19,7 @@ public class MitoEnemy : MonoBehaviour
 	/// <summary>
 	/// Projectile prefab for shooting
 	/// </summary>
-	public Transform shotPrefab;
+	public GameObject shotPrefab;
 
 	/// <summary>
 	/// Cooldown in seconds between two shots
@@ -26,7 +27,6 @@ public class MitoEnemy : MonoBehaviour
 	public float shootingRate = 5;
 	public int spawns = 3;
 
-	public Vector3 oldTarget { private get; set; }
 	public MitoEnemy parent;
 
 	//
@@ -43,40 +43,38 @@ public class MitoEnemy : MonoBehaviour
 		self = new GenericEnemy (this.gameObject, health, speed, damage);
 		ren = transform.Find ("body").GetComponent<SpriteRenderer> ();
 
-		if (!target)
-			target = GameObject.FindWithTag ("Player").transform;
+		if (!target) { target = GameObject.FindWithTag ("Player").transform; }
 
 		death = this.GetComponent<EnemyDeath> ();
 		death.die = this;
 		move = this.GetComponent<EnemyMovement> ();
 		move.location = this.transform;
 		move.self = this.self;
+
+		shootCooldown = shootingRate; // Prevent spawning immediately
 	}
 
 	void Update ()
 	{
-		if (dying)
-			return;
+		if (dying) { return; }
 
-		if (shootCooldown > 0)
-			shootCooldown -= Time.deltaTime;
-		else
-			Spawn (false);
+		if (shootCooldown > 0) { shootCooldown -= Time.deltaTime; }
+		else { Spawn (false); }
 	}
 
 	void FixedUpdate ()
 	{
-		if (dying)
-			return;
+		if (dying) { return; }
 
-		if (self.health <= 0)
-			Death ();
+		if (self.health <= 0) { Death (); }
 
 		move.TryMove (target);
 	}
 
 	void OnCollisionEnter2D (Collision2D coll)
 	{
+		if (dying) { return; }
+
 		if (coll.gameObject.tag == "Enemy")
 		{
 			// do nothing
@@ -94,24 +92,22 @@ public class MitoEnemy : MonoBehaviour
 
 	private void Spawn (bool isEnemy)
 	{
-		if (!CanDivide)
-			return;
+		if (!CanDivide) { return; }
 
 		shootCooldown = shootingRate;
 		spawns--;
 
 		// Create a new shot
-		var shotTransform = Instantiate (shotPrefab) as Transform;
+		var shotPrefabInst = Instantiate (shotPrefab) as GameObject;
 
 		// Assign position
-		shotTransform.position = transform.position;
+		shotPrefabInst.transform.position = transform.position;
 
-		MitoEnemy spawn = shotTransform.gameObject.GetComponent<MitoEnemy> ();
+		var spawn = shotPrefabInst.GetComponent<MitoEnemy> ();
 		if (spawn != null)
 		{
 			var spawnBody = spawn.transform.Find ("body").GetComponent<Transform> ();
 			spawnBody.localScale = new Vector3 (spawnBody.localScale.x * 0.65f, spawnBody.localScale.y * 0.65f);
-			spawn.oldTarget = new Vector3 (target.position.x, target.position.y);
 			spawn.parent = this;
 			spawn.spawns = this.spawns;
 			spawn.speed *= 1.2f;
@@ -136,16 +132,13 @@ public class MitoEnemy : MonoBehaviour
 
 	private void Death ()
 	{
-		if (this.parent)
-			this.parent.spawns--;
+		if (this.parent) { this.parent.spawns++; }
+		dying = true;
 		death.Death (ren, deathSpinMin, deathSpinMax);
 	}
 
 	public bool CanDivide 
-	{ 
-		get 
-		{ 
-			return shootCooldown <= 0f && spawns > 0; 
-		} 
+	{
+		get { return shootCooldown <= 0f && spawns > 0; }
 	}
 }

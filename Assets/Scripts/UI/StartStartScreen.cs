@@ -5,21 +5,21 @@ public class StartStartScreen : MonoBehaviour {
 
 	public Sprite hoverSprite;
 	
-	private SpriteRenderer renderer;
+	private SpriteRenderer ren;
 	private Sprite normalSprite;
 
 	void Awake() {
-		renderer = gameObject.GetComponent<SpriteRenderer>();
-		normalSprite = renderer.sprite;
+		ren = gameObject.GetComponent<SpriteRenderer>();
+		normalSprite = ren.sprite;
 
 	}
 
     void OnMouseEnter() {
-    	renderer.sprite = hoverSprite;
+    	ren.sprite = hoverSprite;
     }
 
     void OnMouseExit() {
-    	renderer.sprite = normalSprite;
+    	ren.sprite = normalSprite;
     }
 
     void OnMouseDown() {

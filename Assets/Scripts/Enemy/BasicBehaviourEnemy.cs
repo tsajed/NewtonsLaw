@@ -17,6 +17,7 @@ public class BasicBehaviourEnemy : MonoBehaviour
 	private EnemyMovement move;
 	private SpriteRenderer ren;	// Reference to the sprite renderer.
 	private PlayerScore scoreBoard;	// Reference to the Score Script
+	private bool dying = false;
 
 	// Use this for initialization
 	void Start () 
@@ -27,8 +28,7 @@ public class BasicBehaviourEnemy : MonoBehaviour
 
 		var throwaway = new GameObject();
 		throwaway.transform.position = transform.position;
-		if (!target)
-			target = throwaway.transform;
+		if (!target) { target = throwaway.transform; }
 
 		death = this.GetComponent<EnemyDeath> ();
 		death.die = this;
@@ -37,12 +37,12 @@ public class BasicBehaviourEnemy : MonoBehaviour
 		move.self = this.self;
 		scoreBoard = GameObject.Find("Score").GetComponent<PlayerScore>();
 	}
-	
-	// Update is called once per frame
-	void FixedUpdate ()
+
+	void FixedUpdate () // Update is called once per frame
 	{
-		if (self.health <= 0)
-			Death ();
+		if (dying) { return; }
+
+		if (self.health <= 0) { Death (); }
 
 		RandomTarget ();
 
@@ -51,10 +51,12 @@ public class BasicBehaviourEnemy : MonoBehaviour
 
 	void OnCollisionEnter2D(Collision2D coll)
 	{
+		if (dying) { return; }
+
 		if (coll.gameObject.tag == "Enemy")
 		{
-			if (coll.gameObject.name.Contains("Enemy 2") || 
-				coll.gameObject.name.Contains("Enemy Mito"))
+			if (coll.gameObject.name.Contains("Enemy 2") 
+				|| coll.gameObject.name.Contains("Enemy Mito"))
 			{
 				Death ();
 				createScore ();
@@ -96,6 +98,7 @@ public class BasicBehaviourEnemy : MonoBehaviour
 
 	private void Death ()
 	{
+		dying = true;
 		death.Death (ren, deathSpinMin, deathSpinMax);
 	}
 }

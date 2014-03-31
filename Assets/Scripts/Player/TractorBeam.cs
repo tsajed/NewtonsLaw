@@ -8,6 +8,13 @@ public class TractorBeam : MonoBehaviour
 	public AudioClip pull;
 	public AudioClip push;
 
+	private LineRenderer line;
+
+	void Start () 
+	{
+		line = GetComponentInChildren<LineRenderer> ();
+	}
+
 	void FixedUpdate () 
 	{
 		if (Input.GetButton ("Fire2") || Input.GetButton ("Fire1"))
@@ -25,6 +32,7 @@ public class TractorBeam : MonoBehaviour
 			//	Debug.DrawRay (myLoc, target_direction, Color.green, 1);
 
 			//Set the line renderer.
+			line.gameObject.SetActive(true);
 			renderLine(myLoc, target_direction);
 
 			//send a raycast and return all intersections. magn. gives distance to cast e.g. distance clicked from player
@@ -78,13 +86,17 @@ public class TractorBeam : MonoBehaviour
 		{
 			audio.Stop ();
 		}
+
+		// Turn off the line renderer once the player lets go of the button
+		if(Input.GetButtonUp("Fire2") || Input.GetButtonUp("Fire1") )
+		{
+			line.gameObject.SetActive(false);
+		}
 	}
 	void renderLine(Vector2 start, Vector2 end)
 	{
-		LineRenderer line = GetComponentInChildren<LineRenderer> ();
 		line.SetPosition (0, start);
 		line.SetPosition (1, start + end);
-
 	}
 
 }

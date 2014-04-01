@@ -86,13 +86,17 @@ public class TractorBeam : MonoBehaviour
 		{
 			audio.Stop ();
 		}
+	}
 
+	void Update() 
+	{
 		// Turn off the line renderer once the player lets go of the button
 		if(Input.GetButtonUp("Fire2") || Input.GetButtonUp("Fire1") )
 		{
 			line.gameObject.SetActive(false);
 		}
 	}
+	
 	void renderLine(Vector2 start, Vector2 end)
 	{
 		line.SetPosition (0, start);

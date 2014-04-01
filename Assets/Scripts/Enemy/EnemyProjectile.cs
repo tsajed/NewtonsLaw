@@ -31,7 +31,15 @@ public class EnemyProjectile : MonoBehaviour
 		}
 		else if (coll.gameObject.tag == "Enemy" && coll.gameObject != parent)
 		{
-			Destroy (gameObject);
+			if (coll.gameObject.name.Contains ("Force Field"))
+			{
+				if (coll.gameObject.GetComponent<ForceFieldEnemy> ().shieldsDown)
+				{ Destroy (gameObject); }
+			}
+			else
+			{ 
+				Destroy (gameObject); 
+			}
 		}
 	}
 }

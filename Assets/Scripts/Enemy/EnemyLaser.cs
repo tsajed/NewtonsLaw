@@ -55,8 +55,7 @@ public class EnemyLaser : MonoBehaviour
 
 		Vector3 dir = coll.transform.position - this.transform.position; // away
 		//Vector3 dir = this.transform.position - coll.transform.position; // towards
-		dir = dir.normalized;
-		Vector2 force = dir * impact;
+		Vector2 force = dir.normalized * impact;
 		coll.rigidbody2D.AddForce (force);
 	}
 }

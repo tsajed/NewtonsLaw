@@ -62,6 +62,8 @@ public class ExplodingEnemy : MonoBehaviour
 
 	void Update ()
 	{
+		if (dying) { return; }
+
 		if (shootCooldown > 0) 
 		{ 
 			shootCooldown -= Time.deltaTime; 

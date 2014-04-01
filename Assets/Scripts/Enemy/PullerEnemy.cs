@@ -26,13 +26,12 @@ public class PullerEnemy : MonoBehaviour
 	/// Cooldown in seconds between two shots
 	/// </summary>
 	public float shootingRate = 3;
-	public GameObject scorePointsUI; // A prefab of 100 that appears when the enemy dies.
 
 	private SpriteRenderer ren;
 	private EnemyDeath death;
 	private EnemyMovement move;
 	private EnemyShoot shoot;
-	private PlayerScore scoreBoard;	// Reference to the Score Script
+	private EnemyScore score;
 	private bool dying = false;
 
 	void Start () // Use this for initialization
@@ -51,7 +50,8 @@ public class PullerEnemy : MonoBehaviour
 		shoot.sound = this.laser;
 		shoot.shotPrefab = this.shotPrefab;
 		shoot.shootingRate = this.shootingRate;
-		scoreBoard = GameObject.Find ("Score").GetComponent<PlayerScore> ();
+		score = this.GetComponent<EnemyScore> ();
+		score.self = this.self;
 	}
 
 	void Update ()
@@ -94,6 +94,7 @@ public class PullerEnemy : MonoBehaviour
 	private void Death ()
 	{
 		dying = true;
+		score.createScore ();
 		death.Death (ren, deathSpinMin, deathSpinMax);
 	}
 }

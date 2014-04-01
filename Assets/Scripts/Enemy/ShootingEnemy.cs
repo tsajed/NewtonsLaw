@@ -30,6 +30,7 @@ public class ShootingEnemy : MonoBehaviour
 	private EnemyDeath death;
 	private EnemyMovement move;
 	private EnemyShoot shoot;
+	private EnemyScore score;
 	private bool dying = false;
 	private int projectileIndex;
 
@@ -49,6 +50,8 @@ public class ShootingEnemy : MonoBehaviour
 		shoot.sound = this.laser;
 		shoot.shotPrefab = this.shotPrefab;
 		shoot.shootingRate = this.shootingRate;
+		score = this.GetComponent<EnemyScore> ();
+		score.self = this.self;
 	}
 
 	void Update ()
@@ -97,6 +100,7 @@ public class ShootingEnemy : MonoBehaviour
 	private void Death ()
 	{
 		dying = true;
+		score.createScore ();
 		death.Death (ren, deathSpinMin, deathSpinMax);
 	}
 }

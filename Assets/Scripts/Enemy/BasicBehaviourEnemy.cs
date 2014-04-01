@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
 public class BasicBehaviourEnemy : MonoBehaviour 
 {
 	public float speed = 5;
@@ -18,8 +19,7 @@ public class BasicBehaviourEnemy : MonoBehaviour
 	private SpriteRenderer ren;	// Reference to the sprite renderer.
 	private bool dying = false;
 
-	// Use this for initialization
-	void Start () 
+	void Start () // Use this for initialization
 	{
 		self = new GenericEnemy(this.gameObject, health, speed, damage);
 		// Setting up the references.
@@ -59,7 +59,6 @@ public class BasicBehaviourEnemy : MonoBehaviour
 				|| coll.gameObject.name.Contains("Enemy Mito"))
 			{
 				Death ();
-				score.createScore ();
 			}
 		}
 		else if (coll.gameObject.tag == "Player")
@@ -70,7 +69,6 @@ public class BasicBehaviourEnemy : MonoBehaviour
 		else if (coll.gameObject.tag == "Bullet")
 		{
 			Death ();
-			score.createScore ();
 		}
 	}
 
@@ -88,6 +86,7 @@ public class BasicBehaviourEnemy : MonoBehaviour
 	private void Death ()
 	{
 		dying = true;
+		score.createScore ();
 		death.Death (ren, deathSpinMin, deathSpinMax);
 	}
 }

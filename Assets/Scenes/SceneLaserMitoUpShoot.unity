@@ -503,7 +503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb12e1ac11056604197a1f9cdc16962d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 10
   health: 100
   damage: 2
   target: {fileID: 0}
@@ -513,6 +513,7 @@ MonoBehaviour:
   shotPrefab:
   - {fileID: 100000, guid: b899fceb35efaf942a2e496c6fe35aed, type: 2}
   shootingRate: 3
+  scorePointsUI: {fileID: 0}
 --- !u!50 &128684641
 Rigidbody2D:
   m_ObjectHideFlags: 0

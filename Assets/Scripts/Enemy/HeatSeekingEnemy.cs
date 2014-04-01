@@ -30,6 +30,7 @@ public class HeatSeekingEnemy : MonoBehaviour
 	private EnemyDeath death;
 	private EnemyMovement move;
 	private EnemyShoot shoot;
+	private EnemyScore score;
 	private bool dying = false;
 
 	void Start () // initialization
@@ -48,6 +49,8 @@ public class HeatSeekingEnemy : MonoBehaviour
 		shoot.sound = this.laser;
 		shoot.shotPrefab = this.shotPrefab;
 		shoot.shootingRate = this.shootingRate;
+		score = this.GetComponent<EnemyScore> ();
+		score.self = this.self;
 	}
 
 	void Update ()
@@ -96,6 +99,7 @@ public class HeatSeekingEnemy : MonoBehaviour
 	private void Death ()
 	{
 		dying = true;
+		score.createScore ();
 		death.Death (ren, deathSpinMin, deathSpinMax);
 	}
 }

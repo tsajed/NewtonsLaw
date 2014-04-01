@@ -1,22 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyScore : MonoBehaviour 
-{
 
-	public GameObject scorePointsUI; // A prefab of 100 that appears when the enemy dies.
+public class EnemyScore : MonoBehaviour
+{
+	public GameObject scorePointsUI; // A prefab that appears when the enemy dies.
 	public GenericEnemy self;
+
 	private PlayerScore scoreBoard;	// Reference to the Score Script
 
-	// Use this for initialization
-	void Start () 
+	void Start () // Use this for initialization
 	{
 		scoreBoard = GameObject.Find("Score").GetComponent<PlayerScore>();
-
 	}
 
-	// Create the Score above the game object
-	public void createScore()
+	public void createScore () // Create the Score above the game object
 	{
 		// Increase the score by so and so points
 		scoreBoard.score += self.score;

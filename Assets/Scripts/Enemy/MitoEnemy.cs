@@ -37,6 +37,7 @@ public class MitoEnemy : MonoBehaviour
 	private SpriteRenderer ren;
 	private EnemyDeath death;
 	private EnemyMovement move;
+	private EnemyScore score;
 
 	void Start () 
 	{
@@ -50,6 +51,8 @@ public class MitoEnemy : MonoBehaviour
 		move = this.GetComponent<EnemyMovement> ();
 		move.location = this.transform;
 		move.self = this.self;
+		score = this.GetComponent<EnemyScore> ();
+		score.self = this.self;
 
 		shootCooldown = shootingRate; // Prevent spawning immediately
 	}
@@ -134,6 +137,7 @@ public class MitoEnemy : MonoBehaviour
 	{
 		if (this.parent) { this.parent.spawns++; }
 		dying = true;
+		score.createScore ();
 		death.Death (ren, deathSpinMin, deathSpinMax);
 	}
 

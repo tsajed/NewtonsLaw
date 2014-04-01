@@ -12,7 +12,6 @@ public class ExplodingEnemy : MonoBehaviour
 
 	public float deathSpinMin = -100f; // A value to give the minimum amount of Torque when dying
 	public float deathSpinMax = 100f;	// A value to give the maximum amount of Torque when dying
-	public GameObject scorePointsUI; // A prefab of 100 that appears when the enemy dies.
 
 	/// <summary>
 	/// Projectile prefab for shooting
@@ -34,8 +33,8 @@ public class ExplodingEnemy : MonoBehaviour
 	private EnemyDeath death;
 	private EnemyMovement move;
 	private EnemyShoot shoot;
+	private EnemyScore score;
 	private SpriteRenderer ren;	// Reference to the sprite renderer.
-	private PlayerScore scoreBoard;	// Reference to the Score Script
 	private bool dying = false;
 
 	void Start () // Use this for initialization
@@ -57,7 +56,8 @@ public class ExplodingEnemy : MonoBehaviour
 		//shoot.sound = this.laser;
 		shoot.shotPrefab = this.shotPrefab;
 		shoot.shootingRate = this.shootingRate;
-		scoreBoard = GameObject.Find("Score").GetComponent<PlayerScore>();
+		score = this.GetComponent<EnemyScore> ();
+		score.self = this.self;
 	}
 
 	void Update ()
@@ -93,18 +93,15 @@ public class ExplodingEnemy : MonoBehaviour
 		if (coll.gameObject.tag == "Enemy")
 		{
 			Death (); // explode
-			createScore ();
 		}
 		else if (coll.gameObject.tag == "Player")
 		{
 			// hurt self instead of player
 			Death (); // explode
-			createScore ();
 		}
 		else if (coll.gameObject.tag == "Bullet")
 		{
 			Death (); // explode
-			createScore();
 		}
 	}
 
@@ -119,21 +116,11 @@ public class ExplodingEnemy : MonoBehaviour
 		}
 	}
 
-	private void createScore()
-	{
-		// Increase the score by so and so points
-		scoreBoard.score += self.score;
-
-		// Instantiate the score points prefab at this point.
-		GameObject scorePoints = (GameObject) Instantiate(scorePointsUI, Vector3.zero, Quaternion.identity);
-		scorePoints.transform.parent = gameObject.transform;
-		scorePoints.transform.localPosition = new Vector3(0, 1.5f, 0);
-	}
-
 	private void Death ()
 	{
 		if (!shoot.child) { shoot.TryShoot (target, 0); } // explode
 		dying = true;
+		score.createScore ();
 		death.Death (ren, deathSpinMin, deathSpinMax);
 	}
 }

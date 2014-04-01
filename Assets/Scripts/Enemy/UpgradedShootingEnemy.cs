@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+
 public class UpgradedShootingEnemy : MonoBehaviour
 {
 	public float speed = 15;
@@ -29,6 +30,7 @@ public class UpgradedShootingEnemy : MonoBehaviour
 	private EnemyDeath death;
 	private EnemyMovement move;
 	private EnemyShoot shoot;
+	private EnemyScore score;
 	private bool dying = false;
 
 	void Start () // initialization
@@ -36,8 +38,7 @@ public class UpgradedShootingEnemy : MonoBehaviour
 		self = new GenericEnemy (this.gameObject, health, speed, damage);
 		ren = transform.Find ("body").GetComponent<SpriteRenderer> ();
 
-		if (!target) 
-			target = GameObject.FindWithTag ("Player").transform;
+		if (!target) { target = GameObject.FindWithTag ("Player").transform; }
 
 		death = this.GetComponent<EnemyDeath> ();
 		death.die = this;
@@ -48,6 +49,8 @@ public class UpgradedShootingEnemy : MonoBehaviour
 		shoot.sound = this.laser;
 		shoot.shotPrefab = this.shotPrefab;
 		shoot.shootingRate = this.shootingRate;
+		score = this.GetComponent<EnemyScore> ();
+		score.self = this.self;
 	}
 
 	void Update ()
@@ -61,11 +64,10 @@ public class UpgradedShootingEnemy : MonoBehaviour
 	{
 		if (dying) { return; }
 
-		if (self.health <= 0)
-			Death ();
+		if (self.health <= 0) { Death (); }
 
 		if (Vector2.Distance (target.transform.position, this.transform.position) < 15)
-			return;
+		{ return; }
 
 		move.TryMove (target);
 	}
@@ -78,7 +80,7 @@ public class UpgradedShootingEnemy : MonoBehaviour
 		{
 			if (coll.gameObject.name.Contains ("Enemy 2") ||
 				coll.gameObject.name.Contains ("Enemy Mito"))
-				Death ();
+			{ Death (); }
 		}
 		else if (coll.gameObject.tag == "Player")
 		{
@@ -88,15 +90,16 @@ public class UpgradedShootingEnemy : MonoBehaviour
 		else if (coll.gameObject.tag == "Bullet")
 		{
 			var projectile = coll.gameObject.GetComponent<EnemyProjectile> ();
-			if (projectile == null 
+			if (projectile == null
 				|| (projectile != null && projectile.parent != this.gameObject))
-				Death ();
+			{ Death (); }
 		}
 	}
 
 	private void Death ()
 	{
 		dying = true;
+		score.createScore ();
 		death.Death (ren, deathSpinMin, deathSpinMax);
 	}
 }

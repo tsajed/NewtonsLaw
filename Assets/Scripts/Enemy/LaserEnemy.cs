@@ -30,6 +30,7 @@ public class LaserEnemy : MonoBehaviour
 	private EnemyDeath death;
 	private EnemyMovement move;
 	private EnemyShoot shoot;
+	private EnemyScore score;
 	private bool dying = false;
 
 	void Start () // Use this for initialization
@@ -37,8 +38,7 @@ public class LaserEnemy : MonoBehaviour
 		self = new GenericEnemy (this.gameObject, health, speed, damage);
 		ren = transform.Find ("body").GetComponent<SpriteRenderer> ();
 
-		if (!target)
-			target = GameObject.FindWithTag ("Player").transform;
+		if (!target) { target = GameObject.FindWithTag ("Player").transform; }
 
 		death = this.GetComponent<EnemyDeath> ();
 		death.die = this;
@@ -49,22 +49,22 @@ public class LaserEnemy : MonoBehaviour
 		shoot.sound = this.laser;
 		shoot.shotPrefab = this.shotPrefab;
 		shoot.shootingRate = this.shootingRate;
+		score = this.GetComponent<EnemyScore> ();
+		score.self = this.self;
 	}
 
 	void Update ()
 	{
 		if (dying) { return; }
 
-		if (!shoot.child)
-			shoot.TryShoot (target, 0);
+		if (!shoot.child) { shoot.TryShoot (target, 0); }
 	}
 
 	void FixedUpdate ()
 	{
 		if (dying) { return; }
 
-		if (self.health <= 0)
-			Death ();
+		if (self.health <= 0) { Death (); }
 
 		move.TryMove (target);
 	}
@@ -77,7 +77,7 @@ public class LaserEnemy : MonoBehaviour
 		{
 			if (coll.gameObject.name.Contains ("Enemy 2") ||
 				coll.gameObject.name.Contains ("Enemy Mito"))
-				Death ();
+			{ Death (); }
 		}
 		else if (coll.gameObject.tag == "Player")
 		{
@@ -93,6 +93,7 @@ public class LaserEnemy : MonoBehaviour
 	private void Death ()
 	{
 		dying = true;
+		score.createScore ();
 		death.Death (ren, deathSpinMin, deathSpinMax);
 	}
 }

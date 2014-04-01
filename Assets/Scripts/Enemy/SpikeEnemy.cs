@@ -19,28 +19,29 @@ public class SpikeEnemy : MonoBehaviour
 	private SpriteRenderer ren;
 	private EnemyDeath death;
 	private EnemyMovement move;
+	private EnemyScore score;
 
 	void Start () 
 	{
 		self = new GenericEnemy (this.gameObject, health, speed, damage);
 		ren = transform.Find ("body").GetComponent<SpriteRenderer> ();
 
-		if (!target)
-			target = GameObject.FindWithTag ("Player").transform;
+		if (!target) { target = GameObject.FindWithTag ("Player").transform; }
 
 		death = this.GetComponent<EnemyDeath> ();
 		death.die = this;
 		move = this.GetComponent<EnemyMovement> ();
 		move.location = this.transform;
 		move.self = this.self;
+		score = this.GetComponent<EnemyScore> ();
+		score.self = this.self;
 	}
 
 	void FixedUpdate ()
 	{
 		if (dying) { return; }
 
-		if (self.health <= 0)
-			Death ();
+		if (self.health <= 0) { Death (); }
 
 		move.TryMove (target);
 	}
@@ -67,6 +68,7 @@ public class SpikeEnemy : MonoBehaviour
 	private void Death ()
 	{
 		dying = true;
+		score.createScore ();
 		death.Death (ren, deathSpinMin, deathSpinMax);
 	}
 }

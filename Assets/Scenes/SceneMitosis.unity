@@ -3120,6 +3120,7 @@ GameObject:
   - 4: {fileID: 1061023459}
   - 212: {fileID: 1061023458}
   - 95: {fileID: 1061023457}
+  - 114: {fileID: 1061023460}
   m_Layer: 0
   m_Name: Newton
   m_TagString: Untagged
@@ -3173,10 +3174,22 @@ Transform:
   m_PrefabInternal: {fileID: 1697479748}
   m_GameObject: {fileID: 1061023456}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -32.770359, y: -22.8074379, z: 9.93847656}
+  m_LocalPosition: {x: -26.3305168, y: -16.1570969, z: -.0615234375}
   m_LocalScale: {x: 10.698905, y: 10.6989298, z: 31.6934814}
   m_Children: []
-  m_Father: {fileID: 1897948438}
+  m_Father: {fileID: 0}
+--- !u!114 &1061023460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: b3a73ee8dc28245428fa516888d66eed,
+    type: 2}
+  m_PrefabInternal: {fileID: 1697479748}
+  m_GameObject: {fileID: 1061023456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf39f84bf833b5740993c2f2f3c2b053, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1263419665
 GameObject:
   m_ObjectHideFlags: 0
@@ -3560,19 +3573,19 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1897948438}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 400000, guid: b3a73ee8dc28245428fa516888d66eed, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -32.770359
+      value: -26.3305168
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b3a73ee8dc28245428fa516888d66eed, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -22.8074379
+      value: -16.1570969
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b3a73ee8dc28245428fa516888d66eed, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 9.93847656
+      value: -.0615234375
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b3a73ee8dc28245428fa516888d66eed, type: 2}
       propertyPath: m_LocalRotation.x
@@ -5236,7 +5249,6 @@ Transform:
   m_LocalPosition: {x: 6.43984222, y: 6.65034008, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1061023459}
   - {fileID: 240062944}
   m_Father: {fileID: 0}
 --- !u!114 &1897948439

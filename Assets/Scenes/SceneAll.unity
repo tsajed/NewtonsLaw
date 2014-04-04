@@ -6659,8 +6659,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgrounds:
   - {fileID: 1352875308}
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 1759405646}
   - {fileID: 1805282303}
   - {fileID: 908225194}

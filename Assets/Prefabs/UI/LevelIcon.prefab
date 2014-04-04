@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b661d1067c92f43749c6fcca4e92a6a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelScoreBoard: {fileID: 400022, guid: b94e1a048cfb54520aa438c2fc3c4f55, type: 2}
+  scoreBoardPrefab: {fileID: 400022, guid: b94e1a048cfb54520aa438c2fc3c4f55, type: 2}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -5549,7 +5549,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_SortingLayerID: 0
   m_Sprite: {fileID: 21300000, guid: c3e670d850a09a34e8e56bc75be2ba04, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: .686274529}
 --- !u!4 &687154388
 Transform:
   m_ObjectHideFlags: 0
@@ -5558,7 +5558,7 @@ Transform:
   m_GameObject: {fileID: 687154386}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.40852356, y: -5.87477493, z: 0}
-  m_LocalScale: {x: 8, y: 8, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!1 &704075336
@@ -5949,7 +5949,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_SortingLayerID: 0
   m_Sprite: {fileID: 21300000, guid: 829ccff63ccb51d499d88f5b051c06af, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: .850980401}
 --- !u!4 &915521945
 Transform:
   m_ObjectHideFlags: 0
@@ -5958,7 +5958,7 @@ Transform:
   m_GameObject: {fileID: 915521943}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -.247543335, y: -1.10240936, z: 0}
-  m_LocalScale: {x: 8, y: 8, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!1 &964356251
@@ -8370,7 +8370,7 @@ SpriteRenderer:
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_SortingLayerID: 0
   m_Sprite: {fileID: 21300000, guid: 326d099366ef1144d8996c1a3a2ad7ee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -10200,7 +10200,7 @@ Transform:
   m_GameObject: {fileID: 2058381645}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -.765716553, y: -.986427307, z: 0}
-  m_LocalScale: {x: 8, y: 8, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!212 &2058381647
@@ -10225,7 +10225,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_SortingLayerID: 0
   m_Sprite: {fileID: 21300000, guid: 128b564725a173e46a109db0bcc45980, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: .501960814}
 --- !u!1 &2063261993
 GameObject:
   m_ObjectHideFlags: 0

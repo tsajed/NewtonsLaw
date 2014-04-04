@@ -1529,6 +1529,7 @@ GameObject:
   - 114: {fileID: 407812144}
   - 114: {fileID: 407812143}
   - 114: {fileID: 407812146}
+  - 114: {fileID: 407812147}
   m_Layer: 0
   m_Name: Enemy 3
   m_TagString: Enemy
@@ -1567,7 +1568,6 @@ MonoBehaviour:
   target: {fileID: 0}
   deathSpinMin: -100
   deathSpinMax: 100
-  scorePointsUI: {fileID: 100000, guid: 2fc60e8c1970746ffa4a93c447a3ae5f, type: 2}
 --- !u!58 &407812141
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1578,7 +1578,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Radius: .5
+  m_Radius: .699999988
   m_Center: {x: 0, y: 0}
 --- !u!50 &407812142
 Rigidbody2D:
@@ -1648,6 +1648,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   location: {fileID: 0}
   stunCooldown: 0
+--- !u!114 &407812147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400008, guid: d2082a82b3108402796533fcbffd318b,
+    type: 2}
+  m_PrefabInternal: {fileID: 977047120}
+  m_GameObject: {fileID: 407812138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28f3c75649be9439d88b470188ba10fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scorePointsUI: {fileID: 100000, guid: 2fc60e8c1970746ffa4a93c447a3ae5f, type: 2}
 --- !u!1001 &423295918
 Prefab:
   m_ObjectHideFlags: 0
@@ -1802,7 +1815,7 @@ Transform:
   m_GameObject: {fileID: 509550362}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.23214722, y: .421266556, z: 0}
-  m_LocalScale: {x: 24, y: 24, z: 1}
+  m_LocalScale: {x: 20, y: 20, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!114 &509550365
@@ -2009,6 +2022,7 @@ GameObject:
   - 114: {fileID: 783472371}
   - 114: {fileID: 783472374}
   - 114: {fileID: 783472373}
+  - 114: {fileID: 783472375}
   m_Layer: 0
   m_Name: Enemy 2
   m_TagString: Enemy
@@ -2127,6 +2141,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   die: {fileID: 0}
+--- !u!114 &783472375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400008, guid: ff5a55bdc9b464748b7d8f7fb3437ec6,
+    type: 2}
+  m_PrefabInternal: {fileID: 423295918}
+  m_GameObject: {fileID: 783472366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28f3c75649be9439d88b470188ba10fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scorePointsUI: {fileID: 100000, guid: 2fc60e8c1970746ffa4a93c447a3ae5f, type: 2}
 --- !u!1 &799650072
 GameObject:
   m_ObjectHideFlags: 0
@@ -2253,6 +2280,7 @@ GameObject:
   - 114: {fileID: 812643109}
   - 114: {fileID: 812643108}
   - 114: {fileID: 812643107}
+  - 114: {fileID: 812643110}
   m_Layer: 0
   m_Name: Enemy 1
   m_TagString: Enemy
@@ -2292,7 +2320,10 @@ MonoBehaviour:
   laser: {fileID: 8300000, guid: fb2295e97ed44417eb23897a64de48dd, type: 3}
   deathSpinMin: -100
   deathSpinMax: 100
-  shotPrefab: {fileID: 400000, guid: 44bb5953b5f8a3c4997d4fcd0997f639, type: 2}
+  shotPrefab:
+  - {fileID: 100000, guid: 44bb5953b5f8a3c4997d4fcd0997f639, type: 2}
+  - {fileID: 100000, guid: fda5d43e4c00bf74fb441bfd3926bcf1, type: 2}
+  - {fileID: 100000, guid: 756510b7da15b754788e3ee2a1bad3b7, type: 2}
   shootingRate: 1
 --- !u!58 &812643102
 CircleCollider2D:
@@ -2304,7 +2335,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Radius: .5
+  m_Radius: .699999988
   m_Center: {x: 0, y: 0}
 --- !u!50 &812643103
 Rigidbody2D:
@@ -2418,7 +2449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 071781f0bf15e5d45aed48e7cd1869c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotPrefab: {fileID: 0}
+  shotPrefab: []
   shootingRate: 1
   sound: {fileID: 0}
   child: {fileID: 0}
@@ -2449,6 +2480,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   location: {fileID: 0}
   stunCooldown: 0
+--- !u!114 &812643110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400010, guid: bf996bee1943548c181118a7539c974d,
+    type: 2}
+  m_PrefabInternal: {fileID: 356469792}
+  m_GameObject: {fileID: 812643099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28f3c75649be9439d88b470188ba10fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scorePointsUI: {fileID: 100000, guid: 2fc60e8c1970746ffa4a93c447a3ae5f, type: 2}
 --- !u!1 &815584622
 GameObject:
   m_ObjectHideFlags: 0
@@ -2804,6 +2848,7 @@ GameObject:
   - 114: {fileID: 1024072089}
   - 114: {fileID: 1024072088}
   - 114: {fileID: 1024072091}
+  - 114: {fileID: 1024072092}
   m_Layer: 0
   m_Name: Enemy 3
   m_TagString: Enemy
@@ -2842,7 +2887,6 @@ MonoBehaviour:
   target: {fileID: 0}
   deathSpinMin: -100
   deathSpinMax: 100
-  scorePointsUI: {fileID: 100000, guid: 2fc60e8c1970746ffa4a93c447a3ae5f, type: 2}
 --- !u!58 &1024072086
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2853,7 +2897,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Radius: .5
+  m_Radius: .699999988
   m_Center: {x: 0, y: 0}
 --- !u!50 &1024072087
 Rigidbody2D:
@@ -2923,6 +2967,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   location: {fileID: 0}
   stunCooldown: 0
+--- !u!114 &1024072092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400008, guid: d2082a82b3108402796533fcbffd318b,
+    type: 2}
+  m_PrefabInternal: {fileID: 363928695}
+  m_GameObject: {fileID: 1024072083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28f3c75649be9439d88b470188ba10fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scorePointsUI: {fileID: 100000, guid: 2fc60e8c1970746ffa4a93c447a3ae5f, type: 2}
 --- !u!1 &1069780334
 GameObject:
   m_ObjectHideFlags: 0
@@ -3063,6 +3120,7 @@ GameObject:
   - 114: {fileID: 1124769832}
   - 114: {fileID: 1124769835}
   - 114: {fileID: 1124769834}
+  - 114: {fileID: 1124769836}
   m_Layer: 0
   m_Name: Enemy 2
   m_TagString: Enemy
@@ -3181,6 +3239,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   die: {fileID: 0}
+--- !u!114 &1124769836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400008, guid: ff5a55bdc9b464748b7d8f7fb3437ec6,
+    type: 2}
+  m_PrefabInternal: {fileID: 3273287}
+  m_GameObject: {fileID: 1124769827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28f3c75649be9439d88b470188ba10fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scorePointsUI: {fileID: 100000, guid: 2fc60e8c1970746ffa4a93c447a3ae5f, type: 2}
 --- !u!1 &1180627135
 GameObject:
   m_ObjectHideFlags: 0
@@ -3196,6 +3267,7 @@ GameObject:
   - 114: {fileID: 1180627141}
   - 114: {fileID: 1180627140}
   - 114: {fileID: 1180627143}
+  - 114: {fileID: 1180627144}
   m_Layer: 0
   m_Name: Enemy 3
   m_TagString: Enemy
@@ -3221,7 +3293,6 @@ MonoBehaviour:
   target: {fileID: 0}
   deathSpinMin: -100
   deathSpinMax: 100
-  scorePointsUI: {fileID: 100000, guid: 2fc60e8c1970746ffa4a93c447a3ae5f, type: 2}
 --- !u!58 &1180627137
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3232,7 +3303,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Radius: .5
+  m_Radius: .699999988
   m_Center: {x: 0, y: 0}
 --- !u!50 &1180627138
 Rigidbody2D:
@@ -3315,6 +3386,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   location: {fileID: 0}
   stunCooldown: 0
+--- !u!114 &1180627144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400008, guid: d2082a82b3108402796533fcbffd318b,
+    type: 2}
+  m_PrefabInternal: {fileID: 966595631}
+  m_GameObject: {fileID: 1180627135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28f3c75649be9439d88b470188ba10fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scorePointsUI: {fileID: 100000, guid: 2fc60e8c1970746ffa4a93c447a3ae5f, type: 2}
 --- !u!1 &1196111362
 GameObject:
   m_ObjectHideFlags: 0
@@ -3353,7 +3437,7 @@ SpriteRenderer:
   m_SortingOrder: -3
   m_SortingLayerID: 0
   m_Sprite: {fileID: 21300000, guid: c3e670d850a09a34e8e56bc75be2ba04, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: .768627465}
 --- !u!4 &1196111364
 Transform:
   m_ObjectHideFlags: 0
@@ -3362,7 +3446,7 @@ Transform:
   m_GameObject: {fileID: 1196111362}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.72870636, y: .189800262, z: 0}
-  m_LocalScale: {x: 12, y: 12, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!1 &1235479392
@@ -3648,6 +3732,7 @@ GameObject:
   - 114: {fileID: 1347995691}
   - 114: {fileID: 1347995690}
   - 114: {fileID: 1347995689}
+  - 114: {fileID: 1347995692}
   m_Layer: 0
   m_Name: Enemy 1
   m_TagString: Enemy
@@ -3687,7 +3772,10 @@ MonoBehaviour:
   laser: {fileID: 8300000, guid: fb2295e97ed44417eb23897a64de48dd, type: 3}
   deathSpinMin: -100
   deathSpinMax: 100
-  shotPrefab: {fileID: 400000, guid: 44bb5953b5f8a3c4997d4fcd0997f639, type: 2}
+  shotPrefab:
+  - {fileID: 100000, guid: 44bb5953b5f8a3c4997d4fcd0997f639, type: 2}
+  - {fileID: 100000, guid: fda5d43e4c00bf74fb441bfd3926bcf1, type: 2}
+  - {fileID: 100000, guid: 756510b7da15b754788e3ee2a1bad3b7, type: 2}
   shootingRate: 1
 --- !u!58 &1347995684
 CircleCollider2D:
@@ -3699,7 +3787,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Radius: .5
+  m_Radius: .699999988
   m_Center: {x: 0, y: 0}
 --- !u!50 &1347995685
 Rigidbody2D:
@@ -3813,7 +3901,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 071781f0bf15e5d45aed48e7cd1869c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotPrefab: {fileID: 0}
+  shotPrefab: []
   shootingRate: 1
   sound: {fileID: 0}
   child: {fileID: 0}
@@ -3844,6 +3932,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   location: {fileID: 0}
   stunCooldown: 0
+--- !u!114 &1347995692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400010, guid: bf996bee1943548c181118a7539c974d,
+    type: 2}
+  m_PrefabInternal: {fileID: 462524443}
+  m_GameObject: {fileID: 1347995681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28f3c75649be9439d88b470188ba10fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scorePointsUI: {fileID: 100000, guid: 2fc60e8c1970746ffa4a93c447a3ae5f, type: 2}
 --- !u!1 &1374981294
 GameObject:
   m_ObjectHideFlags: 0
@@ -3882,7 +3983,7 @@ SpriteRenderer:
   m_SortingOrder: -4
   m_SortingLayerID: 0
   m_Sprite: {fileID: 21300000, guid: 128b564725a173e46a109db0bcc45980, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: .525490224}
 --- !u!4 &1374981296
 Transform:
   m_ObjectHideFlags: 0
@@ -3891,7 +3992,7 @@ Transform:
   m_GameObject: {fileID: 1374981294}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.1408062, y: -1.4549675, z: 0}
-  m_LocalScale: {x: 12, y: 12, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!1 &1404253767
@@ -5319,6 +5420,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 840164793}
+  - {fileID: 1893923318}
   m_Father: {fileID: 0}
 --- !u!114 &1783346460
 MonoBehaviour:
@@ -5511,7 +5613,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: 9
   maxHealth: 9
-  renderer: {fileID: 0}
+  ren: {fileID: 0}
   sprites:
   - {fileID: 21300000, guid: ee22ff41d1dc88a4994ca639d2de9e94, type: 3}
   - {fileID: 21300000, guid: 59c525c9c5a5c514b97a1b2549661c23, type: 3}
@@ -6779,6 +6881,68 @@ Prefab:
   m_RootGameObject: {fileID: 1268649228}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1 &1893923316
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100004, guid: 6b9e045bf49684906aa95f1cb42dff45, type: 2}
+  m_PrefabInternal: {fileID: 645698549}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1893923318}
+  - 120: {fileID: 1893923317}
+  m_Layer: 0
+  m_Name: LineRenderer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!120 &1893923317
+LineRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 12000000, guid: 6b9e045bf49684906aa95f1cb42dff45,
+    type: 2}
+  m_PrefabInternal: {fileID: 645698549}
+  m_GameObject: {fileID: 1893923316}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
+  m_Positions:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  m_Parameters:
+    startWidth: 1
+    endWidth: 1
+    m_StartColor:
+      serializedVersion: 2
+      rgba: 4294967295
+    m_EndColor:
+      serializedVersion: 2
+      rgba: 4294967295
+  m_UseWorldSpace: 1
+--- !u!4 &1893923318
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400004, guid: 6b9e045bf49684906aa95f1cb42dff45, type: 2}
+  m_PrefabInternal: {fileID: 645698549}
+  m_GameObject: {fileID: 1893923316}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.21593475, y: -5.50820589, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1783346459}
 --- !u!1001 &2018824082
 Prefab:
   m_ObjectHideFlags: 0
@@ -6834,6 +6998,7 @@ GameObject:
   - 114: {fileID: 2125695802}
   - 114: {fileID: 2125695801}
   - 114: {fileID: 2125695804}
+  - 114: {fileID: 2125695805}
   m_Layer: 0
   m_Name: Enemy 3
   m_TagString: Enemy
@@ -6859,7 +7024,6 @@ MonoBehaviour:
   target: {fileID: 0}
   deathSpinMin: -100
   deathSpinMax: 100
-  scorePointsUI: {fileID: 100000, guid: 2fc60e8c1970746ffa4a93c447a3ae5f, type: 2}
 --- !u!58 &2125695798
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -6870,7 +7034,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Radius: .5
+  m_Radius: .699999988
   m_Center: {x: 0, y: 0}
 --- !u!50 &2125695799
 Rigidbody2D:
@@ -6953,6 +7117,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   location: {fileID: 0}
   stunCooldown: 0
+--- !u!114 &2125695805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400008, guid: d2082a82b3108402796533fcbffd318b,
+    type: 2}
+  m_PrefabInternal: {fileID: 2018824082}
+  m_GameObject: {fileID: 2125695796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28f3c75649be9439d88b470188ba10fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scorePointsUI: {fileID: 100000, guid: 2fc60e8c1970746ffa4a93c447a3ae5f, type: 2}
 --- !u!1 &2134238311
 GameObject:
   m_ObjectHideFlags: 0

@@ -322,7 +322,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_SortingLayerID: 0
   m_Sprite: {fileID: 21300000, guid: c3e670d850a09a34e8e56bc75be2ba04, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: .541176498}
 --- !u!4 &198271112
 Transform:
   m_ObjectHideFlags: 0
@@ -331,7 +331,7 @@ Transform:
   m_GameObject: {fileID: 198271110}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.36474609, y: -5.4806366, z: 0}
-  m_LocalScale: {x: 13, y: 13, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!1 &234297837
@@ -5615,7 +5615,7 @@ Transform:
   m_GameObject: {fileID: 1497372829}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.88451385, y: -1.67749023, z: 0}
-  m_LocalScale: {x: 32, y: 32, z: 1}
+  m_LocalScale: {x: 24, y: 24, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!1 &1523075213
@@ -6981,7 +6981,7 @@ Transform:
   m_GameObject: {fileID: 1615863782}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.47503662, y: -2.15003967, z: 0}
-  m_LocalScale: {x: 13, y: 13, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!212 &1615863784
@@ -7006,7 +7006,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_SortingLayerID: 0
   m_Sprite: {fileID: 21300000, guid: 128b564725a173e46a109db0bcc45980, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: .741176486}
 --- !u!1 &1623795441
 GameObject:
   m_ObjectHideFlags: 0
@@ -7058,7 +7058,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1642456923}
   m_LocalRotation: {x: 0, y: 0, z: .843391478, w: .537299573}
-  m_LocalPosition: {x: -52.9583282, y: -71.8592682, z: 0}
+  m_LocalPosition: {x: -50.6456757, y: -61.4523087, z: 0}
   m_LocalScale: {x: 15, y: 15, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -7313,7 +7313,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveForce: 365
   maxSpeed: 5
-  perimeter: 78.5
   stunCooldown: 0
 --- !u!82 &1783346464
 AudioSource:

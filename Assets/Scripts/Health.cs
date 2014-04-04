@@ -48,7 +48,7 @@ public class Health : MonoBehaviour
 		//int loaded = Application.loadedLevel;
 		//restart level when player dies.
 		//Application.LoadLevel(loaded);
-		Time.timeScale = 0;
+		//Time.timeScale = 0;
 		onDeath = true;
 	}
 

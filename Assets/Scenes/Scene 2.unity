@@ -4315,6 +4315,7 @@ GameObject:
   - 114: {fileID: 783472371}
   - 114: {fileID: 783472374}
   - 114: {fileID: 783472373}
+  - 114: {fileID: 783472375}
   m_Layer: 0
   m_Name: Enemy 2
   m_TagString: Enemy
@@ -4433,6 +4434,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   die: {fileID: 0}
+--- !u!114 &783472375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400008, guid: ff5a55bdc9b464748b7d8f7fb3437ec6,
+    type: 2}
+  m_PrefabInternal: {fileID: 423295918}
+  m_GameObject: {fileID: 783472366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28f3c75649be9439d88b470188ba10fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scorePointsUI: {fileID: 100000, guid: 2fc60e8c1970746ffa4a93c447a3ae5f, type: 2}
 --- !u!1 &812643099
 GameObject:
   m_ObjectHideFlags: 0
@@ -4450,6 +4464,7 @@ GameObject:
   - 114: {fileID: 812643109}
   - 114: {fileID: 812643108}
   - 114: {fileID: 812643107}
+  - 114: {fileID: 812643110}
   m_Layer: 0
   m_Name: Enemy 1
   m_TagString: Enemy
@@ -4649,6 +4664,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   location: {fileID: 0}
   stunCooldown: 0
+--- !u!114 &812643110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400010, guid: bf996bee1943548c181118a7539c974d,
+    type: 2}
+  m_PrefabInternal: {fileID: 356469792}
+  m_GameObject: {fileID: 812643099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28f3c75649be9439d88b470188ba10fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scorePointsUI: {fileID: 100000, guid: 2fc60e8c1970746ffa4a93c447a3ae5f, type: 2}
 --- !u!1 &815584622
 GameObject:
   m_ObjectHideFlags: 0
@@ -4735,7 +4763,8 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11400006, guid: cd34c38ce3e5f44aab7f4d3ad9563bf0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: cd34c38ce3e5f44aab7f4d3ad9563bf0, type: 2}
   m_RootGameObject: {fileID: 121658936}
   m_IsPrefabParent: 0
@@ -5497,6 +5526,7 @@ GameObject:
   - 114: {fileID: 1124769832}
   - 114: {fileID: 1124769835}
   - 114: {fileID: 1124769834}
+  - 114: {fileID: 1124769836}
   m_Layer: 0
   m_Name: Enemy 2
   m_TagString: Enemy
@@ -5615,6 +5645,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   die: {fileID: 0}
+--- !u!114 &1124769836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400008, guid: ff5a55bdc9b464748b7d8f7fb3437ec6,
+    type: 2}
+  m_PrefabInternal: {fileID: 3273287}
+  m_GameObject: {fileID: 1124769827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28f3c75649be9439d88b470188ba10fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scorePointsUI: {fileID: 100000, guid: 2fc60e8c1970746ffa4a93c447a3ae5f, type: 2}
 --- !u!1 &1161600495
 GameObject:
   m_ObjectHideFlags: 0
@@ -7069,6 +7112,7 @@ GameObject:
   - 114: {fileID: 1347995691}
   - 114: {fileID: 1347995690}
   - 114: {fileID: 1347995689}
+  - 114: {fileID: 1347995692}
   m_Layer: 0
   m_Name: Enemy 1
   m_TagString: Enemy
@@ -7268,6 +7312,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   location: {fileID: 0}
   stunCooldown: 0
+--- !u!114 &1347995692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400010, guid: bf996bee1943548c181118a7539c974d,
+    type: 2}
+  m_PrefabInternal: {fileID: 462524443}
+  m_GameObject: {fileID: 1347995681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28f3c75649be9439d88b470188ba10fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scorePointsUI: {fileID: 100000, guid: 2fc60e8c1970746ffa4a93c447a3ae5f, type: 2}
 --- !u!1 &1374981294
 GameObject:
   m_ObjectHideFlags: 0
@@ -9142,6 +9199,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1969182359}
   - 132: {fileID: 1969182358}
+  - 114: {fileID: 1969182360}
   - 114: {fileID: 1969182357}
   m_Layer: 0
   m_Name: 'Time:'
@@ -9153,16 +9211,15 @@ GameObject:
 --- !u!114 &1969182357
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400006, guid: cd34c38ce3e5f44aab7f4d3ad9563bf0,
-    type: 2}
-  m_PrefabInternal: {fileID: 816688972}
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1969182356}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dfd116ec9c6204721a49959ae8a3e846, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 125
+  timer: 5
 --- !u!132 &1969182358
 GUIText:
   m_ObjectHideFlags: 0
@@ -9198,6 +9255,17 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 121658937}
+--- !u!114 &1969182360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1969182356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d7e0fb2fcf9448dcbcb7159968437d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1976653948
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c27da186e971e4fd2adf94accc64e69d
+guid: 1d1f44ba977934d7a81c30fb42e64183
 TextureImporter:
   serializedVersion: 2
   mipmaps:
@@ -24,9 +24,9 @@ TextureImporter:
   maxTextureSize: 1024
   textureSettings:
     filterMode: -1
-    aniso: 1
+    aniso: -1
     mipBias: -1
-    wrapMode: 1
+    wrapMode: -1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -44,15 +44,6 @@ TextureImporter:
     textureFormat: -2
     compressionQuality: 50
   spriteSheet:
-    sprites:
-    - name: titlecreditshover_0
-      rect:
-        serializedVersion: 2
-        x: 29
-        y: 90
-        width: 179
-        height: 38
-      alignment: 0
-      pivot: {x: .5, y: .5}
+    sprites: []
   spritePackingTag: 
   userData: 

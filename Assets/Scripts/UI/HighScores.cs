@@ -20,6 +20,10 @@ public class HighScores : MonoBehaviour {
     	ren.sprite = hoverSprite;
     }
 
+    void OnEnable() {
+    	ren.sprite = normalSprite;
+    }
+
     void OnMouseExit() {
     	ren.sprite = normalSprite;
     }
@@ -27,5 +31,6 @@ public class HighScores : MonoBehaviour {
     void OnMouseDown() {
     	startMenu.SetActive(false);
     	leaderBoard.SetActive(true);
+    	leaderBoard.transform.Find("Score Choices").gameObject.SetActive(true);
     }
 }

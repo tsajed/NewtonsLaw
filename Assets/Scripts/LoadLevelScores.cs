@@ -41,7 +41,9 @@ public class LoadLevelScores : MonoBehaviour
 					Transform level = Instantiate(levelPrefab, new Vector3(position.x + xPos[i], position.y + yPos, -0.1f), Quaternion.identity) as Transform;
 					level.name = "Level " + (index+1);
 					level.transform.parent = gameObject.transform;
-					level.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("LevelIcons/"+ "Scene1Icon") as Sprite;
+					SpriteRenderer ren = level.GetComponent<SpriteRenderer>();
+					ren.sprite = Resources.Load<Sprite>("LevelIcons/"+ "Scene1Icon") as Sprite;
+					level.GetComponent<BoxCollider2D>().size = ren.bounds.size;
 					++index;
 				}
 				else break;

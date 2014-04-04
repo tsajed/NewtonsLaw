@@ -18,7 +18,7 @@ public class BackgroundMenu : MonoBehaviour {
 		
 		startTime = Time.time;
 		journeyLength = Vector3.Distance(start, end);
-		InvokeRepeating("MovePlayer", 2, 15.0f);
+		//InvokeRepeating("MovePlayer", 2, 15.0f);
 	}
 	
 	// Update is called once per frame

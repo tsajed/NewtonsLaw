@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BackButton : MonoBehaviour {
+public class Button : MonoBehaviour {
 
 	public GameObject showUI;
 	public GameObject disableUI;

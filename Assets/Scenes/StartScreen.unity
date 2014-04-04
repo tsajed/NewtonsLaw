@@ -370,7 +370,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &161308041
 Transform:
   m_ObjectHideFlags: 0
@@ -709,7 +709,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 255115672}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.2598424, y: -6, z: 1}
+  m_LocalPosition: {x: -6.35984182, y: -5.67034006, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 270967625}
@@ -735,7 +735,7 @@ GUIText:
   m_Enabled: 1
   serializedVersion: 3
   m_Text: Back
-  m_Anchor: 1
+  m_Anchor: 0
   m_Alignment: 1
   m_PixelOffset: {x: 0, y: 0}
   m_LineSpacing: 1
@@ -1076,10 +1076,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 659228449}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c213c32dc5954c3883cb89abf87fc6f, type: 3}
+  m_Script: {fileID: 11500000, guid: 2e44c69429e134e469e3dfdad05092ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scores: {fileID: 699860575}
+  showUI: {fileID: 699860575}
+  disableUI: {fileID: 827376229}
 --- !u!1 &699846607
 GameObject:
   m_ObjectHideFlags: 0
@@ -1228,7 +1229,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 706645415}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.25984192, y: -6, z: 1}
+  m_LocalPosition: {x: -6.35984182, y: -5.67034006, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 699860576}
@@ -1254,7 +1255,7 @@ GUIText:
   m_Enabled: 1
   serializedVersion: 3
   m_Text: Back
-  m_Anchor: 1
+  m_Anchor: 0
   m_Alignment: 1
   m_PixelOffset: {x: 0, y: 0}
   m_LineSpacing: 1
@@ -1377,12 +1378,12 @@ GameObject:
   m_Component:
   - 4: {fileID: 827376230}
   m_Layer: 0
-  m_Name: ScoreChoices
+  m_Name: Score Choices
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &827376230
 Transform:
   m_ObjectHideFlags: 0
@@ -1822,7 +1823,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &985553316
 Transform:
   m_ObjectHideFlags: 0
@@ -2298,10 +2299,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1481563981}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c213c32dc5954c3883cb89abf87fc6f, type: 3}
+  m_Script: {fileID: 11500000, guid: 2e44c69429e134e469e3dfdad05092ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scores: {fileID: 270967624}
+  showUI: {fileID: 270967624}
+  disableUI: {fileID: 827376229}
 --- !u!1 &1503669261
 GameObject:
   m_ObjectHideFlags: 0
@@ -3416,7 +3418,7 @@ GameObject:
   - 132: {fileID: 2108992989}
   - 114: {fileID: 2108992988}
   m_Layer: 0
-  m_Name: Back Text
+  m_Name: Top Back Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3429,7 +3431,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2108992986}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.93984222, y: -6.3499999, z: 1}
+  m_LocalPosition: {x: -6.35984182, y: -5.67034006, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 827376230}
@@ -3455,7 +3457,7 @@ GUIText:
   m_Enabled: 1
   serializedVersion: 3
   m_Text: Back
-  m_Anchor: 1
+  m_Anchor: 0
   m_Alignment: 1
   m_PixelOffset: {x: 0, y: 0}
   m_LineSpacing: 1

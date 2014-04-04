@@ -9,6 +9,7 @@ public class Health : MonoBehaviour
 	public SpriteRenderer ren;
 	public Sprite[] sprites;
 	public AudioClip hurt;
+	public AudioClip death;
 	public bool canDie;
 	private bool onDeath = false;
 
@@ -42,7 +43,7 @@ public class Health : MonoBehaviour
 	private void die()
 	{
 		//TODO menus/GUI etc.
-		print("u ded");
+		AudioSource.PlayClipAtPoint(death, GameObject.Find("Main Camera").transform.position);
 		Time.timeScale = 0;
 		//Destroy (this.gameObject); //note that this causes errors currently as other scripts still try to reference the object.
 		//int loaded = Application.loadedLevel;

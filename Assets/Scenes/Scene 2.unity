@@ -4175,6 +4175,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 6b9e045bf49684906aa95f1cb42dff45, type: 2}
+      propertyPath: perimeter
+      value: 78.5
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 21200002, guid: 6b9e045bf49684906aa95f1cb42dff45, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6b9e045bf49684906aa95f1cb42dff45, type: 2}
@@ -8845,6 +8849,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveForce: 365
   maxSpeed: 5
+  perimeter: 78.5
   stunCooldown: 0
 --- !u!82 &1783346464
 AudioSource:

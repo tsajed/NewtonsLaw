@@ -5,6 +5,7 @@ public class PlayerMovement : MonoBehaviour
 {
 	public float moveForce = 365f;			// Amount of force added to move the player left and right.
 	public float maxSpeed = 5f;				// The fastest the player can travel in the x axis.
+	
 
 	public float stunCooldown = 0f;
 
@@ -48,6 +49,35 @@ public class PlayerMovement : MonoBehaviour
 		{
 			rigidbody2D.velocity = new Vector2 (rigidbody2D.velocity.x, -maxSpeed);
 		}
+
+
+
+		//Invisible walls
+		if (rigidbody2D.transform.position.x < -78.5)
+		{	
+			// player can't move
+			stunCooldown = 0.3f;
+			rigidbody2D.velocity = new Vector2 (maxSpeed+30, rigidbody2D.velocity.y);
+		}
+		else if (rigidbody2D.transform.position.x > 78.5)
+		{
+			stunCooldown = 0.3f;
+			rigidbody2D.velocity = new Vector2 (-maxSpeed-30, rigidbody2D.velocity.y);
+		}
+		if (rigidbody2D.transform.position.y < -78.5)
+		{
+			stunCooldown = 0.3f;
+			rigidbody2D.velocity = new Vector2 (rigidbody2D.velocity.x, maxSpeed+30);
+		}
+		else if (rigidbody2D.transform.position.y > 78.5)
+		{
+			stunCooldown = 0.3f;
+			rigidbody2D.velocity = new Vector2 (rigidbody2D.velocity.y, -maxSpeed-30);
+
+		}
+
+		// Wraparound, unused.
+		/**
 		if (rigidbody2D.transform.position.x < -76)
 		{
 			Vector3 tr = rigidbody2D.transform.position;
@@ -72,5 +102,6 @@ public class PlayerMovement : MonoBehaviour
 			tr.y -= 150;
 			rigidbody2D.transform.position = tr;
 		}
+		*/
 	}
 }

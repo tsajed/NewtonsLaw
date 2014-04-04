@@ -1,13 +1,28 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Timer : MonoBehaviour {
+[RequireComponent (typeof (SaveScoreLevel))]
+public class Timer : MonoBehaviour 
+{
 
 	public float timer = 200f;
 
-	void Update(){
+	private SaveScoreLevel saveScore;
+
+	void Awake() 
+	{
+		saveScore = this.GetComponent<SaveScoreLevel>();
+	}
+
+	void Update() 
+	{
 	  timer -= Time.deltaTime;
-	  if (timer < 0) timer = 0; // clamp the timer to zero
+	  if (timer <= 0) {
+	  	timer = 0; // clamp the timer to zero
+	  	saveScore.SaveLevelScore();
+	  	// Set the Score
+	  	//PlayerPrefs.SetInt(Application.loadedLevelName + "Score" + PlayerPrefs.GetInt(Ap), );
+	  }
 	  
 	  int seconds = (int) timer % 60; // calculate the seconds
 	  int minutes = (int) timer / 60; // calculate the minutes

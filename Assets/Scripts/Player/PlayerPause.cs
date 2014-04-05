@@ -35,7 +35,13 @@ public class PlayerPause : MonoBehaviour {
 		{
 			Debug.Log("Clicked the button with text");
 			Time.timeScale = 1;
-			Application.LoadLevel(Application.loadedLevel + 1);
+			
+			// Go to Next Stage
+			int index = Application.loadedLevel + 1;
+			if(index < Application.levelCount) 
+				Application.LoadLevel(index);
+		 	else
+		 		Application.LoadLevel("StartScreen");
 		}
 	}
 }

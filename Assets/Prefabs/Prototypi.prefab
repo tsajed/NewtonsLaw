@@ -378,6 +378,9 @@ MonoBehaviour:
   stasisEffect: 1
   pull: {fileID: 8300000, guid: b057f77c8893d486b88e37af7b4e9c9a, type: 3}
   push: {fileID: 8300000, guid: bcafb1acbb0b4430498a23e638330d6c, type: 3}
+  lineMaterials:
+  - {fileID: 2100000, guid: 660c34b0486b39d49a2c861a3f1b6561, type: 2}
+  - {fileID: 2100000, guid: 489b7203d49a5f644bddb4990924a0ad, type: 2}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -412,9 +415,7 @@ LineRenderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 660c34b0486b39d49a2c861a3f1b6561, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0

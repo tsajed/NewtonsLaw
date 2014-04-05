@@ -7,6 +7,7 @@ public class TractorBeam : MonoBehaviour
 	public bool stasisEffect;
 	public AudioClip pull;
 	public AudioClip push;
+	public Material[] lineMaterials;
 
 	private LineRenderer line;
 
@@ -28,15 +29,15 @@ public class TractorBeam : MonoBehaviour
 			var target_direction = new Vector2 (clickLoc.x - myLoc.x, clickLoc.y - myLoc.y);
 			target_direction.Normalize();
 			target_direction.Scale (new Vector2 (50, 50));
-
-			//if (Input.GetButton ("Fire2"))
-			//	Debug.DrawRay (myLoc, target_direction, Color.blue, 1);
-			//if (Input.GetButton ("Fire1"))
-			//	Debug.DrawRay (myLoc, target_direction, Color.green, 1);
+			int materialIndex;
+			if (Input.GetButton ("Fire2"))
+				materialIndex = 0;
+			else
+				materialIndex = 1;
 
 			//Set the line renderer.
 			line.gameObject.SetActive(true);
-			renderLine(myLoc, target_direction);
+			renderLine(myLoc, target_direction, materialIndex);
 
 			//send a raycast and return all intersections. magn. gives distance to cast e.g. distance clicked from player
 			RaycastHit2D[] all_hit = Physics2D.RaycastAll (myLoc, target_direction, target_direction.magnitude);
@@ -100,8 +101,9 @@ public class TractorBeam : MonoBehaviour
 		}
 	}
 	
-	void renderLine(Vector2 start, Vector2 end)
+	void renderLine(Vector2 start, Vector2 end, int materialIndex)
 	{
+		line.material = lineMaterials[materialIndex];
 		line.SetPosition (0, start);
 		line.SetPosition (1, start + end);
 	}

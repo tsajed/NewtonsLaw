@@ -275,7 +275,7 @@ AudioSource:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100012}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_audioClip: {fileID: 8300000, guid: ba0de8fe1f53f44ff8c09ed826c3bad1, type: 3}
   m_PlayOnAwake: 1
@@ -419,8 +419,8 @@ MonoBehaviour:
   yMargin: 2
   xSmooth: 2
   ySmooth: 2
-  maxXAndY: {x: 100, y: 50}
-  minXAndY: {x: -100, y: -50}
+  maxXAndY: {x: 78.5, y: 78.5}
+  minXAndY: {x: -78.5, y: -78.5}
 --- !u!114 &11400012
 MonoBehaviour:
   m_ObjectHideFlags: 1

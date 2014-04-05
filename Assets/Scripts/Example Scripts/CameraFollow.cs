@@ -7,10 +7,9 @@ public class CameraFollow : MonoBehaviour
 	public float yMargin = 1f;		// Distance in the y axis the player can move before the camera follows.
 	public float xSmooth = 8f;		// How smoothly the camera catches up with it's target movement in the x axis.
 	public float ySmooth = 8f;		// How smoothly the camera catches up with it's target movement in the y axis.
-	public Vector2 maxXAndY;		// The maximum x and y coordinates the camera can have.
-	public Vector2 minXAndY;		// The minimum x and y coordinates the camera can have.
-
-
+	public Vector2 maxXAndY;		// The maximum x and y coordinates the camera can show.
+	public Vector2 minXAndY;		// The minimum x and y coordinates the camera can show.
+	
 	private Transform player;		// Reference to the player's transform.
 
 
@@ -37,12 +36,14 @@ public class CameraFollow : MonoBehaviour
 
 	void FixedUpdate ()
 	{
+
 		TrackPlayer();
 	}
 	
 	
 	void TrackPlayer ()
 	{
+
 		// By default the target x and y coordinates of the camera are it's current x and y coordinates.
 		float targetX = transform.position.x;
 		float targetY = transform.position.y;
@@ -59,10 +60,27 @@ public class CameraFollow : MonoBehaviour
 			targetY = Mathf.Lerp(transform.position.y, player.position.y+(yMargin*Mathf.Sign(transform.position.y-player.position.y)), ySmooth * Time.deltaTime);
 
 		// The target x and y coordinates should not be larger than the maximum or smaller than the minimum.
-		targetX = Mathf.Clamp(targetX, minXAndY.x, maxXAndY.x);
-		targetY = Mathf.Clamp(targetY, minXAndY.y, maxXAndY.y);
+		//targetX = Mathf.Clamp(targetX, minXAndY.x, maxXAndY.x);
+		//targetY = Mathf.Clamp(targetY, minXAndY.y, maxXAndY.y);
 
-		// Set the camera's position to the target position with the same z component.
+
+		//Do not display anything beyond the minimum and maximum.
+		float xRight = Camera.main.ViewportToWorldPoint (new Vector3 (1f, 0, 0)).x;
+		float xLeft = Camera.main.ViewportToWorldPoint (new Vector3 (0f, 0, 0)).x;
+		float yBottom = Camera.main.ViewportToWorldPoint (new Vector3 (0f, 0, 0)).y;
+		float yTop = Camera.main.ViewportToWorldPoint (new Vector3 (0f, 1f, 0)).y;
+		if ((xRight > maxXAndY.x && targetX >= transform.position.x) | 
+		    (xLeft < minXAndY.x && targetX <= transform.position.x)) {
+
+			targetX = transform.position.x;
+		}
+		if ((yTop > maxXAndY.y && targetY >= transform.position.y) | 
+		    (yBottom < minXAndY.y && targetY <= transform.position.y)) {
+			targetY = transform.position.y;
+		}
+
 		transform.position = new Vector3(targetX, targetY, transform.position.z);
+
+
 	}
 }

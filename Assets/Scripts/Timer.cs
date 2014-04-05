@@ -17,11 +17,17 @@ public class Timer : MonoBehaviour
 	void Update() 
 	{
 	  timer -= Time.deltaTime;
-	  if (timer <= 0) {
+	  if (timer <= 0) 
+	  {
 	  	timer = 0; // clamp the timer to zero
 	  	saveScore.SaveLevelScore();
-	  	// Set the Score
-	  	//PlayerPrefs.SetInt(Application.loadedLevelName + "Score" + PlayerPrefs.GetInt(Ap), );
+
+		// Go to Next Stage
+		int index = Application.loadedLevel + 1;
+		if(index < Application.levelCount) 
+			Application.LoadLevel(index);
+	 	else
+	 		Application.LoadLevel("StartScreen");
 	  }
 	  
 	  int seconds = (int) timer % 60; // calculate the seconds

@@ -5272,7 +5272,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 11400004, guid: 6b9e045bf49684906aa95f1cb42dff45, type: 2}
       propertyPath: sprites.Array.size
-      value: 4
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 6b9e045bf49684906aa95f1cb42dff45, type: 2}
       propertyPath: m_LocalPosition.x
@@ -5308,26 +5308,26 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400004, guid: 6b9e045bf49684906aa95f1cb42dff45, type: 2}
       propertyPath: maxHealth
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 11400004, guid: 6b9e045bf49684906aa95f1cb42dff45, type: 2}
       propertyPath: playerHealth
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 11400004, guid: 6b9e045bf49684906aa95f1cb42dff45, type: 2}
       propertyPath: sprites.Array.data[3]
       value: 
-      objectReference: {fileID: 21300000, guid: 1c618a36942a4dc4e8c1aedccc9c21d4,
+      objectReference: {fileID: 21300000, guid: ac6d5f09ef7c28f42b153b12795ba598,
         type: 3}
     - target: {fileID: 11400004, guid: 6b9e045bf49684906aa95f1cb42dff45, type: 2}
       propertyPath: sprites.Array.data[2]
       value: 
-      objectReference: {fileID: 21300000, guid: ee191a5ae7c202e499dd9ca950747818,
+      objectReference: {fileID: 21300000, guid: 4683383475a784148831286c5c74f2f9,
         type: 3}
     - target: {fileID: 11400004, guid: 6b9e045bf49684906aa95f1cb42dff45, type: 2}
       propertyPath: sprites.Array.data[1]
       value: 
-      objectReference: {fileID: 21300000, guid: 4281e797a7c946e4fb128dafa948f04d,
+      objectReference: {fileID: 21300000, guid: c2e88927d18b28744b16b66314c69e92,
         type: 3}
     - target: {fileID: 11400004, guid: 6b9e045bf49684906aa95f1cb42dff45, type: 2}
       propertyPath: sprites.Array.data[0]
@@ -5338,6 +5338,31 @@ Prefab:
       propertyPath: power
       value: 1024
       objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: 6b9e045bf49684906aa95f1cb42dff45, type: 2}
+      propertyPath: sprites.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300000, guid: f9ba4fdeab571d541aa63370ede8c0b8,
+        type: 3}
+    - target: {fileID: 11400004, guid: 6b9e045bf49684906aa95f1cb42dff45, type: 2}
+      propertyPath: sprites.Array.data[5]
+      value: 
+      objectReference: {fileID: 21300000, guid: bdcf16671e7fdfb44b2d8a8c22cc36d0,
+        type: 3}
+    - target: {fileID: 11400004, guid: 6b9e045bf49684906aa95f1cb42dff45, type: 2}
+      propertyPath: sprites.Array.data[6]
+      value: 
+      objectReference: {fileID: 21300000, guid: a3edb84958ebd6047b70f8f63e46292b,
+        type: 3}
+    - target: {fileID: 11400004, guid: 6b9e045bf49684906aa95f1cb42dff45, type: 2}
+      propertyPath: sprites.Array.data[7]
+      value: 
+      objectReference: {fileID: 21300000, guid: fab8d181cf414124f890a195e3755bd2,
+        type: 3}
+    - target: {fileID: 11400004, guid: 6b9e045bf49684906aa95f1cb42dff45, type: 2}
+      propertyPath: sprites.Array.data[8]
+      value: 
+      objectReference: {fileID: 21300000, guid: 59c525c9c5a5c514b97a1b2549661c23,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b9e045bf49684906aa95f1cb42dff45, type: 2}
   m_RootGameObject: {fileID: 1783346458}
@@ -5525,7 +5550,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 11400000, guid: b36ae5a0a2b844e0c9ea88e639b69c1d, type: 2}
       propertyPath: enemies.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b36ae5a0a2b844e0c9ea88e639b69c1d, type: 2}
       propertyPath: m_LocalPosition.x
@@ -5563,6 +5588,10 @@ Prefab:
       propertyPath: spawnDelay
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: b36ae5a0a2b844e0c9ea88e639b69c1d, type: 2}
+      propertyPath: enemies.Array.data[1]
+      value: 
+      objectReference: {fileID: 100004, guid: 4e9eeb3da3e36bb46b5c597ad95cde3e, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b36ae5a0a2b844e0c9ea88e639b69c1d, type: 2}
   m_RootGameObject: {fileID: 1651393243}
@@ -7332,6 +7361,7 @@ MonoBehaviour:
   spawnDelay: 4
   enemies:
   - {fileID: 100004, guid: d2082a82b3108402796533fcbffd318b, type: 2}
+  - {fileID: 100004, guid: 4e9eeb3da3e36bb46b5c597ad95cde3e, type: 2}
 --- !u!1001 &1671575377
 Prefab:
   m_ObjectHideFlags: 0
@@ -7826,14 +7856,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06e7fae18a7d8447ab2937a459641cb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: 3
-  maxHealth: 3
+  playerHealth: 10
+  maxHealth: 10
   ren: {fileID: 0}
   sprites:
   - {fileID: 21300000, guid: ee22ff41d1dc88a4994ca639d2de9e94, type: 3}
-  - {fileID: 21300000, guid: 4281e797a7c946e4fb128dafa948f04d, type: 3}
-  - {fileID: 21300000, guid: ee191a5ae7c202e499dd9ca950747818, type: 3}
-  - {fileID: 21300000, guid: 1c618a36942a4dc4e8c1aedccc9c21d4, type: 3}
+  - {fileID: 21300000, guid: c2e88927d18b28744b16b66314c69e92, type: 3}
+  - {fileID: 21300000, guid: 4683383475a784148831286c5c74f2f9, type: 3}
+  - {fileID: 21300000, guid: ac6d5f09ef7c28f42b153b12795ba598, type: 3}
+  - {fileID: 21300000, guid: f9ba4fdeab571d541aa63370ede8c0b8, type: 3}
+  - {fileID: 21300000, guid: bdcf16671e7fdfb44b2d8a8c22cc36d0, type: 3}
+  - {fileID: 21300000, guid: a3edb84958ebd6047b70f8f63e46292b, type: 3}
+  - {fileID: 21300000, guid: fab8d181cf414124f890a195e3755bd2, type: 3}
+  - {fileID: 21300000, guid: 59c525c9c5a5c514b97a1b2549661c23, type: 3}
   hurt: {fileID: 8300000, guid: 9f90caa15e95a40dd96647189a8e9d4a, type: 3}
   death: {fileID: 0}
   canDie: 0

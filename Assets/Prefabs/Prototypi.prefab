@@ -402,7 +402,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1c618a36942a4dc4e8c1aedccc9c21d4, type: 3}
   hurt: {fileID: 8300000, guid: 9f90caa15e95a40dd96647189a8e9d4a, type: 3}
   death: {fileID: 0}
-  canDie: 0
+  canDie: 1
 --- !u!120 &12000000
 LineRenderer:
   m_ObjectHideFlags: 1

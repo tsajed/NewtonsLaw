@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ScenePullerTexts : MonoBehaviour {
-	
-	string tutorialString = "Puller enemies are the opposite of laser enemies. They will pull you into" +
-		"their central vortex and damage you. They will still pull other enemies, but won't harm them, watch out!" +
-		"Press the Start Game when you feel you are ready to face the horde.";
+public class SceneForcefieldTexts : MonoBehaviour {
+
+	string tutorialString = "Forcefield enemies will try to ram you like spike enemies. However," +
+		"forcefield enemies also have a shield that alternates on and off that will protect them from damage." +
+		"Try to get them damaged while the shield is off!";
 	// Use this for initialization
 	void Start () {
 		
@@ -19,10 +19,9 @@ public class ScenePullerTexts : MonoBehaviour {
 	void OnGUI() {
 		GUI.skin.textArea.fontSize = 18;
 		tutorialString = GUI.TextArea(new Rect(200, Screen.height - 150, Screen.width - 350, 200), tutorialString);
-		if (GUI.Button(new Rect(Screen.width - 150, Screen.height - 50, 150, 50), "Start Game")) {
+		if (GUI.Button(new Rect(Screen.width - 150, Screen.height - 50, 150, 50), "Tutorial 9")) {
 			Debug.Log("Clicked the button with text");
 			Application.LoadLevel(Application.loadedLevel + 1);
 		}
 	}
-	
 }

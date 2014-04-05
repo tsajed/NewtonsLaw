@@ -24,6 +24,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SceneMitosis.unity
   - enabled: 1
+    path: Assets/Scenes/SceneHeat.unity
+  - enabled: 1
     path: Assets/Scenes/Scene 1.unity
   - enabled: 1
     path: Assets/Scenes/Scene 2.unity

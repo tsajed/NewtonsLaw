@@ -24,11 +24,8 @@ public class SaveScoreLevel : MonoBehaviour {
 		}
 
 		// Debug Load the Level's Current Scoreboard
-		for(int k = 0; k < scoreCount; k++)
-		{
-			for(int j = 0; j < scores.Count; j++)
-				Debug.Log(levelName + k + " " + j + ": " + scores[j]);
-		}
+		for(int j = 0; j < scores.Count; j++)
+			Debug.Log(levelName + " " + j + ": " + scores[j]);
 	}
 
 	// Save the current level score to the Level's Scoreboard

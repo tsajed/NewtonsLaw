@@ -3730,8 +3730,8 @@ MonoBehaviour:
   yMargin: 2
   xSmooth: 2
   ySmooth: 2
-  maxXAndY: {x: 10, y: 50}
-  minXAndY: {x: -10, y: -50}
+  maxXAndY: {x: 78.5, y: 78.5}
+  minXAndY: {x: -78.5, y: -78.5}
 --- !u!81 &1268649232
 AudioListener:
   m_ObjectHideFlags: 0
@@ -5628,6 +5628,9 @@ MonoBehaviour:
   stasisEffect: 1
   pull: {fileID: 8300000, guid: b057f77c8893d486b88e37af7b4e9c9a, type: 3}
   push: {fileID: 8300000, guid: bcafb1acbb0b4430498a23e638330d6c, type: 3}
+  lineMaterials:
+  - {fileID: 2100000, guid: 660c34b0486b39d49a2c861a3f1b6561, type: 2}
+  - {fileID: 2100000, guid: 489b7203d49a5f644bddb4990924a0ad, type: 2}
 --- !u!50 &1783346461
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -5811,7 +5814,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1c618a36942a4dc4e8c1aedccc9c21d4, type: 3}
   hurt: {fileID: 8300000, guid: 9f90caa15e95a40dd96647189a8e9d4a, type: 3}
   death: {fileID: 0}
-  canDie: 0
+  canDie: 1
 --- !u!82 &1783346467
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7100,26 +7103,6 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 11400010, guid: 6a978952d1cbf0649bda08cf9967861b, type: 2}
-      propertyPath: xMargin
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400010, guid: 6a978952d1cbf0649bda08cf9967861b, type: 2}
-      propertyPath: maxXAndY.x
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400010, guid: 6a978952d1cbf0649bda08cf9967861b, type: 2}
-      propertyPath: minXAndY.x
-      value: -10
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400010, guid: 6a978952d1cbf0649bda08cf9967861b, type: 2}
-      propertyPath: maxXAndY.y
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400010, guid: 6a978952d1cbf0649bda08cf9967861b, type: 2}
-      propertyPath: minXAndY.y
-      value: -50
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a978952d1cbf0649bda08cf9967861b, type: 2}
   m_RootGameObject: {fileID: 1268649228}
@@ -7154,9 +7137,7 @@ LineRenderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 660c34b0486b39d49a2c861a3f1b6561, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0

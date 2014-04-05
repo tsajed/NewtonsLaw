@@ -13,6 +13,9 @@ public class TractorBeam : MonoBehaviour
 	void Start () 
 	{
 		line = GetComponentInChildren<LineRenderer> ();
+		SpriteRenderer sprite = GetComponentInChildren<SpriteRenderer> ();
+		line.renderer.sortingLayerID = sprite.renderer.sortingLayerID;
+		line.renderer.sortingOrder = sprite.renderer.sortingOrder;
 	}
 
 	void FixedUpdate () 

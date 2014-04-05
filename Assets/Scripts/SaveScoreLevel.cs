@@ -68,8 +68,14 @@ public class SaveScoreLevel : MonoBehaviour {
 				break;
 			}
 		}
-		// Go to the next Stage
-		Application.LoadLevel(Application.loadedLevel + 1);
+		
+		// Go to Next Stage
+		int index = Application.loadedLevel + 1;
+		if(index < Application.levelCount) 
+			Application.LoadLevel(index);
+	 	else
+	 		Application.LoadLevel("StartScreen");
+
 	}
 
 }

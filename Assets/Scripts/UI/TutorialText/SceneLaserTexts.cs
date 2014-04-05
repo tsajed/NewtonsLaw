@@ -19,7 +19,7 @@ public class SceneLaserTexts : MonoBehaviour {
 	void OnGUI() {
 		GUI.skin.textArea.fontSize = 18;
 		tutorialString = GUI.TextArea(new Rect(200, Screen.height - 150, Screen.width - 350, 200), tutorialString);
-		if (GUI.Button(new Rect(Screen.width - 150, Screen.height - 50, 150, 50), "Tutorial 5")) {
+		if (GUI.Button(new Rect(Screen.width - 150, Screen.height - 50, 150, 50), "Tutorial 4")) {
 			Debug.Log("Clicked the button with text");
 			Application.LoadLevel(Application.loadedLevel + 1);
 		}

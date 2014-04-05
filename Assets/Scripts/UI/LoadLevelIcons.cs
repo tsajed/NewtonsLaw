@@ -10,8 +10,8 @@ public class LoadLevelIcons : MonoBehaviour
 
 	void Awake () 
 	{
-		// Minus 8 to take account of Tutorials, Credits, and Start Screens
-		sceneCounter = Application.levelCount - 8;
+		// Minus 12 to take account of Tutorials, Credits, and Start Screens
+		sceneCounter = Application.levelCount - 12;
 
 		// Build the UI!
 		int index = 0;

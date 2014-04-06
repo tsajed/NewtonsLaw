@@ -1906,7 +1906,7 @@ GameObject:
   - 4: {fileID: 1132006588}
   - 114: {fileID: 1132006589}
   m_Layer: 0
-  m_Name: Score List
+  m_Name: Level List
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class SceneHeatTexts : MonoBehaviour {
 	
-	string tutorialString = "Heat Seeking enemies will fire homing shots." +
+	string tutorialString = "Heat seeking enemies will fire homing shots." +
 		"These shots act like normal shots, except that they will follow you! Try to lure " +
 			"other enemies into their path.";
 	// Use this for initialization

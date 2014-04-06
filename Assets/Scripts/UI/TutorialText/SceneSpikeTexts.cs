@@ -5,8 +5,9 @@ public class SceneSpikeTexts : MonoBehaviour {
 	
 	string tutorialString = "Welcome to the Spike Tutorial. Spike enemies will try to ram" +
 		" you. So make sure you push them away" +
-		" at all costs. You can block them using other enemies. They are killed by shooting enemy" +
-			" shots. Click on the Tuturial 4 button to go to the next tutorial";
+		" at all costs. You can block them using other enemies and push them into enemies like spike enemies." +
+		"They are killed by shooting enemy" +
+			" projectiles. Click on the Tutorial 4 button to go to the next tutorial.";
 	// Use this for initialization
 	void Start () {
 		

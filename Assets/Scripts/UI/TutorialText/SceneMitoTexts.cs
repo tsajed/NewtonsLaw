@@ -3,11 +3,9 @@ using System.Collections;
 
 public class SceneMitoTexts : MonoBehaviour {
 	
-	string tutorialString = "Welcome to the Mitosis Enemy Tutorial. Mitosis enemies " +
-		"create smaller versions of themselves over time and they damage player health" +
-		" when in contact with player. So make sure you evade the mitotis enemies" +
-			" at all costs. You can use basic enemies to damage mitosis enemies" +
-			" when they come in contact. Click on the Tutorial 6 button to go to next tutorial";
+	string tutorialString = "Mitosis enemies " +
+		"create smaller versions of themselves over time and will try to ram you, just like spike enemies. So make sure you evade the mitotis enemies" +
+			" at all costs. Try to take them out fast, before they get a chance to multiply! Click on the Tutorial 6 button to go to next tutorial";
 	// Use this for initialization
 	void Start () {
 		

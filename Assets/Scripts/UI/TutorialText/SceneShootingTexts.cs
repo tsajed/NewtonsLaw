@@ -3,10 +3,11 @@ using System.Collections;
 
 public class SceneShootingTexts : MonoBehaviour {
 	
-	string tutorialString = "Welcome to the Shooting Enemy Tutorial. Shooting enemies " +
-		"shoot bubble like bullets at you which reduce your health. So make sure you evade the bullets" +
-			" at all costs. You can use other enemies as shields. Shooting enemies are killed by spike" +
-			" enemies when they come in contact. Click on the Tuturial 3 button to go to the spike enemy tutorial";
+	string tutorialString = " Shooting enemies " +
+		"shoot bubble-like bullets at you which reduce your health. So make sure you evade the bullets" +
+			" at all costs. Touch a shooting enemy directly will harm you, but they'll try to maintain" +
+			" a safe distance from you and shoot at you. You can use other enemies as shields to block projectiles. " +
+			"Click on the Tutorial 3 button to go to the spike enemy tutorial";
 	// Use this for initialization
 	void Start () {
 		

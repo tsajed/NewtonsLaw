@@ -3,10 +3,11 @@ using System.Collections;
 
 public class SceneBasicTexts : MonoBehaviour {
 
-	string tutorialString = "Hello, my name is Isaac Newton, welcome to the universe. I'm going to teach you how to survive and become of force of nature." +
+	string tutorialString = "Hello, my name is Isaac Newton, welcome to the universe. I'm here to teach you how to survive and become of force of nature. " +
+		"You can navigate through space with the WASD keys. " +
 		"Your only weapon in this world is pushing and pulling other entities using your tractor beam. Use the left mouse, aim it on " +
-		"an enemy and click it to push it away. Click on the right mouse button to pull it toward" +
-		" you. The objects in this area are basic enemies and they don't hurt you. You" +
+		"an enemy and click it to push it away. Click the right mouse button to pull it toward" +
+		" you. The objects in this area are mindless blobs, they can't hurt you. You" +
 		" can push or pull them to your advantage later on. Click on the Tutorial 2 button for the next lesson.";
 	// Use this for initialization
 	void Start () {

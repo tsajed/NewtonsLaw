@@ -10,9 +10,6 @@ public class Credits : MonoBehaviour
  
     public void OnGUI()
     {
-	//font = new GUIStyle();
-	//font.fontSize = 20;
-	//font.fontStyle = FontStyle.Bold;
         off -= Time.deltaTime * speed;
         for (int i = 0; i < intro.Length; i++)
         {
@@ -27,7 +24,7 @@ public class Credits : MonoBehaviour
     
     IEnumerator Start ()
     {
-       	yield return new WaitForSeconds (22);
+       	yield return new WaitForSeconds (32);
    	Application.LoadLevel ("StartScreen");
     }
  

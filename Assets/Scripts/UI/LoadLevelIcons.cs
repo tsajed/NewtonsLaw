@@ -28,7 +28,7 @@ public class LoadLevelIcons : MonoBehaviour
 					level.name = "Level " + (index+1);
 					level.transform.parent = gameObject.transform;
 					SpriteRenderer ren = level.GetComponent<SpriteRenderer>();
-					ren.sprite = Resources.Load<Sprite>("LevelIcons/"+ "Scene1Icon") as Sprite;
+					ren.sprite = Resources.Load<Sprite>("LevelIcons/"+ "Scene" + (index+1) + "Icon") as Sprite;
 					level.GetComponent<BoxCollider2D>().size = ren.bounds.size;
 					++index;
 				}

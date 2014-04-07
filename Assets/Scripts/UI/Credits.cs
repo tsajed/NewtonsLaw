@@ -24,7 +24,7 @@ public class Credits : MonoBehaviour
     
     IEnumerator Start ()
     {
-       	yield return new WaitForSeconds (32);
+       	yield return new WaitForSeconds (31);
    	Application.LoadLevel ("StartScreen");
     }
  

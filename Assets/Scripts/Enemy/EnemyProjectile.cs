@@ -19,8 +19,8 @@ public class EnemyProjectile : MonoBehaviour
 		//Apply all force in beginning
 		Vector3 dir = oldTarget - this.transform.position;
 		Vector2 force = dir * (self.movementSpeed + p_velocity);
-		Vector2.ClampMagnitude (force, maxMagnitude);
-		rigidbody2D.AddForce (force);
+		Vector2 clamped = Vector2.ClampMagnitude (force, maxMagnitude);
+		rigidbody2D.AddForce (clamped);
 	}
 
 	void OnCollisionEnter2D (Collision2D coll)

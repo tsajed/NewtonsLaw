@@ -5,10 +5,17 @@ public class SaveOptions : MonoBehaviour
 {
 
     private string playerName;
+    private string oldName;
 
     void Awake()
     {
     	playerName = PlayerPrefs.GetString("PlayerName", "Unknown");
+    }
+
+    // Save the old settings, if the inputted text was invalid
+    void OnEnable()
+    {
+        oldName = playerName;
     }
 
     void OnGUI() 
@@ -20,7 +27,13 @@ public class SaveOptions : MonoBehaviour
 	void OnMouseDown()
 	{
 		// Save the Player Name
-        if(playerName != "")
+        if(playerName != "") 
+        {
 		  PlayerPrefs.SetString("PlayerName", playerName);
+        }
+        else
+        {
+            playerName = oldName;
+        }
 	}
 }

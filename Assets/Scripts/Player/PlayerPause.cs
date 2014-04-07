@@ -27,13 +27,11 @@ public class PlayerPause : MonoBehaviour {
 		
 		if (GUI.Button(new Rect(Screen.width/2 - 75, Screen.height/2 - 25, 150, 50), "Restart Level")) 
 		{
-			Debug.Log("Clicked the button with text");
 			Time.timeScale = 1;
 			Application.LoadLevel(Application.loadedLevel);
 		}
 		if (GUI.Button(new Rect(Screen.width/2 - 75, Screen.height/2 + 45, 150, 50), "Go To Next Level")) 
 		{
-			Debug.Log("Clicked the button with text");
 			Time.timeScale = 1;
 			
 			// Go to Next Stage
@@ -42,6 +40,10 @@ public class PlayerPause : MonoBehaviour {
 				Application.LoadLevel(index);
 		 	else
 		 		Application.LoadLevel("StartScreen");
+		}
+		if (GUI.Button(new Rect(Screen.width/2 - 75, Screen.height/2 + 115, 150, 50), "Main Menu")) 
+		{
+				Application.LoadLevel("StartScreen");
 		}
 	}
 }

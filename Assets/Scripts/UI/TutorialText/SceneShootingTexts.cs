@@ -4,8 +4,9 @@ using System.Collections;
 public class SceneShootingTexts : MonoBehaviour {
 	
 	string tutorialString = " Shooting enemies " +
-		"shoot bubble-like bullets at you which reduce your health. So make sure you evade the bullets" +
-			" at all costs. Touch a shooting enemy directly will harm you, but they'll try to maintain" +
+		"shoot bubble-like bullets at you which reduce your health. You can be damaged during these tutorials, but you can't die." +
+		"So out there in the real world, make sure you evade the bullets" +
+			" at all costs. Touching a shooting enemy directly will harm you, but they'll try to maintain" +
 			" a safe distance from you and shoot at you. You can use other enemies as shields to block projectiles. " +
 			"Click on the Tutorial 3 button to go to the spike enemy tutorial";
 	// Use this for initialization

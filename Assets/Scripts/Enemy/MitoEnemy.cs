@@ -24,7 +24,7 @@ public class MitoEnemy : MonoBehaviour
 	/// <summary>
 	/// Cooldown in seconds between two shots
 	/// </summary>
-	public float shootingRate = 5;
+	public float shootingRate = 12;
 	public int spawns = 3;
 
 	public MitoEnemy parent;

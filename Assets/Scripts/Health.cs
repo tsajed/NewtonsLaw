@@ -74,7 +74,7 @@ public class Health : MonoBehaviour
 			if(index < Application.levelCount) 
 				Application.LoadLevel(index);
 		 	else
-		 		Application.LoadLevel("StartScreen");
+		 		Application.LoadLevel("Credits");
 		}
 	}
 }

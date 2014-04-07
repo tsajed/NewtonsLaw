@@ -7,6 +7,7 @@ public class EnemyProjectile : MonoBehaviour
 	public GenericEnemy self;
 	public Vector3 oldTarget { private get; set; }
 	public GameObject parent;
+	public float maxMagnitude;
 
 	void Start ()
 	{
@@ -18,7 +19,8 @@ public class EnemyProjectile : MonoBehaviour
 		//Apply all force in beginning
 		Vector3 dir = oldTarget - this.transform.position;
 		Vector2 force = dir * (self.movementSpeed + p_velocity);
-		rigidbody2D.AddForce (force);
+		Vector2 clamped = Vector2.ClampMagnitude (force, maxMagnitude);
+		rigidbody2D.AddForce (clamped);
 	}
 
 	void OnCollisionEnter2D (Collision2D coll)

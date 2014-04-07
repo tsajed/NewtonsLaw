@@ -144,7 +144,7 @@ MonoBehaviour:
   deathSpinMin: -100
   deathSpinMax: 100
   shotPrefab: {fileID: 100000}
-  shootingRate: 5
+  shootingRate: 12
   spawns: 3
   parent: {fileID: 0}
 --- !u!114 &11400002

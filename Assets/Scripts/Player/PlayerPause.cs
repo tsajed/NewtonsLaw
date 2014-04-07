@@ -39,7 +39,7 @@ public class PlayerPause : MonoBehaviour {
 			if(index < Application.levelCount) 
 				Application.LoadLevel(index);
 		 	else
-		 		Application.LoadLevel("StartScreen");
+		 		Application.LoadLevel("Credits");
 		}
 		if (GUI.Button(new Rect(Screen.width/2 - 75, Screen.height/2 + 115, 150, 50), "Main Menu")) 
 		{

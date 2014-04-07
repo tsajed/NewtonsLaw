@@ -8,14 +8,11 @@ public class LevelSelect : MonoBehaviour
 
 	private SpriteRenderer ren;
 	private Sprite normalSprite;
-	private GameObject startMenu;
 
 	void Awake() 
 	{
 		ren = gameObject.GetComponent<SpriteRenderer>();
 		normalSprite = ren.sprite;
-
-		startMenu = GameObject.Find("UI");
 	}
 
     void OnMouseEnter() 
@@ -35,7 +32,7 @@ public class LevelSelect : MonoBehaviour
 
     void OnMouseDown() 
     {
-    	startMenu.SetActive(false);
+        transform.parent.gameObject.SetActive(false);
     	levelSelect.SetActive(true);
     }
 }

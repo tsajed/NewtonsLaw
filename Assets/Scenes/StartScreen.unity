@@ -2159,7 +2159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a57aa18a47bb4cff966906dfcb12a31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverSprite: {fileID: 0}
+  hoverSprite: {fileID: 21300000, guid: 66b0590d3cfae45378cdc910238abcb3, type: 3}
   levelSelect: {fileID: 985553315}
 --- !u!212 &1354646998
 SpriteRenderer:
@@ -2182,7 +2182,7 @@ SpriteRenderer:
   m_SortingLayer: 5
   m_SortingOrder: 0
   m_SortingLayerID: 149272721
-  m_Sprite: {fileID: 21300000, guid: 6c3bb930d58c041049a6c0afd5edfdab, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1114ad85026744937b09a170891fc61d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1375372086
 GameObject:

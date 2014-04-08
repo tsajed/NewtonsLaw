@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-
+[RequireComponent (typeof (SaveScoreLevel))]
 public class Health : MonoBehaviour 
 {
 	public int playerHealth;
@@ -11,10 +11,13 @@ public class Health : MonoBehaviour
 	public AudioClip hurt;
 	public AudioClip death;
 	public bool canDie;
+	
 	private bool onDeath = false;
+	private SaveScoreLevel saveScore;
 
 	void Start () 
 	{
+		saveScore = this.GetComponent<SaveScoreLevel>();
 		ren = gameObject.GetComponentInChildren<SpriteRenderer>();
 	}
 	
@@ -45,6 +48,8 @@ public class Health : MonoBehaviour
 		//TODO menus/GUI etc.
 		AudioSource.PlayClipAtPoint(death, GameObject.Find("Main Camera").transform.position);
 		Time.timeScale = 0;
+		// Save the score when you die
+		saveScore.SaveLevelScore();
 		//Destroy (this.gameObject); //note that this causes errors currently as other scripts still try to reference the object.
 		//int loaded = Application.loadedLevel;
 		//restart level when player dies.

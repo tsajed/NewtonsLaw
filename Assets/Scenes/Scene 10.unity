@@ -315,6 +315,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11400000, guid: b36ae5a0a2b844e0c9ea88e639b69c1d, type: 2}
+      propertyPath: enemies.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b36ae5a0a2b844e0c9ea88e639b69c1d, type: 2}
       propertyPath: m_LocalPosition.x
       value: -.0505495071
@@ -351,6 +355,10 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: b36ae5a0a2b844e0c9ea88e639b69c1d, type: 2}
+      propertyPath: enemies.Array.data[3]
+      value: 
+      objectReference: {fileID: 100004, guid: 4e9eeb3da3e36bb46b5c597ad95cde3e, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b36ae5a0a2b844e0c9ea88e639b69c1d, type: 2}
   m_RootGameObject: {fileID: 1147064073}
@@ -6121,6 +6129,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11400000, guid: b36ae5a0a2b844e0c9ea88e639b69c1d, type: 2}
+      propertyPath: enemies.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b36ae5a0a2b844e0c9ea88e639b69c1d, type: 2}
       propertyPath: m_LocalPosition.x
       value: -45.8569641
@@ -6157,6 +6169,10 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: b36ae5a0a2b844e0c9ea88e639b69c1d, type: 2}
+      propertyPath: enemies.Array.data[3]
+      value: 
+      objectReference: {fileID: 100004, guid: 4e9eeb3da3e36bb46b5c597ad95cde3e, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b36ae5a0a2b844e0c9ea88e639b69c1d, type: 2}
   m_RootGameObject: {fileID: 1651393243}
@@ -6668,6 +6684,7 @@ MonoBehaviour:
   - {fileID: 100002, guid: bf996bee1943548c181118a7539c974d, type: 2}
   - {fileID: 100000, guid: ff5a55bdc9b464748b7d8f7fb3437ec6, type: 2}
   - {fileID: 100004, guid: d2082a82b3108402796533fcbffd318b, type: 2}
+  - {fileID: 100004, guid: 4e9eeb3da3e36bb46b5c597ad95cde3e, type: 2}
 --- !u!1001 &1159078157
 Prefab:
   m_ObjectHideFlags: 0
@@ -7129,6 +7146,7 @@ MonoBehaviour:
   - {fileID: 100002, guid: bf996bee1943548c181118a7539c974d, type: 2}
   - {fileID: 100000, guid: ff5a55bdc9b464748b7d8f7fb3437ec6, type: 2}
   - {fileID: 100004, guid: d2082a82b3108402796533fcbffd318b, type: 2}
+  - {fileID: 100004, guid: 4e9eeb3da3e36bb46b5c597ad95cde3e, type: 2}
 --- !u!1 &1364967936
 GameObject:
   m_ObjectHideFlags: 0
@@ -9043,6 +9061,7 @@ MonoBehaviour:
   - {fileID: 100002, guid: bf996bee1943548c181118a7539c974d, type: 2}
   - {fileID: 100000, guid: ff5a55bdc9b464748b7d8f7fb3437ec6, type: 2}
   - {fileID: 100004, guid: d2082a82b3108402796533fcbffd318b, type: 2}
+  - {fileID: 100004, guid: 4e9eeb3da3e36bb46b5c597ad95cde3e, type: 2}
 --- !u!1 &1657335032
 GameObject:
   m_ObjectHideFlags: 0
@@ -9101,6 +9120,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11400000, guid: b36ae5a0a2b844e0c9ea88e639b69c1d, type: 2}
+      propertyPath: enemies.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b36ae5a0a2b844e0c9ea88e639b69c1d, type: 2}
       propertyPath: m_LocalPosition.x
       value: 91.341713
@@ -9137,6 +9160,10 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: b36ae5a0a2b844e0c9ea88e639b69c1d, type: 2}
+      propertyPath: enemies.Array.data[3]
+      value: 
+      objectReference: {fileID: 100004, guid: 4e9eeb3da3e36bb46b5c597ad95cde3e, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b36ae5a0a2b844e0c9ea88e639b69c1d, type: 2}
   m_RootGameObject: {fileID: 2110964894}
@@ -9252,6 +9279,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11400000, guid: b36ae5a0a2b844e0c9ea88e639b69c1d, type: 2}
+      propertyPath: enemies.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b36ae5a0a2b844e0c9ea88e639b69c1d, type: 2}
       propertyPath: m_LocalPosition.x
       value: .168293357
@@ -9288,6 +9319,10 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: b36ae5a0a2b844e0c9ea88e639b69c1d, type: 2}
+      propertyPath: enemies.Array.data[3]
+      value: 
+      objectReference: {fileID: 100004, guid: 4e9eeb3da3e36bb46b5c597ad95cde3e, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b36ae5a0a2b844e0c9ea88e639b69c1d, type: 2}
   m_RootGameObject: {fileID: 1358622488}
@@ -12354,3 +12389,4 @@ MonoBehaviour:
   - {fileID: 100002, guid: bf996bee1943548c181118a7539c974d, type: 2}
   - {fileID: 100000, guid: ff5a55bdc9b464748b7d8f7fb3437ec6, type: 2}
   - {fileID: 100004, guid: d2082a82b3108402796533fcbffd318b, type: 2}
+  - {fileID: 100004, guid: 4e9eeb3da3e36bb46b5c597ad95cde3e, type: 2}

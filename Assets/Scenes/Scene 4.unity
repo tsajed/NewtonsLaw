@@ -83,11 +83,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400002, guid: bf996bee1943548c181118a7539c974d, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -14.5491753
+      value: 36.8154907
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: bf996bee1943548c181118a7539c974d, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 9.55418682
+      value: -18.298481
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: bf996bee1943548c181118a7539c974d, type: 2}
       propertyPath: m_LocalPosition.z
@@ -5571,11 +5571,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: ff5a55bdc9b464748b7d8f7fb3437ec6, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 12.5851517
+      value: -38.2369347
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ff5a55bdc9b464748b7d8f7fb3437ec6, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 13.1074791
+      value: 35.1725807
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ff5a55bdc9b464748b7d8f7fb3437ec6, type: 2}
       propertyPath: m_LocalPosition.z
@@ -5944,7 +5944,7 @@ Transform:
   m_PrefabInternal: {fileID: 867505603}
   m_GameObject: {fileID: 1355976184}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.5851517, y: 13.1074791, z: -1}
+  m_LocalPosition: {x: -38.2369347, y: 35.1725807, z: -1}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 1039142719}
@@ -7574,7 +7574,7 @@ Transform:
   m_PrefabInternal: {fileID: 17025291}
   m_GameObject: {fileID: 1526537827}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.5491753, y: 9.55418682, z: -1}
+  m_LocalPosition: {x: 36.8154907, y: -18.298481, z: -1}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 1823731880}
@@ -7621,6 +7621,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shotPrefab: []
   shootingRate: 1
+  burstAmount: 0
   sound: {fileID: 0}
   child: {fileID: 0}
 --- !u!114 &1526537838

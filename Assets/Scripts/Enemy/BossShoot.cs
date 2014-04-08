@@ -2,26 +2,32 @@
 using System.Collections;
 
 
-public class EnemyShoot : MonoBehaviour 
+public class BossShoot : MonoBehaviour 
 {
 	public GameObject[] shotPrefab;
 	public float shootingRate = 1.0f;
-	public float burstAmount;
+	public int burstAmount;
 	public AudioClip sound;
 	public Transform child;
 
 	private float shootCooldown = 0f;
 
+	private int firedBurst;
+
 	public void TryShoot (Transform target, int index)
 	{
-		if (shootCooldown > 0)
+		if (firedBurst > 0) {
+			firedBurst--;
+			Shoot (target, index);
+			shootCooldown = shootingRate;
+		}
+		else if (shootCooldown > 0f)
 		{
 			shootCooldown -= Time.deltaTime;
 		}
 		else
 		{
-			shootCooldown = shootingRate;
-			Shoot (target, index);
+			firedBurst = burstAmount;
 		}
 	}
 
@@ -33,11 +39,11 @@ public class EnemyShoot : MonoBehaviour
 
 		Vector3 diff = target.position - transform.position;
 		// Assign position
-		shotPrefabInst.transform.position = transform.position + (diff.normalized * 2);
+		shotPrefabInst.transform.position = transform.position + (diff.normalized * 15);
 
 		SetComponentParameters (shotPrefabInst, target);
 
-		audio.PlayOneShot (sound);
+		audio.Play();
 	}
 
 	private void SetComponentParameters(GameObject shotPrefabInst, Transform target)

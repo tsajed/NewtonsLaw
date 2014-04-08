@@ -9,9 +9,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 400000}
   - 212: {fileID: 21200000}
-  - 114: {fileID: 11400000}
   - 50: {fileID: 5000000}
   - 58: {fileID: 5800000}
+  - 114: {fileID: 11400000}
   m_Layer: 0
   m_Name: Projectile Upgraded
   m_TagString: Bullet
@@ -68,6 +68,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  maxMagnitude: 7000
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

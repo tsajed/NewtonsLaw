@@ -10,13 +10,15 @@ public class TractorBeam : MonoBehaviour
 	public Material[] lineMaterials;
 
 	private LineRenderer line;
-
+	private ParticleSystem particles;
 	void Start () 
 	{
 		line = GetComponentInChildren<LineRenderer> ();
 		SpriteRenderer sprite = GetComponentInChildren<SpriteRenderer> ();
 		line.renderer.sortingLayerID = sprite.renderer.sortingLayerID;
 		line.renderer.sortingOrder = sprite.renderer.sortingOrder;
+
+		particles = GetComponentInChildren<ParticleSystem> ();
 	}
 
 	void FixedUpdate () 
@@ -106,6 +108,17 @@ public class TractorBeam : MonoBehaviour
 		line.material = lineMaterials[materialIndex];
 		line.SetPosition (0, start);
 		line.SetPosition (1, start + end);
+
+		if (materialIndex == 0) 
+		{
+			particles.startColor = Color.cyan;
+		} 
+		else 
+		{
+			particles.startColor = Color.green;
+		}
+		particles.transform.rotation = Quaternion.LookRotation (end);
+		particles.Play ();
 	}
 
 }

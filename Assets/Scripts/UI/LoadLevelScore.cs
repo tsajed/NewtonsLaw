@@ -54,7 +54,7 @@ public class LoadLevelScore : MonoBehaviour
 		{
 			// Get the number; The object name should be "Scene #"
 			string[] name = transform.name.Split(char.Parse(" "));
-			levelScores[i] = PlayerPrefs.GetString("Scene " + name[1] + "Score" + i, "Sean Gouglas:1234");
+			levelScores[i] = PlayerPrefs.GetString("Scene " + name[1] + "Score" + i, "");
 		}
 	}
 }

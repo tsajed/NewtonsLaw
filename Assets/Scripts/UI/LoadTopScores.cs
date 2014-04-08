@@ -44,7 +44,7 @@ public class LoadTopScores : MonoBehaviour
 	{
 		// Minus 12 to take account of Tutorials, Credits, and Start Screens
 		int sceneCounter = Application.levelCount - 12;
-		
+
 		// Traverse through each level
 		for(int i = 0; i < sceneCounter; ++i)
 		{	
@@ -55,7 +55,7 @@ public class LoadTopScores : MonoBehaviour
 			for(int j = 0; j < 10; ++j)
 			{
 				// Example string 'playerName:1000'
-				string[] score = PlayerPrefs.GetString("Scene " + i + "Score" + j, "").Split(char.Parse(":"));
+				string[] score = PlayerPrefs.GetString("Scene " + (i+1) + "Score" + j, "").Split(char.Parse(":"));
 				
 				// Make sure it's not empty
 				if(score.Length > 1)

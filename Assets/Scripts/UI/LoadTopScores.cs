@@ -16,10 +16,10 @@ public class ScoreComparer: IComparer<TopScore>
 
 		//If x is greater
 		if(score1 > score2)
-			return 1;
+			return -1;
 		//If y is greater
 		else
-			return -1;
+			return 1;
 	}
 }
 

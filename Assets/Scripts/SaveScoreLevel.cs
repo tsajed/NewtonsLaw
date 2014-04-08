@@ -8,11 +8,12 @@ public class SaveScoreLevel : MonoBehaviour {
 	private List<string> scores = new List<string>();
 	private int scoreCount = 10;	// The number of ranks for the score board
 	private string levelName;
-	private string playerName = "Johnny Cake";
+	private string playerName;
 
 	// Use this for initialization
 	void Start () 
 	{
+		playerName = PlayerPrefs.GetString("PlayerName");
 		levelName = Application.loadedLevelName + "Score";
 		scoreBoard = GameObject.Find("Score").GetComponent<PlayerScore>();
 

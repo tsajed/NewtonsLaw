@@ -208,7 +208,7 @@ MonoBehaviour:
   - {fileID: 100000, guid: 44bb5953b5f8a3c4997d4fcd0997f639, type: 2}
   - {fileID: 100000, guid: fda5d43e4c00bf74fb441bfd3926bcf1, type: 2}
   - {fileID: 100000, guid: 756510b7da15b754788e3ee2a1bad3b7, type: 2}
-  shootingRate: 4
+  shootingRate: 2.5
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -259,6 +259,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shotPrefab: []
   shootingRate: 1
+  burstAmount: 0
   sound: {fileID: 0}
   child: {fileID: 0}
 --- !u!114 &11400010

@@ -84,11 +84,21 @@ public class LoadTopScores : MonoBehaviour
 		int counter = 0;
 		foreach(Transform child in transform)
 		{
-			GUIText scoreText = child.GetComponent("GUIText") as GUIText;
-
-			if(scoreText.name != "Top Back Text" && counter < topScores.Count)
+			if(child.name != "Top Back Text" && counter < topScores.Count)
 			{
-				scoreText.text += topScores[counter].name + ":     " + topScores[counter].score;
+				foreach(Transform innerChild in child.transform)
+				{
+					if(innerChild.name == "Name")
+					{
+						GUIText nameText = innerChild.GetComponent("GUIText") as GUIText;
+						nameText.text = topScores[counter].name;
+					}
+					else if(innerChild.name == "Score")
+					{
+						GUIText scoreText = innerChild.GetComponent("GUIText") as GUIText;
+						scoreText.text = topScores[counter].score.ToString();
+					}
+				}
 				counter++;
 			}
 		}

@@ -43,7 +43,8 @@ public class PlayerPause : MonoBehaviour {
 		}
 		if (GUI.Button(new Rect(Screen.width/2 - 75, Screen.height/2 + 115, 150, 50), "Main Menu")) 
 		{
-				Application.LoadLevel("StartScreen");
+			Time.timeScale = 1;
+			Application.LoadLevel("StartScreen");
 		}
 	}
 }

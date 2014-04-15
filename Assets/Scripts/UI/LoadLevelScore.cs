@@ -10,6 +10,7 @@ public class LoadLevelScore : MonoBehaviour
 	private Transform scoreBoard;	// The individual Score Board of a Level
 	private GameObject backButton;	// The Back Button of the Score Levels List
 	private string[] levelScores;	// Contains the scores of all the individual levels
+	private string[] levelPlayerNames;	// Contains the names of all the players
 	void OnMouseDown()
 	{
 
@@ -29,14 +30,24 @@ public class LoadLevelScore : MonoBehaviour
 
 		// Fill each rank
 		int counter = 0;
-		foreach(Transform child in scoreBoard) 
+		foreach(Transform child in scoreBoard)
 		{
-			GUIText scoreText = child.GetComponent("GUIText") as GUIText;
-
-			if(scoreText.name != "Back Text") 
+			if(child.name != "Back Text")
 			{
-				scoreText.text += levelScores[counter];
-				++counter;
+				foreach(Transform innerChild in child.transform)
+				{
+					if(innerChild.name == "Name")
+					{
+						GUIText nameText = innerChild.GetComponent("GUIText") as GUIText;
+						nameText.text = levelPlayerNames[counter];
+					}
+					else if(innerChild.name == "Score")
+					{
+						GUIText scoreText = innerChild.GetComponent("GUIText") as GUIText;
+						scoreText.text = levelScores[counter];
+					}
+				}
+				counter++;
 			}
 		}
 
@@ -50,11 +61,17 @@ public class LoadLevelScore : MonoBehaviour
 	void loadScores() 
 	{
 		levelScores = new string[10];
+		levelPlayerNames = new string[10];
 		for(int i = 0; i < 10; i++)
 		{
 			// Get the number; The object name should be "Scene #"
 			string[] name = transform.name.Split(char.Parse(" "));
-			levelScores[i] = PlayerPrefs.GetString("Scene " + name[1] + "Score" + i, "");
+			string[] data = PlayerPrefs.GetString("Scene " + name[1] + "Score" + i, "").Split(char.Parse(":"));
+			if(data.Length > 1)
+			{
+				levelPlayerNames[i] = data[0];
+				levelScores[i] = data[1];
+			}
 		}
 	}
 }

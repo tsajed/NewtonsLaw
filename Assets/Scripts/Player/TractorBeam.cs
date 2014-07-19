@@ -23,8 +23,16 @@ public class TractorBeam : MonoBehaviour
 				particles = GetComponentInChildren<ParticleSystem> ();
 		}
 
-		void FixedUpdate ()
+		void Update ()
 		{
+				// Turn off the line renderer once the player lets go of the button
+				if (Input.GetButtonUp ("Fire2") || Input.GetButtonUp ("Fire1")) {
+					line.gameObject.SetActive (false);
+				}
+				// If grab released, free the object.
+				if (Input.GetButtonUp ("Fire2")) {
+					grabbed = null;
+				}
 				if (Input.GetButton ("Fire2") || Input.GetButton ("Fire1")) {
 						//Get click location.
 						Vector3 clickLoc = Camera.main.ScreenToWorldPoint (Input.mousePosition);
@@ -78,10 +86,6 @@ public class TractorBeam : MonoBehaviour
 								}
 						}
 				}
-				// If grab released, free the object.
-				if (Input.GetButtonUp ("Fire2")) {
-						grabbed = null;
-				}
 				// Play the grab sound when grabbing.
 				if (Input.GetButton ("Fire2")) {
 						audio.clip = pull;
@@ -91,15 +95,8 @@ public class TractorBeam : MonoBehaviour
 						audio.Stop ();
 				}
 		}
-
-		void Update ()
-		{
-				// Turn off the line renderer once the player lets go of the button
-				if (Input.GetButtonUp ("Fire2") || Input.GetButtonUp ("Fire1")) {
-						line.gameObject.SetActive (false);
-				}
-		}
 	
+
 		void renderLine (Vector2 start, Vector2 end, int materialIndex)
 		{
 				line.material = lineMaterials [materialIndex];

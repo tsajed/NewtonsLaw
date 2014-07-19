@@ -20,8 +20,15 @@ public class SaveOptions : MonoBehaviour
 
     void OnGUI() 
     {
+        // Not using Regex, due to performance reasons (OnGUI called several times)
+        // More info: http://answers.unity3d.com/questions/18736/restrict-characters-in-guitextfield.html
+        char chr = Event.current.character;
+        if ( (chr < 'a' || chr > 'z') && (chr < 'A' || chr > 'Z') && (chr < '0' || chr > '9') ) {
+            Event.current.character = '\0';
+        }
+
     	GUI.Label(new Rect(Screen.width/2 - 200, 100, 200, 20), "Player Name:");
-        playerName = GUI.TextField(new Rect(Screen.width/2 - 100, 100, 200, 20), playerName, 25);
+        playerName = GUI.TextField(new Rect(Screen.width/2 - 100, 100, 200, 20), playerName, 10);
     }
 
 	void OnMouseDown()

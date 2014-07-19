@@ -11,7 +11,6 @@ public class Glow : MonoBehaviour {
 		spriteRenderer = gameObject.GetComponent<SpriteRenderer> ();
 		System.Random rnd = new System.Random ();
 		offset = (float)rnd.Next (100)/100f;
-		print (offset);
 	}
 	
 	// Update is called once per frame

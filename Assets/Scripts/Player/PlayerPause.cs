@@ -3,18 +3,28 @@ using System.Collections;
 
 public class PlayerPause : MonoBehaviour {
 	bool paused = false;
+	GameObject pausebg;
+	void Start()
+	{
+		//Since you can't directly Find() inactive game objects, we 
+		//get the UI gameobject and then get the transform from it.
+		//Unity is weird sometimes.
+		pausebg = GameObject.Find ("UI").transform.FindChild("pausebg").gameObject;
 
+	}
 	// Update is called once per frame
 	void Update () {
 		if(Input.GetButtonDown("Pause"))
 		{
 			if(!paused)
 			{
+				pausebg.SetActive(true);
 				paused = true;
 				Time.timeScale = 0;
 			}
 			else
 			{
+				pausebg.SetActive(false);
 				paused = false;
 				Time.timeScale = 1;
 			}

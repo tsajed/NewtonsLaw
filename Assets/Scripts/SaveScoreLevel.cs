@@ -13,7 +13,7 @@ public class SaveScoreLevel : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		playerName = PlayerPrefs.GetString("PlayerName");
+		playerName = PlayerPrefs.GetString("PlayerName", "Unknown");
 		levelName = Application.loadedLevelName + "Score";
 		scoreBoard = GameObject.Find("Score").GetComponent<PlayerScore>();
 

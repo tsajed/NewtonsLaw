@@ -6,8 +6,18 @@ public class PlayerMovement : MonoBehaviour
 	public float moveForce = 365f;			// Amount of force added to move the player left and right.
 	public float maxSpeed = 5f;				// The fastest the player can travel in the x axis.
 	
-
 	public float stunCooldown = 0f;
+
+	#if UNITY_IPHONE || UNITY_ANDROID
+		private Joystick moveJoystick;
+	#endif
+
+	void Start ()
+	{
+		#if UNITY_IPHONE || UNITY_ANDROID
+			moveJoystick = GameObject.Find("MobileControls").GetComponentInChildren<Joystick>();
+		#endif
+	}
 
 	void FixedUpdate () 
 	{
@@ -28,8 +38,13 @@ public class PlayerMovement : MonoBehaviour
 			return;
 
 		// Cache the horizontal input.
-		float h = Input.GetAxis ("Horizontal");
-		float v = Input.GetAxis ("Vertical");
+		#if UNITY_IPHONE || UNITY_ANDROID
+			float h = moveJoystick.position.x;
+			float v = moveJoystick.position.y;
+		#else
+			float h = Input.GetAxis ("Horizontal");
+			float v = Input.GetAxis ("Vertical");
+		#endif
 
 		// Set a maximum velocity, don't stop add force when you're over the max velocity!
 		rigidbody2D.AddForce (new Vector2 (h * moveForce, v * moveForce));

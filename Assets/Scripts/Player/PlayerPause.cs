@@ -18,9 +18,12 @@ public class PlayerPause : MonoBehaviour {
 		{
 			if(!paused)
 			{
-				pausebg.SetActive(true);
 				paused = true;
 				Time.timeScale = 0;
+				Vector3 p1 = Camera.main.ViewportToWorldPoint(new Vector3(.5f,.42f,0f));
+				p1.z = 0f;
+				pausebg.transform.position = p1;
+				pausebg.SetActive(true);
 			}
 			else
 			{

@@ -9,7 +9,7 @@ public class PlayerPause : MonoBehaviour {
 		//Since you can't directly Find() inactive game objects, we 
 		//get the UI gameobject and then get the transform from it.
 		//Unity is weird sometimes.
-		pausebg = GameObject.Find ("UI").transform.FindChild("pausebg").gameObject;
+		pausebg = GameObject.Find ("UI").transform.FindChild("Pause Menu").gameObject;
 
 	}
 	// Update is called once per frame
@@ -33,6 +33,7 @@ public class PlayerPause : MonoBehaviour {
 			}
 		}
 	}
+	/* Deprecated. Using custom UI system now so we can have custom sprites.
 	void OnGUI() 
 	{
 		if (!paused)
@@ -60,4 +61,5 @@ public class PlayerPause : MonoBehaviour {
 			Application.LoadLevel("StartScreen");
 		}
 	}
+	*/
 }

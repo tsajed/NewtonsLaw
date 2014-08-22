@@ -3,6 +3,10 @@ using System.Collections;
 
 public class Glow : MonoBehaviour {
 	public float variance;
+	public float speed = 1f;
+	public Color secondaryColor = Color.white;
+
+	private Color primaryColor;
 
 	private SpriteRenderer spriteRenderer;
 	private float offset;
@@ -11,14 +15,17 @@ public class Glow : MonoBehaviour {
 		spriteRenderer = gameObject.GetComponent<SpriteRenderer> ();
 		System.Random rnd = new System.Random ();
 		offset = (float)rnd.Next (100)/100f;
+		primaryColor = spriteRenderer.color;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		float alpha = Mathf.Abs(Mathf.Sin (Time.time + offset));
+		//Interpolate transparency.
+		float alpha = Mathf.Abs(Mathf.Sin (speed * (Time.time + offset)));
 		alpha = alpha * variance;
-		Color oldColor = spriteRenderer.color;
-		Color newColor = new Color (oldColor.r, oldColor.g, oldColor.b, alpha + (1 - variance));
+		//Interpolate color.
+		Color intrpColor = (primaryColor * alpha) + (secondaryColor * (1-alpha));
+		Color newColor = new Color (intrpColor.r, intrpColor.g, intrpColor.b, alpha + (1 - variance));
 		spriteRenderer.color = newColor;
 	}
 }

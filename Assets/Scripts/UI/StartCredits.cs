@@ -1,28 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class StartCredits : MonoBehaviour {
-	public Sprite hoverSprite;
-	
-	private SpriteRenderer ren;
-	private Sprite normalSprite;
-
-	void Awake() {
-		ren = gameObject.GetComponent<SpriteRenderer>();
-		normalSprite = ren.sprite;
-
+public class StartCredits : MenuButton {
+	override protected void OnButtonClick()
+	{
+		Debug.Log("CREDITS");
+		Application.LoadLevel ("Credits");
 	}
-
-    void OnMouseEnter() {
-    	ren.sprite = hoverSprite;
-    }
-
-    void OnMouseExit() {
-    	ren.sprite = normalSprite;
-    }
-
-    void OnMouseDown() {
-    	Debug.Log("CREDITS");
-   	Application.LoadLevel ("Credits");
-    }
 }

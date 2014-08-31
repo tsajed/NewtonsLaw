@@ -1,27 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Start : MonoBehaviour {
-	public Sprite hoverSprite;
-
-	private SpriteRenderer ren;
-	private Sprite normalSprite;
-
-	void Awake() {
-		ren = gameObject.GetComponent<SpriteRenderer>();
-		normalSprite = ren.sprite;
-
-	}
-
-    void OnMouseEnter() {
-    	ren.sprite = hoverSprite;
-    }
-
-    void OnMouseExit() {
-    	ren.sprite = normalSprite;
-    }
-
-    void OnMouseDown() {
+public class Start : MenuButton {
+	override protected void OnButtonClick() {
     	Debug.Log("START");
 		Application.LoadLevel(Application.loadedLevel + 1);
     }

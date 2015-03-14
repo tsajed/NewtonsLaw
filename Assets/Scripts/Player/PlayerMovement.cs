@@ -8,9 +8,15 @@ public class PlayerMovement : MonoBehaviour
 	
 	public float stunCooldown = 0f;
 
+	private Rigidbody2D rigidBody2D;
+
 	#if UNITY_IPHONE || UNITY_ANDROID
 		private Joystick moveJoystick;
 	#endif
+
+	void Awake() {
+		rigidBody2D = GetComponent<Rigidbody2D>();
+	}
 
 	void Start ()
 	{
@@ -47,75 +53,75 @@ public class PlayerMovement : MonoBehaviour
 		#endif
 
 		// Set a maximum velocity, don't stop add force when you're over the max velocity!
-		rigidbody2D.AddForce (new Vector2 (h * moveForce, v * moveForce));
-		if (rigidbody2D.velocity.x > maxSpeed)
+		rigidBody2D.AddForce (new Vector2 (h * moveForce, v * moveForce));
+		if (rigidBody2D.velocity.x > maxSpeed)
 		{
-			rigidbody2D.velocity = new Vector2 (maxSpeed, rigidbody2D.velocity.y);
+			rigidBody2D.velocity = new Vector2 (maxSpeed, rigidBody2D.velocity.y);
 		}
-		else if (rigidbody2D.velocity.x < -maxSpeed)
+		else if (rigidBody2D.velocity.x < -maxSpeed)
 		{
-			rigidbody2D.velocity = new Vector2 (-maxSpeed, rigidbody2D.velocity.y);
+			rigidBody2D.velocity = new Vector2 (-maxSpeed, rigidBody2D.velocity.y);
 		}
-		if (rigidbody2D.velocity.y > maxSpeed)
+		if (rigidBody2D.velocity.y > maxSpeed)
 		{
-			rigidbody2D.velocity = new Vector2 (rigidbody2D.velocity.x, maxSpeed);
+			rigidBody2D.velocity = new Vector2 (rigidBody2D.velocity.x, maxSpeed);
 		}
-		else if (rigidbody2D.velocity.y < -maxSpeed)
+		else if (rigidBody2D.velocity.y < -maxSpeed)
 		{
-			rigidbody2D.velocity = new Vector2 (rigidbody2D.velocity.x, -maxSpeed);
+			rigidBody2D.velocity = new Vector2 (rigidBody2D.velocity.x, -maxSpeed);
 		}
 
 
 
 		//Invisible walls
-		if (rigidbody2D.transform.position.x < -78.5)
+		if (rigidBody2D.transform.position.x < -78.5)
 		{	
 			// player can't move
 			stunCooldown = 0.3f;
-			rigidbody2D.velocity = new Vector2 (maxSpeed+30, rigidbody2D.velocity.y);
+			rigidBody2D.velocity = new Vector2 (maxSpeed+30, rigidBody2D.velocity.y);
 		}
-		else if (rigidbody2D.transform.position.x > 78.5)
+		else if (rigidBody2D.transform.position.x > 78.5)
 		{
 			stunCooldown = 0.3f;
-			rigidbody2D.velocity = new Vector2 (-maxSpeed-30, rigidbody2D.velocity.y);
+			rigidBody2D.velocity = new Vector2 (-maxSpeed-30, rigidBody2D.velocity.y);
 		}
-		if (rigidbody2D.transform.position.y < -78.5)
+		if (rigidBody2D.transform.position.y < -78.5)
 		{
 			stunCooldown = 0.3f;
-			rigidbody2D.velocity = new Vector2 (rigidbody2D.velocity.x, maxSpeed+30);
+			rigidBody2D.velocity = new Vector2 (rigidBody2D.velocity.x, maxSpeed+30);
 		}
-		else if (rigidbody2D.transform.position.y > 78.5)
+		else if (rigidBody2D.transform.position.y > 78.5)
 		{
 			stunCooldown = 0.3f;
-			rigidbody2D.velocity = new Vector2 (rigidbody2D.velocity.y, -maxSpeed-30);
+			rigidBody2D.velocity = new Vector2 (rigidBody2D.velocity.y, -maxSpeed-30);
 
 		}
 
 		// Wraparound, unused.
 		/**
-		if (rigidbody2D.transform.position.x < -76)
+		if (rigidBody2D.transform.position.x < -76)
 		{
-			Vector3 tr = rigidbody2D.transform.position;
+			Vector3 tr = rigidBody2D.transform.position;
 			tr.x += 150;
-			rigidbody2D.transform.position = tr;
+			rigidBody2D.transform.position = tr;
 		}
-		else if (rigidbody2D.transform.position.x > 76)
+		else if (rigidBody2D.transform.position.x > 76)
 		{
-			Vector3 tr = rigidbody2D.transform.position;
+			Vector3 tr = rigidBody2D.transform.position;
 			tr.x -= 150;
-			rigidbody2D.transform.position = tr;
+			rigidBody2D.transform.position = tr;
 		}
-		if (rigidbody2D.transform.position.y < -76)
+		if (rigidBody2D.transform.position.y < -76)
 		{
-			Vector3 tr = rigidbody2D.transform.position;
+			Vector3 tr = rigidBody2D.transform.position;
 			tr.y += 150;
-			rigidbody2D.transform.position = tr;
+			rigidBody2D.transform.position = tr;
 		}
-		else if (rigidbody2D.transform.position.y > 76)
+		else if (rigidBody2D.transform.position.y > 76)
 		{
-			Vector3 tr = rigidbody2D.transform.position;
+			Vector3 tr = rigidBody2D.transform.position;
 			tr.y -= 150;
-			rigidbody2D.transform.position = tr;
+			rigidBody2D.transform.position = tr;
 		}
 		*/
 	}

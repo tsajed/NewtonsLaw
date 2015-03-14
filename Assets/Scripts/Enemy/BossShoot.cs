@@ -43,7 +43,7 @@ public class BossShoot : MonoBehaviour
 
 		SetComponentParameters (shotPrefabInst, target);
 
-		audio.Play();
+		GetComponent<AudioSource>().Play();
 	}
 
 	private void SetComponentParameters(GameObject shotPrefabInst, Transform target)

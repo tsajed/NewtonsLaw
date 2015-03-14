@@ -8,7 +8,7 @@ public class PlayerScore : MonoBehaviour
 	void Update ()
 	{
 		// Set the score text.
-		guiText.text = "Score: " + score;
+		GetComponent<GUIText>().text = "Score: " + score;
 	}
 
 }

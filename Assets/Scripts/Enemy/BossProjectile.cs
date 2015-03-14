@@ -9,9 +9,15 @@ public class BossProjectile : MonoBehaviour
 	public GameObject parent;
 	public float maxMagnitude;
 
+	private Rigidbody2D rigidBody2D;
+
+	void Awake() {
+		rigidBody2D = parent.GetComponent<Rigidbody2D>();
+	}
+
 	void Start ()
 	{
-		float p_velocity = parent.rigidbody2D.velocity.magnitude;
+		float p_velocity = rigidBody2D.velocity.magnitude;
 		self = new GenericEnemy (this.gameObject, 100, 50f, 2.0f);
 		// 2 - Limited time to live to avoid any leak
 		Destroy (gameObject, 6); // seconds 
@@ -21,7 +27,7 @@ public class BossProjectile : MonoBehaviour
 		Vector2 force = dir * (self.movementSpeed + p_velocity);
 		force.Normalize ();
 		force.Scale (new Vector2 (maxMagnitude, maxMagnitude));
-		rigidbody2D.AddForce (force);
+		rigidBody2D.AddForce (force);
 	}
 
 	void OnCollisionEnter2D (Collision2D coll)

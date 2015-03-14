@@ -22,13 +22,16 @@ public class PlayerControl : MonoBehaviour
 	private Transform groundCheck;			// A position marking where to check if the player is grounded.
 	private bool grounded = false;			// Whether or not the player is grounded.
 	private Animator anim;					// Reference to the player's animator component.
-
+	private Rigidbody2D rigidBody2D;
+	private AudioSource audioComponent;
 
 	void Awake()
 	{
 		// Setting up references.
 		groundCheck = transform.Find("groundCheck");
 		anim = GetComponent<Animator>();
+		rigidBody2D = GetComponent<Rigidbody2D>();
+		audioComponent = GetComponent<AudioSource>();
 	}
 
 
@@ -52,14 +55,14 @@ public class PlayerControl : MonoBehaviour
 		anim.SetFloat("Speed", Mathf.Abs(h));
 
 		// If the player is changing direction (h has a different sign to velocity.x) or hasn't reached maxSpeed yet...
-		if(h * rigidbody2D.velocity.x < maxSpeed)
+		if(h * rigidBody2D.velocity.x < maxSpeed)
 			// ... add a force to the player.
-			rigidbody2D.AddForce(Vector2.right * h * moveForce);
+			rigidBody2D.AddForce(Vector2.right * h * moveForce);
 
 		// If the player's horizontal velocity is greater than the maxSpeed...
-		if(Mathf.Abs(rigidbody2D.velocity.x) > maxSpeed)
+		if(Mathf.Abs(rigidBody2D.velocity.x) > maxSpeed)
 			// ... set the player's velocity to the maxSpeed in the x axis.
-			rigidbody2D.velocity = new Vector2(Mathf.Sign(rigidbody2D.velocity.x) * maxSpeed, rigidbody2D.velocity.y);
+			rigidBody2D.velocity = new Vector2(Mathf.Sign(rigidBody2D.velocity.x) * maxSpeed, rigidBody2D.velocity.y);
 
 		// If the input is moving the player right and the player is facing left...
 		if(h > 0 && !facingRight)
@@ -76,12 +79,12 @@ public class PlayerControl : MonoBehaviour
 			// Set the Jump animator trigger parameter.
 			anim.SetTrigger("Jump");
 
-			// Play a random jump audio clip.
+			// Play a random jump audioComponent clip.
 			int i = Random.Range(0, jumpClips.Length);
 			AudioSource.PlayClipAtPoint(jumpClips[i], transform.position);
 
 			// Add a vertical force to the player.
-			rigidbody2D.AddForce(new Vector2(0f, jumpForce));
+			rigidBody2D.AddForce(new Vector2(0f, jumpForce));
 
 			// Make sure the player can't jump again until the jump conditions from Update are satisfied.
 			jump = false;
@@ -111,14 +114,14 @@ public class PlayerControl : MonoBehaviour
 			yield return new WaitForSeconds(tauntDelay);
 
 			// If there is no clip currently playing.
-			if(!audio.isPlaying)
+			if(!audioComponent.isPlaying)
 			{
 				// Choose a random, but different taunt.
 				tauntIndex = TauntRandom();
 
 				// Play the new taunt.
-				audio.clip = taunts[tauntIndex];
-				audio.Play();
+				audioComponent.clip = taunts[tauntIndex];
+				audioComponent.Play();
 			}
 		}
 	}

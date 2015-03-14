@@ -8,6 +8,12 @@ public class EnemyMovement : MonoBehaviour
 
 	public float stunCooldown = 0f;
 
+	private Rigidbody2D rigidBody2D;
+
+	void Awake() {
+		rigidBody2D = GetComponent<Rigidbody2D>();
+	}
+
 	public void TryMove (Transform target)
 	{
 		if (stunCooldown > 0) { stunCooldown -= Time.deltaTime; }
@@ -18,6 +24,6 @@ public class EnemyMovement : MonoBehaviour
 	{
 		Vector3 dir = target.transform.position - location.position;
 		Vector2 force = dir.normalized * self.movementSpeed;
-		rigidbody2D.AddForce (force);
+		rigidBody2D.AddForce (force);
 	}
 }

@@ -12,18 +12,24 @@ public class TractorBeam : MonoBehaviour
 		private ParticleSystem particles;
 		private float distance;
 		private GameObject grabbed;
+		private AudioSource audioSound;
 
 		#if UNITY_IPHONE || UNITY_ANDROID
 			private int fingerBeamId = -1;
 			private bool mobilePull = false;
 			private Joystick moveJoystick;
 		#endif
+
+		void Awake() {
+			audioSound = GetComponent<AudioSource>();
+		}
+
 		void Start ()
 		{
 				line = GetComponentInChildren<LineRenderer> ();
 				SpriteRenderer sprite = GetComponentInChildren<SpriteRenderer> ();
-				line.renderer.sortingLayerID = sprite.renderer.sortingLayerID;
-				line.renderer.sortingOrder = sprite.renderer.sortingOrder;
+				line.GetComponent<Renderer>().sortingLayerID = sprite.GetComponent<Renderer>().sortingLayerID;
+				line.GetComponent<Renderer>().sortingOrder = sprite.GetComponent<Renderer>().sortingOrder;
 
 				particles = GetComponentInChildren<ParticleSystem> ();
 				
@@ -57,11 +63,11 @@ public class TractorBeam : MonoBehaviour
 				
 				// Play the grab sound when grabbing.
 				if (fingerBeamId != -1 && mobilePull) {
-					audio.clip = pull;
-					if (!audio.isPlaying)
-						audio.Play ();
+					audioSound.clip = pull;
+					if (!audioSound.isPlaying)
+						audioSound.Play ();
 				} else {
-					audio.Stop ();
+					audioSound.Stop ();
 				}
 
 				// Turn off the line renderer once the player lets go of the button
@@ -103,11 +109,11 @@ public class TractorBeam : MonoBehaviour
 
 				// Play the grab sound when grabbing.
 				if (Input.GetButton ("Fire2")) {
-					audio.clip = pull;
-					if (!audio.isPlaying)
-						audio.Play ();
+					audioSound.clip = pull;
+					if (!audioSound.isPlaying)
+						audioSound.Play ();
 				} else {
-					audio.Stop ();
+					audioSound.Stop ();
 				}
 			#endif
 
@@ -151,78 +157,78 @@ public class TractorBeam : MonoBehaviour
 			//send a raycast and return all intersections. magn. gives distance to cast e.g. distance clicked from player
 			RaycastHit2D[] all_hit = Physics2D.RaycastAll (myLoc, target_direction, target_direction.magnitude);
 			foreach (RaycastHit2D hit in all_hit) {
-					if (hit.collider == null)
-							continue;
+				if (hit.collider == null)
+					continue;
+				Rigidbody2D hitRigidBody = hit.collider.GetComponent<Rigidbody2D>();
+				if (hit.collider.gameObject.name != "Prototypi" && hitRigidBody != null
+					&& !hit.collider.gameObject.name.Contains ("Projectile")) {
 
-					if (hit.collider.gameObject.name != "Prototypi" && hit.collider.rigidbody2D != null
-							&& !hit.collider.gameObject.name.Contains ("Projectile")) {
 
+					if (stasisEffect)
+							hitRigidBody.velocity = Vector2.zero; //reset velocity for stasis effect
 
-							if (stasisEffect)
-									hit.collider.rigidbody2D.velocity = Vector2.zero; //reset velocity for stasis effect
+					#if UNITY_ANDROID || UNITY_IPHONE
+						if(fingerBeamId != -1 && mobilePull && grabbed == null) {
+							Vector2 hitPos2d = new Vector2 (hit.transform.position.x, hit.transform.position.y);
+							distance = (hitPos2d - myLoc).magnitude;
+							grabbed = hit.collider.gameObject;		
+						} else if(fingerBeamId != -1 && !mobilePull) {
+							// Play push sound when found a hit when pushing
+							AudioSource.PlayClipAtPoint (push, hit.collider.transform.position);
+							hitRigidBody.AddForce ((clickLoc2d - myLoc).normalized * power);
 
-							#if UNITY_ANDROID || UNITY_IPHONE
-								if(fingerBeamId != -1 && mobilePull && grabbed == null) {
-									Vector2 hitPos2d = new Vector2 (hit.transform.position.x, hit.transform.position.y);
-									distance = (hitPos2d - myLoc).magnitude;
-									grabbed = hit.collider.gameObject;		
-								} else if(fingerBeamId != -1 && !mobilePull) {
-									// Play push sound when found a hit when pushing
-									AudioSource.PlayClipAtPoint (push, hit.collider.transform.position);
-									hit.collider.rigidbody2D.AddForce ((clickLoc2d - myLoc).normalized * power);
+						}
+					#else
+						if (Input.GetButton ("Fire2") && grabbed == null) {
+							Vector2 hitPos2d = new Vector2 (hit.transform.position.x, hit.transform.position.y);
+							distance = (hitPos2d - myLoc).magnitude;
+							grabbed = hit.collider.gameObject;
+						} else if (Input.GetButton ("Fire1")) {
+							// Play push sound when found a hit when pushing
+							AudioSource.PlayClipAtPoint (push, hit.collider.transform.position);
+							hitRigidBody.AddForce ((clickLoc2d - myLoc).normalized * power);
 
-								}
-							#else
-								if (Input.GetButton ("Fire2") && grabbed == null) {
-									Vector2 hitPos2d = new Vector2 (hit.transform.position.x, hit.transform.position.y);
-									distance = (hitPos2d - myLoc).magnitude;
-									grabbed = hit.collider.gameObject;
-								} else if (Input.GetButton ("Fire1")) {
-									// Play push sound when found a hit when pushing
-									AudioSource.PlayClipAtPoint (push, hit.collider.transform.position);
-									hit.collider.rigidbody2D.AddForce ((clickLoc2d - myLoc).normalized * power);
-
-								}
-							#endif
-							break; // Only affect the first object hit.
-					}
+						}
+					#endif
+					break; // Only affect the first object hit.
+				}
 			}
 		}
 
 		void renderLine (Vector2 start, Vector2 end, int materialIndex)
 		{
-				line.material = lineMaterials [materialIndex];
-				line.SetPosition (0, start);
-				line.SetPosition (1, start + end);
+			line.material = lineMaterials [materialIndex];
+			line.SetPosition (0, start);
+			line.SetPosition (1, start + end);
 
-				if (materialIndex == 0) {
-						particles.startColor = Color.cyan;
-				} else {
-						particles.startColor = Color.green;
-				}
-				particles.transform.rotation = Quaternion.LookRotation (end);
-				particles.Play ();
+			if (materialIndex == 0) {
+					particles.startColor = Color.cyan;
+			} else {
+					particles.startColor = Color.green;
+			}
+			particles.transform.rotation = Quaternion.LookRotation (end);
+			particles.Play ();
 		}
 
 		void orient (Vector3 clickLoc)
 		{
-		
-				if (stasisEffect)
-						grabbed.rigidbody2D.velocity = Vector2.zero; //reset velocity for stasis effect
-		
-				Vector3 target = (clickLoc - transform.position).normalized;
-				target.Scale(new Vector3(distance,distance,0));
-				//target = target * distance;
-				Vector3 newDir = Vector3.RotateTowards(grabbed.transform.position-transform.position, target, 1F, 0.0F);
-				newDir.Normalize();
-				newDir.Scale (new Vector3(distance,distance,0));
-				Debug.DrawRay(transform.position, newDir, Color.red, 1);
-				Vector3 dirGlobal = newDir + transform.position;
-				Debug.DrawRay(Vector3.zero, dirGlobal, Color.green,2);
-				Vector3 dirTarget = dirGlobal - grabbed.transform.position;
-				Vector2 dirTarget2D = new Vector2 (dirTarget.x, dirTarget.y);
-				Debug.DrawRay(grabbed.transform.position, dirTarget, Color.yellow,2);
-				grabbed.rigidbody2D.AddForce (dirTarget * power);
+			Rigidbody2D grabbedRigid = grabbed.GetComponent<Rigidbody2D>();
+			if (stasisEffect)
+				grabbedRigid.velocity = Vector2.zero; //reset velocity for stasis effect
+	
+			Vector3 target = (clickLoc - transform.position).normalized;
+			target.Scale(new Vector3(distance,distance,0));
+			//target = target * distance;
+			Vector3 newDir = Vector3.RotateTowards(grabbed.transform.position-transform.position, target, 1F, 0.0F);
+			newDir.Normalize();
+			newDir.Scale (new Vector3(distance,distance,0));
+			Debug.DrawRay(transform.position, newDir, Color.red, 1);
+			Vector3 dirGlobal = newDir + transform.position;
+			Debug.DrawRay(Vector3.zero, dirGlobal, Color.green,2);
+			Vector3 dirTarget = dirGlobal - grabbed.transform.position;
+			//Vector2 dirTarget2D = new Vector2 (dirTarget.x, dirTarget.y);
+			Debug.DrawRay(grabbed.transform.position, dirTarget, Color.yellow,2);
+			grabbedRigid.AddForce (dirTarget * power);
 
 				
 				

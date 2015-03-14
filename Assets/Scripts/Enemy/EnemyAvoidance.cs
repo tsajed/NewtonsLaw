@@ -15,6 +15,6 @@ public class EnemyAvoidance : MonoBehaviour
 			return;
 		Vector2 oLoc = new Vector2(other_gameobj.transform.position.x,other_gameobj.transform.position.y);
 		Vector2 myLoc = new Vector2(transform.position.x,transform.position.y);
-		rigidbody2D.AddForce( (myLoc - oLoc).normalized * power);
+		GetComponent<Rigidbody2D>().AddForce( (myLoc - oLoc).normalized * power);
 	} 
 }

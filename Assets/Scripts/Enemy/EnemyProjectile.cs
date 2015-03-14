@@ -9,9 +9,13 @@ public class EnemyProjectile : MonoBehaviour
 	public GameObject parent;
 	public float maxMagnitude;
 
+	private Rigidbody2D rigidBody2D;
+
+
 	void Start ()
 	{
-		float p_velocity = parent.rigidbody2D.velocity.magnitude;
+		rigidBody2D = parent.GetComponent<Rigidbody2D>();
+		float p_velocity = rigidBody2D.velocity.magnitude;
 		self = new GenericEnemy (this.gameObject, 100, 50f, 2.0f);
 		// 2 - Limited time to live to avoid any leak
 		Destroy (gameObject, 12); // seconds 
@@ -20,7 +24,7 @@ public class EnemyProjectile : MonoBehaviour
 		Vector3 dir = oldTarget - this.transform.position;
 		Vector2 force = dir * (self.movementSpeed + p_velocity);
 		Vector2 clamped = Vector2.ClampMagnitude (force, maxMagnitude);
-		rigidbody2D.AddForce (clamped);
+		rigidBody2D.AddForce (clamped);
 	}
 
 	void OnCollisionEnter2D (Collision2D coll)

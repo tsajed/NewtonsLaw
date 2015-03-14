@@ -8,6 +8,12 @@ public class EnemyHeatSeekingProjectile : MonoBehaviour
 	public Transform target { private get; set; }
 	public GameObject parent;
 
+	private Rigidbody2D rigidBody2D;
+
+	void Awake() {
+		rigidBody2D = GetComponent<Rigidbody2D>();
+	}
+
 	void Start ()
 	{
 		self = new GenericEnemy (this.gameObject, 100, 15f, 2.0f);
@@ -19,7 +25,7 @@ public class EnemyHeatSeekingProjectile : MonoBehaviour
 	{
 		Vector3 dir = target.position - this.transform.position;
 		Vector2 force = dir.normalized * self.movementSpeed;
-		rigidbody2D.AddForce (force);
+		rigidBody2D.AddForce (force);
 	}
 
 	void OnCollisionEnter2D (Collision2D coll)

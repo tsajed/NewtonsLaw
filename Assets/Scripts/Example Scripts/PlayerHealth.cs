@@ -14,7 +14,7 @@ public class PlayerHealth : MonoBehaviour
 	private Vector3 healthScale;				// The local scale of the health bar initially (with full health).
 	private PlayerControl playerControl;		// Reference to the PlayerControl script.
 	private Animator anim;						// Reference to the Animator on the player
-
+	private Rigidbody2D rigidBody2D;
 
 	void Awake ()
 	{
@@ -22,6 +22,7 @@ public class PlayerHealth : MonoBehaviour
 		playerControl = GetComponent<PlayerControl>();
 		healthBar = GameObject.Find("HealthBar").GetComponent<SpriteRenderer>();
 		anim = GetComponent<Animator>();
+		rigidBody2D = GetComponent<Rigidbody2D>();
 
 		// Getting the intial scale of the healthbar (whilst the player has full health).
 		healthScale = healthBar.transform.localScale;
@@ -83,7 +84,7 @@ public class PlayerHealth : MonoBehaviour
 		Vector3 hurtVector = transform.position - enemy.position + Vector3.up * 5f;
 
 		// Add a force to the player in the direction of the vector and multiply by the hurtForce.
-		rigidbody2D.AddForce(hurtVector * hurtForce);
+		rigidBody2D.AddForce(hurtVector * hurtForce);
 
 		// Reduce the player's health by 10.
 		health -= damageAmount;

@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour
 	private Transform frontCheck;		// Reference to the position of the gameobject used for checking if something is in front.
 	private bool dead = false;			// Whether or not the enemy is dead.
 	private Score score;				// Reference to the Score script.
-
+	private Rigidbody2D rigidBody2D;
 	
 	void Awake()
 	{
@@ -25,6 +25,7 @@ public class Enemy : MonoBehaviour
 		ren = transform.Find("body").GetComponent<SpriteRenderer>();
 		frontCheck = transform.Find("frontCheck").transform;
 		score = GameObject.Find("Score").GetComponent<Score>();
+		rigidBody2D = GetComponent<Rigidbody2D>();
 	}
 
 	void FixedUpdate ()
@@ -45,7 +46,7 @@ public class Enemy : MonoBehaviour
 		}
 
 		// Set the enemy's velocity to moveSpeed in the x direction.
-		rigidbody2D.velocity = new Vector2(transform.localScale.x * moveSpeed, rigidbody2D.velocity.y);	
+		rigidBody2D.velocity = new Vector2(transform.localScale.x * moveSpeed, rigidBody2D.velocity.y);	
 
 		// If the enemy has one hit point left and has a damagedEnemy sprite...
 		if(HP == 1 && damagedEnemy != null)
@@ -86,8 +87,8 @@ public class Enemy : MonoBehaviour
 		dead = true;
 
 		// Allow the enemy to rotate and spin it by adding a torque.
-		rigidbody2D.fixedAngle = false;
-		rigidbody2D.AddTorque(Random.Range(deathSpinMin,deathSpinMax));
+		rigidBody2D.fixedAngle = false;
+		rigidBody2D.AddTorque(Random.Range(deathSpinMin,deathSpinMax));
 
 		// Find all of the colliders on the gameobject and set them all to be triggers.
 		Collider2D[] cols = GetComponents<Collider2D>();

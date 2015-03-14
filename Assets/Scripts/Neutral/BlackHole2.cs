@@ -7,7 +7,7 @@ public class BlackHole2 : MonoBehaviour {
 
     void OnTriggerStay2D(Collider2D other) {
 
-			Rigidbody2D body = other.rigidbody2D;
+			Rigidbody2D body = other.GetComponent<Rigidbody2D>();
 
 			Vector2 dir = transform.position - body.transform.position;
 			dir = dir.normalized;

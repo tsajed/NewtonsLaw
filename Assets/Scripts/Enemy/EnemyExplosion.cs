@@ -46,6 +46,6 @@ public class EnemyExplosion : MonoBehaviour
 		Vector3 dir = coll.transform.position - this.transform.position; // away
 		//Vector3 dir = this.transform.position - coll.transform.position; // towards
 		Vector2 force = dir.normalized * impact;
-		coll.rigidbody2D.AddForce (force);
+		coll.GetComponent<Rigidbody2D>().AddForce (force);
 	}
 }

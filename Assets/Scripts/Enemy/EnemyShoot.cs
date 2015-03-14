@@ -37,7 +37,7 @@ public class EnemyShoot : MonoBehaviour
 
 		SetComponentParameters (shotPrefabInst, target);
 
-		audio.PlayOneShot (sound);
+		GetComponent<AudioSource>().PlayOneShot (sound);
 	}
 
 	private void SetComponentParameters(GameObject shotPrefabInst, Transform target)

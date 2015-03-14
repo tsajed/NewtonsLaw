@@ -20,6 +20,6 @@ public class TextShadow : MonoBehaviour
 	void Update ()
 	{
 		// Set the text to equal the copy's text.
-		guiText.text = guiCopy.guiText.text;
+		GetComponent<GUIText>().text = guiCopy.GetComponent<GUIText>().text;
 	}
 }

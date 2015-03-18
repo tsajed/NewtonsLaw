@@ -21,7 +21,7 @@ public class SaveScoreLevel : MonoBehaviour {
 		for(int i = 0; i < scoreCount; i++) 
 		{
 
-			scores.Add(PlayerPrefs.GetString(levelName + i, "Sean Gouglas:9001"));
+			scores.Add(PlayerPrefs.GetString(levelName + i, ""));
 		}
 
 		// Debug Load the Level's Current Scoreboard

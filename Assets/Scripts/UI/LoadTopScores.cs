@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,6 +38,7 @@ public class TopScore {
 // Load the High Scores when Loading the Start Menu
 public class LoadTopScores : MonoBehaviour 
 {
+	public Transform scoreUIPrefab;
 	private List<TopScore> topScores = new List<TopScore>();
 	private ScoreComparer comparer = new ScoreComparer();
 
@@ -81,6 +83,15 @@ public class LoadTopScores : MonoBehaviour
 		// Now we must sort topScores by highest overall score
 		topScores.Sort(comparer);
 
+		for(int k = 0; k < topScores.Count; k++) {
+			Transform score = Instantiate(scoreUIPrefab, Vector3.zero, Quaternion.identity) as Transform;
+			score.SetParent(transform);
+			score.localScale = new Vector3(1, 1, 1);
+			score.GetComponent<Text>().text = (k+1) + ". " + topScores[k].name;
+			score.GetChild(0).GetComponent<Text>().text = topScores[k].score.ToString(); 
+		}
+
+	/* Old UI style
 		int counter = 0;
 		foreach(Transform child in transform)
 		{
@@ -102,6 +113,8 @@ public class LoadTopScores : MonoBehaviour
 				counter++;
 			}
 		}
+
+	*/
 	}
 
 	

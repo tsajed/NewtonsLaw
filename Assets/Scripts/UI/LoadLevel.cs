@@ -5,7 +5,7 @@ using System.Collections;
 public class LoadLevel : MonoBehaviour 
 {
 
-	void OnMouseDown()
+	public void LevelSelected()
 	{
 		// Get the level number from the name
 		string[] levelNumber = gameObject.name.Split(char.Parse(" "));

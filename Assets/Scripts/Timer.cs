@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 [RequireComponent (typeof (SaveScoreLevel))]
@@ -8,10 +9,12 @@ public class Timer : MonoBehaviour
 	public float timer = 200f;
 
 	private SaveScoreLevel saveScore;
+	private Text timeUI;
 
 	void Awake() 
 	{
 		saveScore = this.GetComponent<SaveScoreLevel>();
+		timeUI = this.GetComponent<Text>();
 	}
 
 	void Update() 
@@ -33,6 +36,6 @@ public class Timer : MonoBehaviour
 	  int seconds = (int) timer % 60; // calculate the seconds
 	  int minutes = (int) timer / 60; // calculate the minutes
 	  
-	  GetComponent<GUIText>().text = "Time: " + string.Format("{0:00}:{1:00}", minutes, seconds);
+	  timeUI.text = "Time: " + string.Format("{0:00}:{1:00}", minutes, seconds);
 	}
 }

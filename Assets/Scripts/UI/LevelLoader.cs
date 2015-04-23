@@ -7,4 +7,8 @@ public class LevelLoader : MonoBehaviour {
 		Time.timeScale = 1;
 		Application.LoadLevel(levelName);
 	}
+
+	public void NextLevel() {
+		Application.LoadLevel(Application.loadedLevel + 1);
+	}
 }

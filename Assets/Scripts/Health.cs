@@ -49,15 +49,17 @@ public class Health : MonoBehaviour
 		AudioSource.PlayClipAtPoint(death, GameObject.Find("Main Camera").transform.position);
 		Time.timeScale = 0;
 		// Save the score when you die
-		saveScore.SaveLevelScore();
+		//saveScore.SaveLevelScore();
+		GameObject.Find("UI").transform.Find("Pause Menu").gameObject.SetActive(true);
 		//Destroy (this.gameObject); //note that this causes errors currently as other scripts still try to reference the object.
 		//int loaded = Application.loadedLevel;
 		//restart level when player dies.
 		//Application.LoadLevel(loaded);
 		//Time.timeScale = 0;
-		onDeath = true;
+		//onDeath = true;
 	}
 
+	/*
 	void OnGUI() 
 	{
 		if (!onDeath)
@@ -82,4 +84,5 @@ public class Health : MonoBehaviour
 		 		Application.LoadLevel("Credits");
 		}
 	}
+	*/
 }

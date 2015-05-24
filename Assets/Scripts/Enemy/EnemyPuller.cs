@@ -8,6 +8,7 @@ public class EnemyPuller : MonoBehaviour
 	public GameObject parent;
 
 	public float impact = 1000;
+	public float rotationSpeed = 90.0f;
 
 	// Use this for initialization
 	void Start ()
@@ -19,7 +20,11 @@ public class EnemyPuller : MonoBehaviour
 
 	void Update ()
 	{
-		if (this.parent) { this.transform.position = this.parent.transform.position; }
+		if (this.parent) 
+		{ 
+			this.transform.position = this.parent.transform.position;
+			this.transform.Rotate(0, 0, rotationSpeed * Time.deltaTime);
+		}
 		else { Destroy (gameObject); }
 	}
 

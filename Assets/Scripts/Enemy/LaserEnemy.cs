@@ -56,7 +56,7 @@ public class LaserEnemy : MonoBehaviour
 	void Update ()
 	{
 		if (dying) { return; }
-
+		
 		if (!shoot.child) { shoot.TryShoot (target, 0); }
 	}
 
